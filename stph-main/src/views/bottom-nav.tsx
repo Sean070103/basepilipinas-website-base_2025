@@ -59,7 +59,7 @@ export default function BottomNav() {
         </div>
 
         <p className="text-sm text-gray-400">
-          © BASE PHL 2024. All rights reserved
+          © BASE PHL 2024. All rights reserved......
         </p>
       </div>
     </>
