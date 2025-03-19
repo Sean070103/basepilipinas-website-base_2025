@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Facebook, Instagram, Search } from "lucide-react";
 import { PiTelegramLogoLight } from "react-icons/pi";
+import Image from "next/image";
 
 export default function Partners() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,7 +17,7 @@ export default function Partners() {
       social: {
         facebook: "https://www.facebook.com/profile.php?id=100008903117894",
         instagram: "https://www.instagram.com/direct/t/101704667894326/",
-        x: "https://x.com/?lang=en",
+        x: "https://x.com/",
         linkedin: "#",
         telegram: "#",
       },
@@ -27,7 +28,7 @@ export default function Partners() {
       .map((_, i) => ({
         name: `Contributor ${i + 2}`,
         position: `Contributor ${i + 2}`,
-        image: "/placeholder.svg?height=200&width=200",
+        image: "/placeholder.svg",
         social: {
           facebook: "#",
           instagram: "#",
@@ -43,7 +44,7 @@ export default function Partners() {
   );
 
   return (
-    <section className="w-full py-16 px-4 ">
+    <section className="w-full py-16 px-4">
       <div className="flex flex-col justify-center space-y-8">
         <div>
           <h2 className="text-3xl font-bold mb-6 text-center text-white">
@@ -60,22 +61,24 @@ export default function Partners() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/60 w-6 h-6" />
           </div>
         </div>
-        {/* grid grid-cols-auto-fit grid-cols-1 sm:grid-cozls-3 md:grid-cols-3 lg:grid-cols-4 xl-grid-cols-5 w-12/12 lg:w-11/12 xl:w-11/12 place-items-center mx-auto space-y-8 outline md:outline-red-500 lg:outline-orange-500 */}
-        <div className="flex flex-wrap w-full justify-center gap-4">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 justify-center mx-auto">
           {filteredSponsors.map((sponsor, index) => (
             <motion.div
               key={index}
               className="relative group"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.03 }}
+              transition={{ duration: 0.3, delay: Math.min(index * 0.02, 0.5) }}
             >
               <div className="flex flex-col items-center justify-center space-y-4 w-[240px] h-[340px] bg-white/10 backdrop-blur-xl rounded-lg p-4 shadow-lg text-center border border-white/20 transition-all hover:shadow-[0_0_15px_2px_rgba(255,255,255,0.5)] hover:scale-105">
                 <div className="w-[150px] h-[150px] mx-auto rounded-full overflow-hidden mb-3 border border-white/30">
-                  <img
-                    src={sponsor.image || "/placeholder.svg"}
+                  <Image
+                    src={sponsor.image}
                     alt={sponsor.name}
-                    className="w-full h-full object-cover"
+                    width={150}
+                    height={150}
+                    className="object-cover"
                   />
                 </div>
                 <h3 className="text-sm font-medium text-white">

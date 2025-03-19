@@ -4,6 +4,7 @@ import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { motion } from "framer-motion";
 import { Linkedin, Facebook, Instagram, Search } from "lucide-react";
+import Image from "next/image";
 
 export default function Partners() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -96,7 +97,7 @@ export default function Partners() {
               >
                 {/* Profile Image */}
                 <div className="w-[150px] h-[150px] mx-auto rounded-full overflow-hidden mb-3 border border-white/20">
-                  <img
+                  <Image
                     src={sponsor.image || "/placeholder.svg"}
                     alt={sponsor.name}
                     className="w-full h-full object-cover"
@@ -137,7 +138,7 @@ export default function Partners() {
                     className="text-white/70 hover:text-gray-500 transition-colors"
                     rel="noreferrer"
                   >
-                    <img
+                    <Image
                       src="/logo/X_shaded.png"
                       alt="X"
                       className="w-5 h-5 opacity-70 hover:opacity-100"
@@ -157,7 +158,7 @@ export default function Partners() {
                     className="text-white/70 hover:text-purple-500 transition-colors"
                     rel="noreferrer"
                   >
-                    <img
+                    <Image
                       src="/logo/discord_shaded.png"
                       alt="Discord"
                       className="w-5 h-5 opacity-70 hover:opacity-100"
