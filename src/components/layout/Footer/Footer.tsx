@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
-const menuItems = ["LEARN", "EARN", "BUILD", "CHILL"];
+const menuItems = ["LEARN", "BUILD", "CONTRIBUTE", "CHILL"];
 
 export default function Footer() {
   return (

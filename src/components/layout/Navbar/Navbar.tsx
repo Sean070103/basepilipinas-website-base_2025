@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 
 import { useState } from "react";
@@ -32,13 +31,13 @@ export default function Navbar() {
               />
             </Link>
             <Link href="#" className="hover:text-gray-300">
-              Join
+              {" "}
+              Join{" "}
             </Link>
             <Link href="/#events" className="hover:text-gray-300">
-              Eventssssss
+              {" "}
+              Events{" "}
             </Link>
-
-
 
             <button
               onClick={toggleSocials}
@@ -49,7 +48,8 @@ export default function Navbar() {
               Socials
             </button>
             <Link href="#" className="hover:text-gray-300">
-              About
+              {" "}
+              About{" "}
             </Link>
           </div>
         </div>
@@ -70,16 +70,20 @@ export default function Navbar() {
                 </button>
                 <div className="flex flex-wrap gap-4 sm:gap-6">
                   <Link href="#" className="text-white hover:text-gray-300">
-                    Join
+                    {" "}
+                    Join{" "}
                   </Link>
                   <Link href="#" className="text-white hover:text-gray-300">
-                    Events
+                    {" "}
+                    Events{" "}
                   </Link>
                   <Link href="#" className="text-white hover:text-gray-300">
-                    About
+                    {" "}
+                    About{" "}
                   </Link>
                   <span className="text-white bg-gray-700/50 px-3 py-1 rounded-md">
-                    Socials
+                    {" "}
+                    Socials{" "}
                   </span>
                 </div>
               </div>
@@ -91,19 +95,22 @@ export default function Navbar() {
                     href="https://www.facebook.com/basepilipinas"
                     className="block text-white text-lg hover:text-blue-400"
                   >
-                    Facebook
+                    {" "}
+                    Facebook{" "}
                   </Link>
                   <Link
                     href="https://x.com/basepilipinas"
                     className="block text-white text-lg hover:text-blue-400"
                   >
-                    X
+                    {" "}
+                    X{" "}
                   </Link>
                   <Link
                     href="https://www.linkedin.com/company/basepilipinas"
                     className="block text-white text-lg hover:text-blue-400"
                   >
-                    LINKEDIN
+                    {" "}
+                    LinkedIn{" "}
                   </Link>
                 </div>
                 <div className="flex items-center justify-center mt-4 sm:mt-0">
@@ -125,46 +132,5 @@ export default function Navbar() {
         </div>
       )}
     </>
-=======
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-
-export default function Navbar() {
-  return (
-    <div className="w-full sticky top-0 right-0 py-4 flex justify-center items-center content-center z-50">
-      <div
-        className="sm:max-w-none flex flex-col sm:flex-row self-center text-center items-center justify-between justify-items-center gap-3 sm:gap-6 px-4 sm:px-6 py-2 sm:py-3 
-        border border-gray-500 rounded-xl bg-black/50 backdrop-blur-lg text-white"
-      >
-        {/* Centered Logo */}
-
-        {/* Navbar Links */}
-        <div className="flex w-[100%] self-center justify-center items-center content-center justify-items-center gap-3 sm:gap-6 text-sm sm:text-base">
-          <Link href="/#hero" className="flex items-center justify-center">
-            <Image
-              src="/base/Base_Symbol_Blue.png"
-              alt="Logo"
-              width={30}
-              height={40}
-              className="object-contain"
-            />
-          </Link>
-          <Link href="#" className="hover:text-gray-300">
-            Blog
-          </Link>
-          <Link href="/#events" className="hover:text-gray-300">
-            Events
-          </Link>
-          <Link href="#" className="hover:text-gray-300">
-            Hire
-          </Link>
-          <Link href="#" className="hover:text-gray-300">
-            About
-          </Link>
-        </div>
-      </div>
-    </div>
->>>>>>> 4d051963fa7c7803e69dabecdf7b1489b95da2e8
   );
 }
