@@ -35,8 +35,11 @@ export default function Navbar() {
               Join
             </Link>
             <Link href="/#events" className="hover:text-gray-300">
-              Events
+              Eventssssss
             </Link>
+
+
+
             <button
               onClick={toggleSocials}
               className={`hover:text-gray-300 ${
