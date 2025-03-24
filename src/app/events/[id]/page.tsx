@@ -11,6 +11,15 @@ export default function EventPage() {
   const event = EVENTS.find((event) => event.id === params.id);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Convert date format
+  const formattedDate = event?.date
+    ? new Intl.DateTimeFormat("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }).format(new Date(event.date))
+    : "";
+
   return (
     <main className="min-h-screen bg-transparent text-white">
       <div className="container mx-auto py-8 px-4 max-w-4xl">
@@ -50,16 +59,16 @@ export default function EventPage() {
 
           {/* Event Details */}
           <div className="relative z-10 p-4 flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-            {/* Date Box */}
-            <div className="bg-blue-600 text-white p-2 rounded text-center min-w-14 sm:min-w-16">
-              <div className="text-lg sm:text-2xl font-bold">
-                {event?.date.split(" ")[0]}
+            {/* Updated Date Box - 31 Jan 2025 Format */}
+            <div className="bg-blue-600 text-white px-4 py-3 rounded text-center min-w-20 sm:min-w-24 flex flex-col items-center">
+              <div className="text-4xl sm:text-5xl font-bold leading-none">
+                {formattedDate.split(" ")[0]}
               </div>
-              <div className="text-xs sm:text-sm uppercase">
-                {event?.date.split(" ")[1]}
+              <div className="text-lg sm:text-xl font-medium uppercase">
+                {formattedDate.split(" ")[1]}
               </div>
-              <div className="text-xs sm:text-sm">
-                {event?.date.split(" ")[2]}
+              <div className="text-lg sm:text-xl font-medium">
+                {formattedDate.split(" ")[2]}
               </div>
             </div>
 
@@ -80,7 +89,7 @@ export default function EventPage() {
           {/* Description */}
           <div className="p-4 sm:p-6">
             <p className="text-gray-300 text-sm sm:text-base">
-              {event?.sentence}
+              {event?.sentence.trim()}
             </p>
           </div>
         </div>

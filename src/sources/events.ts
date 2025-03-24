@@ -8,7 +8,7 @@ Want to be a Based Student Ambassador and shape the future of Web3? Apply
     location: "Online",
     date: "March 8, 2025",
     time: "7:00 PM",
-    image: "/Event/Mr.Monte.jpg",
+    image: "/Event/WEBP/Mr.Monte.webp",
     status: "Done",
   },
   {
@@ -19,7 +19,7 @@ Thank you to everyone who joined onsite at Adamson University and online via Zoo
     location: "Adamson University & Zoom",
     date: "March 12, 2025",
     time: "8:00 AM",
-    image: "/Event/crop.jpg",
+    image: "/Event/WEBP/MR.Eli.webp",
     status: "Done",
   },
   {
