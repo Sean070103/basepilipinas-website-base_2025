@@ -47,7 +47,7 @@ export default function Navbar() {
             >
               Socials
             </button>
-            <Link href="#" className="hover:text-gray-300">
+            <Link href="/#about" className="hover:text-gray-300">
               {" "}
               About{" "}
             </Link>
