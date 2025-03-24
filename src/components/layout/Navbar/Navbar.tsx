@@ -23,7 +23,7 @@ export default function Navbar() {
           <div className="flex w-[100%] self-center justify-center items-center content-center justify-items-center gap-3 sm:gap-6 text-sm sm:text-base">
             <Link href="/#hero" className="flex items-center justify-center">
               <Image
-                src="/base/Base_Symbol_Blue.png"
+                src="/logo/Base_Symbol_White.svg"
                 alt="Logo"
                 width={30}
                 height={40}

@@ -181,20 +181,16 @@ export default function Home() {
               <div className="flex flex-col items-center md:items-start gap-2">
                 <div className="flex items-center gap-3">
                   <Image
-                    src="/base/Base_Symbol_Blue.png"
+                    src="/logo/Base_Symbol_White.svg"
                     alt="Base Philippines Logo"
                     width={100}
                     height={100}
                     className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
                   />
-                  <p
-                    className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-widest uppercase
-            bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text"
-                  >
+                  <p className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-widest uppercase text-white">
                     Base Philippines
                   </p>
                 </div>
-                <div className="w-28 sm:w-32 md:w-40 h-[2px] bg-cyan-400/50 rounded-full animate-pulse"></div>
               </div>
 
               {/* Heading & Description */}
