@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
+import { FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 export default function Navbar() {
   const [socialsOpen, setSocialsOpen] = useState(false);
@@ -30,13 +31,11 @@ export default function Navbar() {
                 className="object-contain"
               />
             </Link>
-            <Link href="#" className="hover:text-gray-300">
-              {" "}
-              Join{" "}
+            <Link href="/#join-us" className="hover:text-gray-300">
+              Join
             </Link>
             <Link href="/#events" className="hover:text-gray-300">
-              {" "}
-              Events{" "}
+              Events
             </Link>
 
             <button
@@ -47,9 +46,8 @@ export default function Navbar() {
             >
               Socials
             </button>
-            <Link href="" className="hover:text-gray-300">
-              {" "}
-              About{" "}
+            <Link href="/#about" className="hover:text-gray-300">
+              About
             </Link>
           </div>
         </div>
@@ -69,21 +67,26 @@ export default function Navbar() {
                   <X className="h-5 w-5" />
                 </button>
                 <div className="flex flex-wrap gap-4 sm:gap-6">
-                  <Link href="#" className="text-white hover:text-gray-300">
-                    {" "}
-                    Join{" "}
+                  <Link
+                    href="/#join-us"
+                    className="text-white hover:text-gray-300"
+                  >
+                    Join
                   </Link>
-                  <Link href="#" className="text-white hover:text-gray-300">
-                    {" "}
-                    Events{" "}
+                  <Link
+                    href="/#events"
+                    className="text-white hover:text-gray-300"
+                  >
+                    Events
                   </Link>
-                  <Link href="#" className="text-white hover:text-gray-300">
-                    {" "}
-                    About{" "}
+                  <Link
+                    href="/#about"
+                    className="text-white hover:text-gray-300"
+                  >
+                    About
                   </Link>
                   <span className="text-white bg-gray-700/50 px-3 py-1 rounded-md">
-                    {" "}
-                    Socials{" "}
+                    Socials
                   </span>
                 </div>
               </div>
@@ -93,24 +96,23 @@ export default function Navbar() {
                 <div className="space-y-4">
                   <Link
                     href="https://www.facebook.com/basepilipinas"
-                    className="block text-white text-lg hover:text-blue-400"
+                    className="flex items-center gap-3 text-white text-lg hover:text-blue-400"
                   >
-                    {" "}
-                    Facebook{" "}
+                    <FaFacebookF className="h-5 w-5" />
+                    Facebook
                   </Link>
                   <Link
                     href="https://x.com/basepilipinas"
-                    className="block text-white text-lg hover:text-blue-400"
+                    className="flex items-center gap-3 text-white text-lg hover:text-blue-400"
                   >
-                    {" "}
-                    X{" "}
+                    <FaXTwitter className="h-5 w-5" />X
                   </Link>
                   <Link
                     href="https://www.linkedin.com/company/basepilipinas"
-                    className="block text-white text-lg hover:text-blue-400"
+                    className="flex items-center gap-3 text-white text-lg hover:text-blue-400"
                   >
-                    {" "}
-                    LinkedIn{" "}
+                    <FaLinkedinIn className="h-5 w-5" />
+                    LinkedIn
                   </Link>
                 </div>
                 <div className="flex items-center justify-center mt-4 sm:mt-0">
@@ -124,6 +126,13 @@ export default function Navbar() {
                         borderColor: "#3b82f6",
                       }}
                     ></div>
+                    <Image
+                      src="/logo/Base_Symbol_White.svg"
+                      alt="Base Logo"
+                      width={40}
+                      height={40}
+                      className="absolute object-contain"
+                    />
                   </div>
                 </div>
               </div>

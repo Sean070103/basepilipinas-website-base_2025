@@ -19,7 +19,7 @@ Thank you to everyone who joined onsite at Adamson University and online via Zoo
     location: "Adamson University & Zoom",
     date: "March 12, 2025",
     time: "8:00 AM",
-    image: "/Event/WEBP/MR.Eli.webp",
+    image: "/Event/crop.jpg",
     status: "Done",
   },
   {

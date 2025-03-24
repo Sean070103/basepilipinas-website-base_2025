@@ -92,18 +92,18 @@ export default function Home() {
     <>
       {/* Socials Panel */}
       {socialsOpen && (
-        <div className="fixed top-20 left-0 right-0 z-50 px-4 min-[768px]:left-1/2 min-[768px]:right-auto min-[768px]:transform min-[768px]:-translate-x-1/2">
-          <div className="w-full min-[768px]:w-[600px] max-w-[100%]">
+        <div className="fixed top-20 left-0 right-0 z-50 px-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2">
+          <div className="w-full sm:w-[600px] max-w-[100%]">
             <div className="relative border border-gray-500/30 rounded-xl bg-black/40 backdrop-blur-sm p-4">
               {/* Top Navigation */}
-              <div className="flex flex-col min-[481px]:flex-row justify-between items-start min-[481px]:items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
                 <button
                   onClick={toggleSocials}
-                  className="text-white mb-4 min-[481px]:mb-0"
+                  className="text-white mb-4 sm:mb-0"
                 >
                   <X className="h-5 w-5" />
                 </button>
-                <div className="flex flex-wrap gap-4 min-[481px]:gap-6">
+                <div className="flex flex-wrap gap-4 sm:gap-6">
                   <Link href="#" className="text-white hover:text-gray-300">
                     Join
                   </Link>
@@ -123,7 +123,7 @@ export default function Home() {
               </div>
 
               {/* Social Links and Content */}
-              <div className="grid grid-cols-1 min-[481px]:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <Link
                     href="https://www.facebook.com/basepilipinas"
@@ -144,10 +144,10 @@ export default function Home() {
                     LINKEDIN
                   </Link>
                 </div>
-                <div className="flex items-center justify-center mt-4 min-[481px]:mt-0">
-                  <div className="w-20 h-20 min-[481px]:w-24 min-[481px]:h-24 relative flex items-center justify-center">
+                <div className="flex items-center justify-center mt-4 sm:mt-0">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 relative flex items-center justify-center">
                     <div
-                      className="w-16 h-16 min-[481px]:w-20 min-[481px]:h-20 border-2 border-blue-500/80 rounded-full border-dashed animate-spin"
+                      className="w-16 h-16 sm:w-20 sm:h-20 border-2 border-blue-500/80 rounded-full border-dashed animate-spin"
                       style={{
                         borderStyle: "dashed",
                         animationDuration: "3s",
@@ -163,53 +163,53 @@ export default function Home() {
         </div>
       )}
 
-      <div className="flex flex-col gap-8 min-[481px]:gap-12 min-[768px]:gap-16">
+      <div className="flex flex-col gap-8 sm:gap-12 md:gap-16">
         {/* Hero */}
         <section
           id="hero"
-          className="relative w-full flex items-center justify-center p-4 min-[481px]:p-6 py-16 min-[481px]:py-20 overflow-hidden"
+          className="relative w-full flex items-center justify-center p-4 sm:p-6 py-16 sm:py-20 overflow-hidden"
         >
           {/* Light Streak Effect */}
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50 animate-lightStreak"></div>
           </div>
 
-          <div className="w-full max-w-[1440px] flex flex-col gap-8 min-[768px]:flex-row min-[768px]:gap-10 min-[768px]:max-w-[1040px] relative z-10">
+          <div className="w-full max-w-[1440px] flex flex-col gap-8 md:flex-row md:gap-10 md:max-w-[1040px] relative z-10">
             {/* Left Section (Logo + Text Content) */}
-            <div className="flex flex-col gap-4 min-[481px]:gap-6 text-white min-[768px]:w-1/2">
+            <div className="flex flex-col gap-4 sm:gap-6 text-white md:w-1/2">
               {/* Base Philippines Branding */}
-              <div className="flex flex-col items-center min-[768px]:items-start gap-2">
+              <div className="flex flex-col items-center md:items-start gap-2">
                 <div className="flex items-center gap-3">
                   <Image
                     src="/logo/Base_Symbol_White.svg"
                     alt="Base Philippines Logo"
                     width={100}
                     height={100}
-                    className="w-12 h-12 min-[481px]:w-14 min-[481px]:h-14 min-[768px]:w-16 min-[768px]:h-16 object-contain"
+                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
                   />
-                  <p className="text-xl min-[481px]:text-2xl min-[768px]:text-3xl font-semibold tracking-widest uppercase text-white">
+                  <p className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-widest uppercase text-white">
                     Base Philippines
                   </p>
                 </div>
               </div>
 
               {/* Heading & Description */}
-              <h1 className="text-2xl min-[481px]:text-3xl min-[768px]:text-5xl min-[1024px]:text-6xl font-bold leading-tight text-center min-[768px]:text-left">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-center md:text-left">
                 Join the <br /> Web3 Revolution
               </h1>
-              <p className="text-sm min-[768px]:text-base min-[1024px]:text-lg text-white/80 text-center min-[768px]:text-left">
+              <p className="text-sm md:text-base lg:text-lg text-white/80 text-center md:text-left">
                 We are creating a space for innovators, developers, and
                 entrepreneurs in the Philippines, providing the resources and
                 support they need to succeed.
               </p>
 
               {/* Join Button */}
-              <div className="flex justify-center min-[768px]:justify-start">
+              <div className="flex justify-center md:justify-start">
                 <button
-                  className="w-fit px-4 min-[481px]:px-6 py-2 min-[481px]:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
+                  className="w-fit px-4 sm:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
             hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                 >
-                  <span className="text-sm min-[481px]:text-base min-[1024px]:text-lg">
+                  <span className="text-sm sm:text-base lg:text-lg">
                     JOIN US NOW
                   </span>
                 </button>
@@ -217,11 +217,11 @@ export default function Home() {
             </div>
 
             {/* Right Section (CTA Buttons) */}
-            <div className="flex flex-col gap-3 min-[481px]:gap-4 min-[768px]:w-1/2">
+            <div className="flex flex-col gap-3 sm:gap-4 md:w-1/2">
               {CTA_ITEMS.map(({ icon, title, description }) => (
                 <div
                   key={title}
-                  className="relative flex items-center gap-3 min-[481px]:gap-4 p-3 min-[481px]:p-4 border border-white/30 rounded-2xl w-full
+                  className="relative flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-white/30 rounded-2xl w-full
             backdrop-blur-md bg-white/10 transition-all duration-300
             hover:border-white hover:shadow-[0_0_20px_rgba(0,255,255,0.8)]
             before:absolute before:top-0 before:left-0 before:w-full before:h-full
@@ -231,15 +231,15 @@ export default function Home() {
                   <Image
                     src={icon || "/placeholder.svg"}
                     alt={title}
-                    className="w-10 h-10 min-[481px]:w-12 min-[481px]:h-12 object-contain"
+                    className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
                     width={100}
                     height={100}
                   />
                   <div>
-                    <p className="text-base min-[481px]:text-lg font-semibold text-white">
+                    <p className="text-base sm:text-lg font-semibold text-white">
                       {title}
                     </p>
-                    <p className="text-xs min-[481px]:text-sm text-white/80">
+                    <p className="text-xs sm:text-sm text-white/80">
                       {description}
                     </p>
                   </div>
@@ -250,39 +250,36 @@ export default function Home() {
         </section>
 
         {/* Mission */}
-        <section
-          id="about"
-          className="py-10 min-[481px]:py-12 px-4 min-[481px]:px-6"
-        >
+        <section id="about" className="py-10 sm:py-12 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-center text-2xl min-[481px]:text-3xl min-[768px]:text-4xl font-bold mb-8 min-[481px]:mb-12">
+            <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12">
               ABOUT BASE PHILIPPINES
             </h1>
 
-            <div className="grid grid-cols-1 min-[481px]:grid-cols-2 min-[1024px]:grid-cols-4 gap-4 min-[481px]:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {MISSIONS.map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center text-center p-4 min-[481px]:p-6 rounded-2xl
+                  className="flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl
                       glass transition-all duration-300 hover:scale-[1.03]
                       hover:shadow-[0px_0px_20px_rgba(255,255,255,0.15)]
                       hover:border-white/20"
                 >
                   {/* Icon Container */}
-                  <div className="flex items-center justify-center rounded-full p-3 min-[481px]:p-4 mb-3 min-[481px]:mb-4 bg-white/10 border border-white/20">
+                  <div className="flex items-center justify-center rounded-full p-3 sm:p-4 mb-3 sm:mb-4 bg-white/10 border border-white/20">
                     <item.icon
-                      className="h-6 w-6 min-[481px]:h-8 min-[481px]:w-8 text-white/80"
+                      className="h-6 w-6 sm:h-8 sm:w-8 text-white/80"
                       strokeWidth={1.5}
                     />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base min-[481px]:text-lg font-semibold text-white/90 mb-2 min-[481px]:mb-3 uppercase">
+                  <h3 className="text-base sm:text-lg font-semibold text-white/90 mb-2 sm:mb-3 uppercase">
                     {item.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-white/70 text-xs min-[481px]:text-sm">
+                  <p className="text-white/70 text-xs sm:text-sm">
                     {item.description}
                   </p>
                 </div>
@@ -290,14 +287,14 @@ export default function Home() {
             </div>
 
             {/* BASE INSIGHT HUB Section */}
-            <div className="mt-10 min-[481px]:mt-16 rounded-2xl overflow-hidden glass">
-              <div className="grid grid-cols-1 min-[768px]:grid-cols-2">
+            <div className="mt-10 sm:mt-16 rounded-2xl overflow-hidden glass">
+              <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Content Side */}
-                <div className="p-5 min-[481px]:p-6 min-[768px]:p-8 min-[1024px]:p-10 flex flex-col justify-center">
-                  <h2 className="text-xl min-[481px]:text-2xl min-[768px]:text-3xl min-[1024px]:text-4xl font-bold mb-3 min-[481px]:mb-4">
+                <div className="p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
                     BASE INSIGHT HUB
                   </h2>
-                  <p className="text-xs min-[481px]:text-sm min-[768px]:text-base text-white/80 mb-4 min-[481px]:mb-6">
+                  <p className="text-xs sm:text-sm md:text-base text-white/80 mb-4 sm:mb-6">
                     Base Insight Hub is your go-to platform for learning,
                     offering YouTube videos, webinars, and resources to help you
                     stay informed, sharpen your skills, and discover new
@@ -305,10 +302,10 @@ export default function Home() {
                   </p>
                   <div>
                     <button
-                      className="w-fit px-3 min-[481px]:px-4 min-[768px]:px-6 py-2 min-[481px]:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
+                      className="w-fit px-3 sm:px-4 md:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
                 hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                     >
-                      <span className="text-sm min-[481px]:text-base min-[768px]:text-lg">
+                      <span className="text-sm sm:text-base md:text-lg">
                         LEARN WITH US
                       </span>
                     </button>
@@ -316,13 +313,13 @@ export default function Home() {
                 </div>
 
                 {/* Image Side */}
-                <div className="relative w-full h-48 min-[481px]:h-64 min-[768px]:h-full">
+                <div className="relative w-full h-48 sm:h-64 md:h-full">
                   <Image
                     src="/hero/studying_1.jpg"
                     alt="Base Insight Hub Learning Platform"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                   />
                 </div>
               </div>
@@ -343,9 +340,9 @@ export default function Home() {
         {/* Join Us */}
         <section
           id="join-us"
-          className="flex flex-col items-center justify-center p-4 min-[481px]:p-6 py-10 min-[481px]:py-16"
+          className="flex flex-col items-center justify-center p-4 sm:p-6 py-10 sm:py-16"
         >
-          <p className="text-xl min-[481px]:text-2xl min-[768px]:text-4xl min-[1024px]:text-6xl font-bold leading-tight text-white opacity-80 text-center">
+          <p className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-bold leading-tight text-white opacity-80 text-center">
             Unleash the future Join our community.
           </p>
 
@@ -355,22 +352,22 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <button
-              className="mt-4 min-[481px]:mt-6 px-4 min-[481px]:px-6 py-2 min-[481px]:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
+              className="mt-4 sm:mt-6 px-4 sm:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
         hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
             >
-              <span className="text-sm min-[481px]:text-base min-[1024px]:text-lg">
+              <span className="text-sm sm:text-base lg:text-lg">
                 JOIN US NOW
               </span>
             </button>
           </a>
         </section>
 
-        <section className="flex flex-col items-center justify-center py-10 min-[481px]:py-16 bg-transparent p-4 min-[481px]:p-6">
+        <section className="flex flex-col items-center justify-center py-10 sm:py-16 bg-transparent p-4 sm:p-6">
           <div className="text-white text-center max-w-3xl mx-auto">
-            <h2 className="text-2xl min-[481px]:text-3xl min-[768px]:text-4xl min-[1024px]:text-5xl font-extrabold text-blue-300 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-blue-300 leading-tight">
               {`Let's Connect & Schedule a Meeting!`}
             </h2>
-            <p className="mt-3 min-[481px]:mt-4 text-sm min-[481px]:text-base min-[768px]:text-lg text-white/80 leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
               {`Schedule a meeting to discuss your goals, projects, or any inquiries
               you have. Whether you're looking for advice, collaboration, or just
               a meaningful conversation, we're here for you.`}
@@ -380,11 +377,11 @@ export default function Home() {
             </p>
             <Dialog>
               <DialogTrigger asChild>
-                <button className="mt-4 min-[481px]:mt-6 px-6 min-[481px]:px-8 py-2 min-[481px]:py-3 text-base min-[481px]:text-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition duration-300">
+                <button className="mt-4 sm:mt-6 px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition duration-300">
                   BOOK NOW
                 </button>
               </DialogTrigger>
-              <DialogContent className="bg-gray-700/60 backdrop-blur-md max-w-md w-[95vw] min-[481px]:w-full border-0">
+              <DialogContent className="bg-gray-700/60 backdrop-blur-md max-w-md w-[95vw] sm:w-full border-0">
                 <button className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
                   <X className="h-4 w-4 text-white" />
                   <span className="sr-only">Close</span>
@@ -449,7 +446,7 @@ export default function Home() {
                             className="w-full h-12 px-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60"
                           />
 
-                          <div className="grid grid-cols-1 min-[481px]:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="relative flex items-center">
                               <div className="absolute left-4 text-white/60">
                                 <CalendarIcon className="h-5 w-5" />
@@ -518,7 +515,7 @@ export default function Home() {
           </div>
 
           {/* Image Section */}
-          <div className="mt-6 min-[481px]:mt-10 flex justify-center w-full max-w-xs min-[481px]:max-w-sm min-[768px]:max-w-lg">
+          <div className="mt-6 sm:mt-10 flex justify-center w-full max-w-xs sm:max-w-sm md:max-w-lg">
             <Image
               src="/Event/WEBP/meeting.webp"
               width={100}
@@ -532,21 +529,21 @@ export default function Home() {
         {/* Events */}
         <section
           id="events"
-          className="py-10 min-[481px]:py-16 bg-transparent text-white"
+          className="py-10 sm:py-16 bg-transparent text-white"
         >
-          <div className="container mx-auto py-6 min-[481px]:py-8 px-4">
-            <h1 className="text-xl min-[481px]:text-2xl font-bold mb-6 min-[481px]:mb-8 text-center">
+          <div className="container mx-auto py-6 sm:py-8 px-4">
+            <h1 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">
               EVENTS
             </h1>
 
-            <div className="grid grid-cols-1 min-[481px]:grid-cols-2 min-[1024px]:grid-cols-3 gap-4 min-[481px]:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {EVENTS.map((event) => (
                 <div
                   key={event.id}
                   className="bg-[#1a2234] rounded-lg overflow-hidden shadow-lg h-full"
                 >
                   <Link href={`/events/${event.id}`}>
-                    <div className="relative h-36 min-[481px]:h-48">
+                    <div className="relative h-36 sm:h-48">
                       <Image
                         src={
                           event.image || "/placeholder.svg?height=400&width=600"
@@ -556,14 +553,14 @@ export default function Home() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="p-3 min-[481px]:p-4">
+                    <div className="p-3 sm:p-4">
                       <div className="flex justify-between items-start mb-2">
                         <div>
                           <p className="text-xs text-gray-400">{event.date}</p>
-                          <h3 className="text-sm min-[481px]:text-base font-medium">
+                          <h3 className="text-sm sm:text-base font-medium">
                             {event.title}
                           </h3>
-                          <p className="text-xs min-[481px]:text-sm text-gray-400">
+                          <p className="text-xs sm:text-sm text-gray-400">
                             Location: {event.location}
                           </p>
                         </div>
@@ -571,8 +568,8 @@ export default function Home() {
                           <p>{event.time}</p>
                         </div>
                       </div>
-                      <div className="flex justify-end mt-3 min-[481px]:mt-4">
-                        <button className="text-xs bg-gray-700 hover:bg-gray-600 px-2 min-[481px]:px-3 py-1 rounded">
+                      <div className="flex justify-end mt-3 sm:mt-4">
+                        <button className="text-xs bg-gray-700 hover:bg-gray-600 px-2 sm:px-3 py-1 rounded">
                           Details
                         </button>
                       </div>
@@ -585,22 +582,20 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section className="flex items-center justify-center w-full py-8 min-[481px]:py-12">
-          <div className="w-full flex flex-col gap-3 min-[481px]:gap-4 p-4 min-[481px]:p-8 max-w-[1040px]">
-            <p className="text-xl min-[481px]:text-2xl min-[768px]:text-4xl font-bold">
-              FAQs
-            </p>
-            <p className="text-xs min-[481px]:text-sm">
+        <section className="flex items-center justify-center w-full py-8 sm:py-12">
+          <div className="w-full flex flex-col gap-3 sm:gap-4 p-4 sm:p-8 max-w-[1040px]">
+            <p className="text-xl sm:text-2xl md:text-4xl font-bold">FAQs</p>
+            <p className="text-xs sm:text-sm">
               Answers to your most common questions
             </p>
 
             <div className="flex flex-col gap-2 mt-2">
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
-                  <AccordionTrigger className="text-sm min-[481px]:text-base">
+                  <AccordionTrigger className="text-sm sm:text-base">
                     What is Base Philippines?
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs min-[481px]:text-sm">
+                  <AccordionContent className="text-xs sm:text-sm">
                     We are building the home of Base talent, creators, founders,
                     and builders in the Philippines. Unlocking access to capital
                     and distribution to help Base projects win!
@@ -610,10 +605,10 @@ export default function Home() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-2">
-                  <AccordionTrigger className="text-sm min-[481px]:text-base">
+                  <AccordionTrigger className="text-sm sm:text-base">
                     How can I become a contributor?
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs min-[481px]:text-sm">
+                  <AccordionContent className="text-xs sm:text-sm">
                     You can fill up this form if you are interested:{" "}
                     <a
                       href="https://docs.google.com/forms/d/e/1FAIpQLSdUrXLlB70lrzi_hHBbHF0RCTLmrmxgQDbYeSPhHGA3l94BVQ/viewform"
@@ -629,10 +624,10 @@ export default function Home() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-3">
-                  <AccordionTrigger className="text-sm min-[481px]:text-base">
+                  <AccordionTrigger className="text-sm sm:text-base">
                     Who can join Base Philippines?
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs min-[481px]:text-sm">
+                  <AccordionContent className="text-xs sm:text-sm">
                     Anyone interested in blockchain and Web3 can join Base
                     Philippines, including developers, content creators,
                     marketers, business developers, and community managers. The
@@ -644,10 +639,10 @@ export default function Home() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-4">
-                  <AccordionTrigger className="text-sm min-[481px]:text-base">
+                  <AccordionTrigger className="text-sm sm:text-base">
                     Are there any membership fees?
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs min-[481px]:text-sm">
+                  <AccordionContent className="text-xs sm:text-sm">
                     No, there are no membership fees to become a Base
                     Philippines contributor. However, contributors are expected
                     to actively participate by creating content, organizing
@@ -658,11 +653,11 @@ export default function Home() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-5">
-                  <AccordionTrigger className="text-sm min-[481px]:text-base">
+                  <AccordionTrigger className="text-sm sm:text-base">
                     Does Base Philippines provide funding for blockchain
                     projects?
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs min-[481px]:text-sm">
+                  <AccordionContent className="text-xs sm:text-sm">
                     Yes, Base Philippines offers various forms of support
                     including bounties and content grants for contributors. We
                     also aim to connect promising projects with capital and
@@ -673,10 +668,10 @@ export default function Home() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-6">
-                  <AccordionTrigger className="text-sm min-[481px]:text-base">
+                  <AccordionTrigger className="text-sm sm:text-base">
                     {`Does Base Philippines host hackathons?`}
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs min-[481px]:text-sm">
+                  <AccordionContent className="text-xs sm:text-sm">
                     {` We prefer incubation programs over hackathons. We believe
                     incubation programs provide better support and produce more
                     successful outcomes than hackathons, which often don't lead to
@@ -687,10 +682,10 @@ export default function Home() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-7">
-                  <AccordionTrigger className="text-sm min-[481px]:text-base">
+                  <AccordionTrigger className="text-sm sm:text-base">
                     {`How can I participate in Base Philippines events?`}
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs min-[481px]:text-sm">
+                  <AccordionContent className="text-xs sm:text-sm">
                     {`You can follow Base Philippines on different social media
                     channels (Facebook, Twitter, TikTok, LinkedIn) under the
                     handle "@basepilipinas" to stay updated on upcoming events.
@@ -702,10 +697,10 @@ export default function Home() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-8">
-                  <AccordionTrigger className="text-sm min-[481px]:text-base">
+                  <AccordionTrigger className="text-sm sm:text-base">
                     Can I volunteer to help with events?
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs min-[481px]:text-sm">
+                  <AccordionContent className="text-xs sm:text-sm">
                     Yes, we encourage contributors to organize and host their
                     own events, from small meetups (10-15 people) to online
                     workshops and AMAs. We can provide presentation materials
