@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Search } from "lucide-react";
 import Image from "next/image";
@@ -9,7 +9,6 @@ import { PiTelegramLogoLight } from "react-icons/pi";
 export default function Partners() {
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleSponsors, setVisibleSponsors] = useState(20);
-  const observer = useRef(null);
 
   interface SocialLinks {
     facebook: string;
