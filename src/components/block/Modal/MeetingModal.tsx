@@ -25,10 +25,9 @@ export default function MeetingModal({
     date: "",
     time: "",
   });
-  const [notification, setNotification] = useState("");
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isFailure, setIsFailure] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,7 +36,6 @@ export default function MeetingModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setIsFailure(false);
 
     console.log("Meeting Scheduled with details:", formData);
 
@@ -51,15 +49,10 @@ export default function MeetingModal({
       });
 
       if (response.ok) {
-        setNotification("Meeting scheduled successfully!");
         setIsSuccess(true);
-      } else {
-        setNotification("Failed to schedule meeting. Try again.");
-        setIsFailure(true);
       }
-    } catch (error) {
-      setNotification("An error occurred. Please try again later.");
-      setIsFailure(true);
+    } catch {
+      // Handle error if needed
     }
 
     setIsSubmitting(false);
@@ -73,7 +66,6 @@ export default function MeetingModal({
           date: "",
           time: "",
         });
-        setNotification("");
       }, 3000);
     }
   };
