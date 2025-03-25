@@ -5,7 +5,7 @@ import type React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { X, CalendarIcon, Clock } from "lucide-react";
+import { X } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -448,28 +448,22 @@ export default function Home() {
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="relative flex items-center">
-                              <div className="absolute left-4 text-white/60">
-                                <CalendarIcon className="h-5 w-5" />
-                              </div>
                               <Input
                                 type="date"
                                 name="date"
                                 value={formData.date}
                                 onChange={handleChange}
-                                className="w-full h-12 pl-12 pr-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60"
+                                className="w-full h-12 pl-12 pr-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60 placeholder:text-xs"
                                 required
                               />
                             </div>
                             <div className="relative flex items-center">
-                              <div className="absolute left-4 text-white/60">
-                                <Clock className="h-5 w-5" />
-                              </div>
                               <Input
                                 type="time"
                                 name="time"
                                 value={formData.time}
                                 onChange={handleChange}
-                                className="w-full h-12 pl-12 pr-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60"
+                                className="w-full h-12 pl-12 pr-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60 placeholder:text-xs"
                                 required
                               />
                             </div>
