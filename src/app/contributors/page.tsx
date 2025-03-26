@@ -9,6 +9,16 @@ import { PiTelegramLogoLight } from "react-icons/pi";
 export default function Partners() {
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleSponsors, setVisibleSponsors] = useState(20);
+  const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>(
+    {}
+  );
+
+  const toggleFlip = (index: number) => {
+    setFlippedCards((prev) => ({
+      ...prev,
+      [index]: !prev[index], // Toggle flip state
+    }));
+  };
 
   interface SocialLinks {
     facebook: string;
@@ -54,7 +64,7 @@ export default function Partners() {
         telegram: "#",
       },
     },
-    ...generateContributors(1000), // Generate a large number of contributors
+    ...generateContributors(1000),
   ];
 
   const filteredSponsors = allSponsors
@@ -100,62 +110,78 @@ export default function Partners() {
           {filteredSponsors.map((sponsor, index) => (
             <motion.div
               key={index}
-              className="relative group"
+              className="group [perspective:1000px] cursor-pointer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: Math.min(index * 0.02, 0.5) }}
             >
-              <div className="flex flex-col items-center justify-center space-y-4 w-[240px] h-[340px] bg-white/10 backdrop-blur-xl rounded-lg p-4 shadow-lg text-center border border-white/20 transition-all hover:shadow-[0_0_15px_2px_rgba(255,255,255,0.5)] hover:scale-105">
-                <div className="w-[150px] h-[150px] mx-auto rounded-full overflow-hidden mb-3 border border-white/30">
-                  <Image
-                    src={sponsor.image}
-                    alt={sponsor.name}
-                    width={150}
-                    height={150}
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-sm font-medium text-white">
-                  {sponsor.name}
-                </h3>
-                <p className="text-xs text-gray-400">{sponsor.position}</p>
-                <div className="flex justify-center gap-4 mt-3">
-                  <a
-                    href={sponsor.social.facebook}
-                    className="text-white hover:text-blue-500"
-                  >
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={sponsor.social.instagram}
-                    className="text-white hover:text-pink-500"
-                  >
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={sponsor.social.x}
-                    className="text-white hover:text-gray-500"
-                  >
+              {/* Card Container with hover and click effects */}
+              <div
+                onClick={() => toggleFlip(index)}
+                className={`relative w-[240px] h-[340px] transition-transform duration-500 [transform-style:preserve-3d] ${
+                  flippedCards[index] ? "[transform:rotateY(180deg)]" : ""
+                } group-hover:scale-105`}
+              >
+                {/* Front Side */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 w-full h-full bg-white/10 backdrop-blur-xl rounded-lg p-4 shadow-lg text-center border border-white/20 [backface-visibility:hidden]">
+                  <div className="w-[150px] h-[150px] mx-auto rounded-full overflow-hidden mb-3 border border-white/30">
                     <Image
-                      src="/logo/X_shaded.png"
-                      alt="X"
-                      width={100}
-                      height={100}
-                      className="w-5 h-5"
+                      src={sponsor.image}
+                      alt={sponsor.name}
+                      width={150}
+                      height={150}
+                      className="object-cover"
                     />
-                  </a>
-                  <a
-                    href={sponsor.social.linkedin}
-                    className="text-white hover:text-blue-700"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={sponsor.social.telegram}
-                    className="text-white hover:text-purple-500"
-                  >
-                    <PiTelegramLogoLight className="w-5 h-5" />
-                  </a>
+                  </div>
+                  <h3 className="text-sm font-medium text-white">
+                    {sponsor.name}
+                  </h3>
+                  <p className="text-xs text-gray-400">{sponsor.position}</p>
+                </div>
+
+                {/* Back Side */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center w-full h-full bg-black/80 rounded-lg shadow-lg border border-white/20 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <h3 className="text-sm font-medium text-white mb-4">
+                    Connect with {sponsor.name}
+                  </h3>
+                  <div className="flex gap-4">
+                    <a
+                      href={sponsor.social.facebook}
+                      className="text-white hover:text-blue-500"
+                    >
+                      <Facebook className="w-6 h-6" />
+                    </a>
+                    <a
+                      href={sponsor.social.instagram}
+                      className="text-white hover:text-pink-500"
+                    >
+                      <Instagram className="w-6 h-6" />
+                    </a>
+                    <a
+                      href={sponsor.social.x}
+                      className="text-white hover:text-gray-500"
+                    >
+                      <Image
+                        src="/logo/X_shaded.png"
+                        alt="X"
+                        width={100}
+                        height={100}
+                        className="w-6 h-6"
+                      />
+                    </a>
+                    <a
+                      href={sponsor.social.linkedin}
+                      className="text-white hover:text-blue-700"
+                    >
+                      <Linkedin className="w-6 h-6" />
+                    </a>
+                    <a
+                      href={sponsor.social.telegram}
+                      className="text-white hover:text-purple-500"
+                    >
+                      <PiTelegramLogoLight className="w-6 h-6" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

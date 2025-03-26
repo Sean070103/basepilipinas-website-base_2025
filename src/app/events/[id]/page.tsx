@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { useParams } from "next/navigation";
 import { EVENTS } from "@/sources/events";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function EventPage() {
   const params = useParams<{ id: string }>();
@@ -36,7 +37,7 @@ export default function EventPage() {
           {/* Event Image with Clickable Modal */}
           {event?.image && (
             <>
-              <img
+              <Image
                 src={event.image}
                 alt={event.title}
                 className="w-full h-auto max-h-64 object-cover cursor-pointer rounded-t-lg"
@@ -47,7 +48,7 @@ export default function EventPage() {
                   className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
                   onClick={() => setIsModalOpen(false)}
                 >
-                  <img
+                  <Image
                     src={event.image}
                     alt={event.title}
                     className="max-w-full max-h-full rounded-lg"

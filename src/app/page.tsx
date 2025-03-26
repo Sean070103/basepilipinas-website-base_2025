@@ -33,7 +33,8 @@ import { format } from "date-fns";
 import { CalendarIcon, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -42,6 +43,7 @@ import {
 } from "react-icons/fa6";
 
 export default function Home() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -54,6 +56,35 @@ export default function Home() {
   const [socialsOpen, setSocialsOpen] = useState(false);
   const [date, setDate] = useState<Date>();
   const [isOpen, setIsOpen] = useState(false);
+
+  // Function to handle smooth scrolling to sections
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      // Add a small offset to account for any fixed headers
+      const yOffset = -80;
+      const y =
+        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  // Check for hash in URL on page load and scroll to that section
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash) {
+        const sectionId = hash.substring(1); // Remove the # character
+        setTimeout(() => {
+          scrollToSection(sectionId);
+        }, 500); // Small delay to ensure the page is fully loaded
+      }
+    }
+  }, []);
 
   const toggleSocials = () => {
     setSocialsOpen(!socialsOpen);
@@ -70,9 +101,9 @@ export default function Home() {
     if (date) {
       const newDate = new Date(date);
       if (type === "hour") {
-        newDate.setHours(parseInt(value));
+        newDate.setHours(Number.parseInt(value));
       } else if (type === "minute") {
-        newDate.setMinutes(parseInt(value));
+        newDate.setMinutes(Number.parseInt(value));
       }
       setDate(newDate);
     }
@@ -117,6 +148,21 @@ export default function Home() {
       time: "",
     });
     setTimeout(() => setNotification(""), 3000);
+  };
+
+  // Handle CTA item click
+  const handleCTAClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    link: string
+  ) => {
+    if (link.startsWith("#")) {
+      e.preventDefault();
+      const sectionId = link.substring(1);
+      scrollToSection(sectionId);
+    } else if (link.startsWith("/")) {
+      // Let Next.js handle regular page navigation
+      router.push(link);
+    }
   };
 
   return (
@@ -217,6 +263,8 @@ export default function Home() {
                     width={100}
                     height={100}
                     className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
+                    quality={100}
+                    priority
                   />
                   <p className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-widest uppercase text-white">
                     Base Philippines
@@ -249,9 +297,11 @@ export default function Home() {
 
             {/* Right Section (CTA Buttons) */}
             <div className="flex flex-col gap-3 sm:gap-4 md:w-1/2">
-              {CTA_ITEMS.map(({ icon, title, description }) => (
-                <div
+              {CTA_ITEMS.map(({ icon, title, description, link }) => (
+                <a
                   key={title}
+                  href={link || "#"}
+                  onClick={(e) => link && handleCTAClick(e, link)}
                   className="relative flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-white/30 rounded-2xl w-full
             backdrop-blur-md bg-white/10 transition-all duration-300
             hover:border-white hover:shadow-[0_0_20px_rgba(0,255,255,0.8)]
@@ -265,6 +315,7 @@ export default function Home() {
                     className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
                     width={100}
                     height={100}
+                    quality={95}
                   />
                   <div>
                     <p className="text-base sm:text-lg font-semibold text-white">
@@ -274,7 +325,7 @@ export default function Home() {
                       {description}
                     </p>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -332,14 +383,15 @@ export default function Home() {
                     opportunities in the blockchain space.
                   </p>
                   <div>
-                    <button
+                    <Link
+                      href="/learn"
                       className="w-fit px-3 sm:px-4 md:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
-                hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                     >
                       <span className="text-sm sm:text-base md:text-lg">
                         LEARN WITH US
                       </span>
-                    </button>
+                    </Link>
                   </div>
                 </div>
 
@@ -351,6 +403,8 @@ export default function Home() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                    quality={95}
+                    priority
                   />
                 </div>
               </div>
@@ -393,7 +447,11 @@ export default function Home() {
           </a>
         </section>
 
-        <section className="flex flex-col items-center justify-center py-10 sm:py-16 bg-transparent p-4 sm:p-6">
+        {/* Schedule Meeting */}
+        <section
+          id="schedule-meeting"
+          className="flex flex-col items-center justify-center py-10 sm:py-16 bg-transparent p-4 sm:p-6"
+        >
           <div className="text-white text-center max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-blue-300 leading-tight">
               {`Let's Connect & Schedule a Meeting!`}
@@ -613,10 +671,11 @@ export default function Home() {
           <div className="mt-6 sm:mt-10 flex justify-center w-full max-w-xs sm:max-w-sm md:max-w-lg">
             <Image
               src="/Event/WEBP/meeting.webp"
-              width={100}
-              height={100}
+              width={500}
+              height={300}
               alt="Meeting Illustration"
               className="w-full rounded-xl shadow-xl border border-white/20"
+              quality={95}
             />
           </div>
         </section>
@@ -641,11 +700,14 @@ export default function Home() {
                     <div className="relative h-36 sm:h-48">
                       <Image
                         src={
-                          event.image || "/placeholder.svg?height=400&width=600"
+                          event.image ||
+                          "/placeholder.svg?height=800&width=1200"
                         }
                         alt={event.title}
                         fill
                         className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                        quality={90}
                       />
                     </div>
                     <div className="p-3 sm:p-4">
@@ -677,7 +739,10 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section className="flex items-center justify-center w-full py-8 sm:py-12">
+        <section
+          id="faqs"
+          className="flex items-center justify-center w-full py-8 sm:py-12"
+        >
           <div className="w-full flex flex-col gap-3 sm:gap-4 p-4 sm:p-8 max-w-[1040px]">
             <p className="text-xl sm:text-2xl md:text-4xl font-bold">FAQs</p>
             <p className="text-xs sm:text-sm">
