@@ -40,6 +40,8 @@ export default function EventPage() {
               <Image
                 src={event.image}
                 alt={event.title}
+                width={800} // Fixed width
+                height={500} // Fixed height
                 className="w-full h-auto max-h-64 object-cover cursor-pointer rounded-t-lg"
                 onClick={() => setIsModalOpen(true)}
               />
@@ -48,11 +50,15 @@ export default function EventPage() {
                   className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
                   onClick={() => setIsModalOpen(false)}
                 >
-                  <Image
-                    src={event.image}
-                    alt={event.title}
-                    className="max-w-full max-h-full rounded-lg"
-                  />
+                  <div className="relative w-full max-w-4xl h-auto">
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      width={1000} // Adjusted for modal
+                      height={700} // Adjusted for modal
+                      className="w-full h-auto rounded-lg"
+                    />
+                  </div>
                 </div>
               )}
             </>

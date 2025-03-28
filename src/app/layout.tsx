@@ -4,9 +4,54 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Base Philippines",
+  title: "Base PH: Blockchain",
   description:
-    "Base Philippines accelerates the most promising projects in the Solana ecosystem. As the official Solana Superteam in the Philippines, we empower innovation and growth in Web3.",
+    "Base PH is a Web3 community empowering Filipino innovators with resources, mentorship, networking, and funding. Access learning, collaboration, events, and growth opportunities in blockchain.",
+  applicationName: "Base Philippines",
+  generator: "",
+  keywords:
+    "Base Philippines, Blockchain, Filipino Developers, Learning Hub, Community, Mentorship, Crypto Events, BASE, Base Contributor, Innovation, WEB3, NFTs, Hackathons",
+  referrer: "origin",
+  creator: "",
+  publisher: "",
+  robots: "index, follow",
+  icons: "",
+  openGraph: {
+    type: "website",
+    url: "",
+    title: "Base PH: Blockchain",
+    description:
+      "Base PH is a Web3 community empowering Filipino innovators with resources, mentorship, networking, and funding.",
+    siteName: "Base PH",
+    images: [
+      {
+        url: ``,
+      },
+    ],
+  },
+  twitter: {
+    site: "",
+    creator: "",
+    description:
+      "Base PH is a Web3 community empowering Filipino innovators with resources, mentorship, networking, and funding.",
+    title: "Base PH: Blockchain",
+    images: [
+      {
+        url: ``,
+      },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Base PH: Blockchain",
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  abstract: "",
+  category: "",
+  classification: "",
 };
 
 export default function RootLayout({
