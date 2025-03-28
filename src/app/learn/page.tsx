@@ -65,7 +65,7 @@ export default function LearnPage() {
             <div className="flex flex-col h-full rounded-2xl overflow-hidden glass border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.15)]">
               <div className="relative w-full h-48">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/learning-page/learning/Video tutorials.webp?height=400&width=600"
                   alt="Video Tutorials"
                   fill
                   className="object-cover"
@@ -107,7 +107,7 @@ export default function LearnPage() {
             <div className="flex flex-col h-full rounded-2xl overflow-hidden glass border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.15)]">
               <div className="relative w-full h-48">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/learning-page/learning/Documentation.webp?height=400&width=600"
                   alt="Documentation"
                   fill
                   className="object-cover"
@@ -150,7 +150,7 @@ export default function LearnPage() {
             <div className="flex flex-col h-full rounded-2xl overflow-hidden glass border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.15)]">
               <div className="relative w-full h-48">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/learning-page/learning/Webinar.webp?height=400&width=600"
                   alt="Workshops"
                   fill
                   className="object-cover"
@@ -203,7 +203,7 @@ export default function LearnPage() {
             <div className="rounded-xl overflow-hidden glass border border-white/10">
               <div className="relative aspect-video">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/learning-page/learning/Base.png?height=400&width=600"
                   alt="Introduction to Base"
                   fill
                   className="object-cover"
@@ -239,7 +239,7 @@ export default function LearnPage() {
             <div className="rounded-xl overflow-hidden glass border border-white/10">
               <div className="relative aspect-video">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src="/learning-page/learning/dApp.jpg?height=400&width=600"
                   alt="Building Your First dApp"
                   fill
                   className="object-cover"

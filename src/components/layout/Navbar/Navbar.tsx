@@ -38,6 +38,10 @@ export default function Navbar() {
             <Link href="/#events" className="hover:text-gray-300">
               Events
             </Link>
+            {/* Added Hire here */}
+            <Link href="/#hire" className="hover:text-gray-300">
+              Hire
+            </Link>
             <Link href="/#about" className="hover:text-gray-300">
               About
             </Link>
@@ -76,6 +80,13 @@ export default function Navbar() {
                     className="text-white hover:text-gray-300"
                   >
                     Events
+                  </Link>
+                  {/* Added Hire here as well */}
+                  <Link
+                    href="/#hire"
+                    className="text-white hover:text-gray-300"
+                  >
+                    Hire
                   </Link>
                   <Link
                     href="/#about"
