@@ -184,7 +184,8 @@ export default function HirePage() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <Button
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-full text-lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.6)]
+                px-8 py-6 rounded-full text-lg"
                 onClick={() =>
                   document
                     .getElementById("hire-form")
@@ -199,7 +200,7 @@ export default function HirePage() {
       </section>
 
       {/* Talent Categories */}
-      <section className="py-16 bg-gray-900/20 backdrop-blur-sm">
+      <section className="py-16 bg-transparent backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
             Our Talent Categories
@@ -298,7 +299,7 @@ export default function HirePage() {
       </section>
 
       {/* Hire Form */}
-      <section id="hire-form" className="py-16 bg-gray-900/20 backdrop-blur-sm">
+      <section id="hire-form" className="py-16 bg-transparent backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
@@ -546,7 +547,7 @@ export default function HirePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-b from-blue-900/5 to-transparent">
+      <section className="py-16 bg-transparent">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Build with Base Philippines?
@@ -555,11 +556,11 @@ export default function HirePage() {
             Join the growing number of companies leveraging our talent network
             to build innovative Web3 solutions.
           </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
+          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
             <Link href="/learn">
               <button
                 className="w-fit px-4 sm:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
-            hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+    hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
               >
                 <span className="text-sm sm:text-base lg:text-lg">
                   LEARN MORE ABOUT BASE
