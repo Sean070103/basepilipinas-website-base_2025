@@ -38,8 +38,8 @@ export default function Navbar() {
             <Link href="/#events" className="hover:text-gray-300">
               Events
             </Link>
-            {/* Added Hire here */}
-            <Link href="/#hire" className="hover:text-gray-300">
+            {/* Updated Hire link to point to the hire page */}
+            <Link href="/hire" className="hover:text-gray-300">
               Hire
             </Link>
             <Link href="/#about" className="hover:text-gray-300">
@@ -81,11 +81,8 @@ export default function Navbar() {
                   >
                     Events
                   </Link>
-                  {/* Added Hire here as well */}
-                  <Link
-                    href="/#hire"
-                    className="text-white hover:text-gray-300"
-                  >
+                  {/* Updated Hire link in the socials panel */}
+                  <Link href="/hire" className="text-white hover:text-gray-300">
                     Hire
                   </Link>
                   <Link

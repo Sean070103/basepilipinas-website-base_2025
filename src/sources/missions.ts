@@ -21,7 +21,7 @@ export const MISSIONS = [
     icon: Eye,
   },
   {
-    title: "SERVICES",
+    title: "SUPPORT",
     description:
       "We offer funding, mentorship, educational resources, community events, and networking opportunities to help developers and creators succeed in Web3.",
     icon: Briefcase,

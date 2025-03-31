@@ -20,7 +20,7 @@ export const CTA_ITEMS = [
   {
     icon: "/hero/relax-work.png",
     title: "Chill",
-    description: "Discover the information you need to get started.",
+    description: "Equip yourself with better future all while having fun.",
     link: "#faqs",
   },
 ];
