@@ -68,33 +68,9 @@ export default function Navbar() {
                 >
                   <X className="h-5 w-5" />
                 </button>
-                <div className="flex flex-wrap gap-4 sm:gap-6">
-                  <Link
-                    href="/#join-us"
-                    className="text-white hover:text-gray-300"
-                  >
-                    Join
-                  </Link>
-                  <Link
-                    href="/#events"
-                    className="text-white hover:text-gray-300"
-                  >
-                    Events
-                  </Link>
-                  {/* Updated Hire link in the socials panel */}
-                  <Link href="/hire" className="text-white hover:text-gray-300">
-                    Hire
-                  </Link>
-                  <Link
-                    href="/#about"
-                    className="text-white hover:text-gray-300"
-                  >
-                    About
-                  </Link>
-                  <span className="text-white bg-gray-700/50 px-3 py-1 rounded-md">
-                    Socials
-                  </span>
-                </div>
+                <span className="text-white bg-gray-700/50 px-3 py-1 rounded-md">
+                  Socials
+                </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -122,6 +98,9 @@ export default function Navbar() {
                     className="flex items-center gap-3 text-white text-lg hover:text-pink-400"
                   >
                     <FaInstagram className="h-5 w-5" /> Instagram
+                  </Link>
+                  <Link href="/hire" className="text-white hover:text-gray-300">
+                    Hire
                   </Link>
                 </div>
                 <div className="flex items-center justify-center mt-4 sm:mt-0">

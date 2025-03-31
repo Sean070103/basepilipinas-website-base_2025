@@ -416,7 +416,7 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         <section className="text-center">
           <Link
             href="/contributors"
-            className="text-customBlue text-4xl font-bold hover:text-blue-400 transition duration-300 hover:shadow-blue-500 hover:shadow-md"
+            className="text-customBlue text-2xl font-bold hover:text-blue-400 transition duration-300 hover:shadow-blue-500 hover:shadow-md"
           >
             View All Contributors ➜
           </Link>

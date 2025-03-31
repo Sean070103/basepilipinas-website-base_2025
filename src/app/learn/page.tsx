@@ -23,10 +23,7 @@ export default function LearnPage() {
           <Link
             href="/"
             className="flex items-center gap-2 text-white/80 hover:text-white transition-colors self-start mb-4"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            <span>Back to Home</span>
-          </Link>
+          ></Link>
 
           <div className="flex items-center gap-3 mb-2">
             <Image
@@ -193,7 +190,7 @@ export default function LearnPage() {
       </section>
 
       {/* Featured Content */}
-      <section className="py-12 px-4 sm:px-6 bg-black/30">
+      <section className="py-12 px-4 sm:px-6 bg-transparent">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
             Featured Content
