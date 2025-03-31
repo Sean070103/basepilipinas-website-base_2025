@@ -88,7 +88,7 @@ export default function HirePage() {
         "Solidity",
         "Rust",
       ],
-      icon: "/icons/code.svg",
+      icon: "/hire/developer.png",
     },
     {
       title: "UI/UX Designers",
@@ -99,7 +99,7 @@ export default function HirePage() {
         "Prototyping",
         "Design Systems",
       ],
-      icon: "/icons/design.svg",
+      icon: "/hire/designer.png",
     },
     {
       title: "Project Managers",
@@ -109,7 +109,7 @@ export default function HirePage() {
         "Team Coordination",
         "Risk Management",
       ],
-      icon: "/icons/management.svg",
+      icon: "/hire/project manager.png",
     },
     {
       title: "Marketing Specialists",
@@ -119,7 +119,7 @@ export default function HirePage() {
         "Content Creation",
         "Social Media Strategy",
       ],
-      icon: "/icons/marketing.svg",
+      icon: "/hire/marketing specialist.png",
     },
   ];
 
