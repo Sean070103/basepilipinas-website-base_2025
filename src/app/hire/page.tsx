@@ -305,8 +305,8 @@ export default function HirePage() {
               Submit Your Request
             </h2>
             <p className="text-gray-300 text-center mb-12">
-              Tell us about your project and talent needs, and we'll connect you
-              with the right people.
+              Tell us about your project and talent needs, and we&#39;ll connect
+              you with the right people.
             </p>
 
             {isSubmitted ? (

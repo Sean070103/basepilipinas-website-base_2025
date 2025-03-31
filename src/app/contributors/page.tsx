@@ -92,7 +92,7 @@ export default function Partners() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [generateContributors]);
 
   // Filter sponsors only after client-side rendering
   const filteredSponsors = isClient
