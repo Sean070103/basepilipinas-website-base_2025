@@ -453,17 +453,20 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
           className="flex flex-col items-center justify-center py-10 sm:py-16 bg-transparent p-4 sm:p-6"
         >
           <div className="text-white text-center max-w-3xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-blue-300 leading-tight">
+            <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-blue-300 leading-tight">
               {`Let's Connect & Schedule a Meeting!`}
             </h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
-              {`Schedule a meeting to discuss your goals, projects, or any inquiries
-              you have. Whether you're looking for advice, collaboration, or just
-              a meaningful conversation, we're here for you.`}
+              Schedule a meeting to discuss your goals, projects, or any
+              inquiries you have. Whether you're looking for advice,
+              collaboration, or just a meaningful conversation, we're here for
+              you.
+              <br />
               <span className="font-semibold text-blue-300">
-                {`Book a time that works for you, and let's get started!`}
+                Book a time that works for you, and let's get started!
               </span>
             </p>
+
             <Dialog>
               <DialogTrigger asChild>
                 <button className="mt-4 sm:mt-6 px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition duration-300">
@@ -479,6 +482,7 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                   <DialogTitle className="text-center text-2xl font-bold text-white">
                     Schedule a Meeting with us!
                   </DialogTitle>
+
                   <DialogDescription asChild>
                     <div>
                       <p className="text-white/80 text-center text-sm mt-2">
@@ -541,7 +545,7 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                                 <Button
                                   variant="outline"
                                   className={cn(
-                                    "w-full justify-start text-left font-normal",
+                                    "w-full h-12 px-4 bg-white/20 border border-white/40 rounded-lg text-white outline-none placeholder:text-white/80 justify-start text-left font-normal",
                                     !date && "text-muted-foreground"
                                   )}
                                 >
