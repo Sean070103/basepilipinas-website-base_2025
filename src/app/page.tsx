@@ -545,7 +545,7 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                                 <Button
                                   variant="outline"
                                   className={cn(
-                                    "w-full h-12 px-4 bg-white/20 border border-white/40 rounded-lg text-white outline-none placeholder:text-white/80 justify-start text-left font-normal",
+                                    "w-full h-12 px-4 bg-white/20 border border-white/60 rounded-lg text-white outline-none placeholder:text-white/80 justify-start text-left font-normal",
                                     !date && "text-muted-foreground"
                                   )}
                                 >
@@ -695,12 +695,12 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
             </h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {EVENTS.map((event) => (
+              {EVENTS.slice(0, 6).map((event) => (
                 <div
                   key={event.id}
                   className="bg-[#1a2234] rounded-lg overflow-hidden shadow-lg h-full"
                 >
-                  <Link href={`/events/${event.id}`}>
+                  <Link href={`/events/${event.id}`} className="block h-full">
                     <div className="relative h-36 sm:h-48">
                       <Image
                         src={
@@ -730,7 +730,10 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                         </div>
                       </div>
                       <div className="flex justify-end mt-3 sm:mt-4">
-                        <button className="text-xs bg-gray-700 hover:bg-gray-600 px-2 sm:px-3 py-1 rounded">
+                        <button
+                          className="text-xs bg-gray-700 hover:bg-gray-600 px-2 sm:px-3 py-1 rounded"
+                          onClick={(e) => e.stopPropagation()} // Prevents navigation when clicking the button
+                        >
                           Details
                         </button>
                       </div>
