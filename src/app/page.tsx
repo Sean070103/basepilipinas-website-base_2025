@@ -458,12 +458,12 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
             </h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
               Schedule a meeting to discuss your goals, projects, or any
-              inquiries you have. Whether you're looking for advice,
-              collaboration, or just a meaningful conversation, we're here for
-              you.
+              inquiries you have. Whether you&apos;re looking for advice,
+              collaboration, or just a meaningful conversation, we&apos;re here
+              for you.
               <br />
               <span className="font-semibold text-blue-300">
-                Book a time that works for you, and let's get started!
+                Book a time that works for you, and let&apos;s get started!
               </span>
             </p>
 

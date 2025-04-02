@@ -1,13 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  BookOpen,
-  Video,
-  FileText,
-  Lightbulb,
-  Calendar,
-} from "lucide-react";
+import { BookOpen, Video, FileText, Lightbulb, Calendar } from "lucide-react";
 
 export default function LearnPage() {
   return (
