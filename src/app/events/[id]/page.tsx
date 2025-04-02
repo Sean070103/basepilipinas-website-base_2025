@@ -3,6 +3,7 @@
 import { EVENTS } from '@/sources/events';
 import { Calendar, Clock, MoreHorizontal } from 'lucide-react';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Page({
@@ -11,21 +12,22 @@ export default function Page({
   highlightedEventId?: string;
 }) {
   const [expandedEvent, setExpandedEvent] = useState<string | null>(null);
+  const { id: eventId } = useParams<{ id: string }>();
 
   // Reference for scrolling to highlighted event
   const highlightedEventRef = useRef<HTMLDivElement>(null);
 
   // Scroll to highlighted event on mount
   useEffect(() => {
-    if (highlightedEventId && highlightedEventRef.current) {
+    if (eventId && highlightedEventRef.current) {
       highlightedEventRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
       });
       // Expand the highlighted event
-      setExpandedEvent(highlightedEventId);
+      setExpandedEvent(eventId);
     }
-  }, [highlightedEventId]);
+  }, [eventId]);
 
   // Toggle expanded view for an event
   const toggleExpand = (eventId: string) => {
@@ -38,6 +40,7 @@ export default function Page({
         <div className='divide-y divide-white/10'>
           {EVENTS.map((event) => (
             <div
+              id={event.id}
               key={event.id}
               className={`py-4 animate-fadeIn ${
                 highlightedEventId === event.id
