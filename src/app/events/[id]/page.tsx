@@ -6,11 +6,7 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-export default function Page({
-  highlightedEventId,
-}: {
-  highlightedEventId?: string;
-}) {
+export default function Page() {
   const [expandedEvent, setExpandedEvent] = useState<string | null>(null);
   const { id: eventId } = useParams<{ id: string }>();
 
@@ -43,11 +39,11 @@ export default function Page({
               id={event.id}
               key={event.id}
               className={`py-4 animate-fadeIn ${
-                highlightedEventId === event.id
+                eventId === event.id
                   ? 'bg-blue-900/20 -mx-4 px-4 rounded-lg'
                   : ''
               }`}
-              ref={highlightedEventId === event.id ? highlightedEventRef : null}
+              ref={eventId === event.id ? highlightedEventRef : null}
             >
               <div className='flex gap-3'>
                 {/* Event Date Avatar */}
