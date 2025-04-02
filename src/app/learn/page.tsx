@@ -5,7 +5,7 @@ import { BookOpen, Video, FileText, Lightbulb, Calendar } from "lucide-react";
 export default function LearnPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Hero Section */}
+      {/* Hero Section will go here */}
       <section className="relative w-full flex items-center justify-center p-4 sm:p-6 py-16 sm:py-20 overflow-hidden">
         {/* Light Streak Effect */}
         <div className="absolute inset-0">
