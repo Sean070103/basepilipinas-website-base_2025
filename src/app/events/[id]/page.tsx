@@ -22,6 +22,12 @@ export default function Page() {
       });
       // Expand the highlighted event
       setExpandedEvent(eventId);
+
+      const section = document.getElementById(eventId);
+
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }, [eventId]);
 
