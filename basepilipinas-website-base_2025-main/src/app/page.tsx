@@ -34,7 +34,7 @@ import { CalendarIcon, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -645,38 +645,22 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                         <div className="text-center text-white mt-6">
                           <p className="text-sm">Stay Connected!</p>
                           <div className="flex justify-center gap-6 mt-3">
-                            <a
-                              href="https://www.facebook.com/basepilipinas"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white hover:text-blue-400 transition-colors duration-200"
-                            >
-                              <FaFacebookF size={20} />
-                            </a>
-                            <a
-                              href="https://x.com/basepilipinas"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white hover:text-blue-400 transition-colors duration-200"
-                            >
-                              <FaXTwitter size={20} />
-                            </a>
-                            <a
-                              href="https://www.linkedin.com/company/basepilipinas"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white hover:text-blue-400 transition-colors duration-200"
-                            >
-                              <FaLinkedinIn size={20} />
-                            </a>
-                            <a
-                              href="https://t.me/basepilipinas"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white hover:text-blue-400 transition-colors duration-200"
-                            >
-                              <FaTelegram size={20} />
-                            </a>
+                            <FaFacebookF
+                              className="text-white hover:text-blue-400 cursor-pointer"
+                              size={20}
+                            />
+                            <FaXTwitter
+                              className="text-white hover:text-blue-400 cursor-pointer"
+                              size={20}
+                            />
+                            <FaLinkedinIn
+                              className="text-white hover:text-blue-400 cursor-pointer"
+                              size={20}
+                            />
+                            <FaTelegram
+                              className="text-white hover:text-blue-400 cursor-pointer"
+                              size={20}
+                            />
                           </div>
                         </div>
                       </>
@@ -721,8 +705,7 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                       <Image
                         src={
                           event.image ||
-                          "/placeholder.svg?height=800&width=1200" ||
-                          "/placeholder.svg"
+                          "/placeholder.svg?height=800&width=1200"
                         }
                         alt={event.title}
                         fill
