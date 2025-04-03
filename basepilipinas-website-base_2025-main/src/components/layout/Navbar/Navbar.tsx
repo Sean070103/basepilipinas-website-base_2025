@@ -99,9 +99,6 @@ export default function Navbar() {
                   >
                     <FaInstagram className="h-5 w-5" /> Instagram
                   </Link>
-                  <Link href="/hire" className="text-white hover:text-gray-300">
-                    Hire
-                  </Link>
                 </div>
                 <div className="flex items-center justify-center mt-4 sm:mt-0">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 relative flex items-center justify-center">

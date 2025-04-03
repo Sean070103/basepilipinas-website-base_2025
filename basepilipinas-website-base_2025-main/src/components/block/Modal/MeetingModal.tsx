@@ -5,9 +5,10 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import {
   FaFacebookF,
-  FaXTwitter,
+  FaTwitter,
   FaLinkedinIn,
   FaTelegram,
+  FaInstagram,
 } from "react-icons/fa6";
 
 export default function MeetingModal({
@@ -130,19 +131,21 @@ export default function MeetingModal({
 
         <div className="text-center text-white mt-6">
           <p className="text-sm">Stay Connected!</p>
-          <div className="flex justify-center gap-8 mt-3">
+          <div className="flex justify-center gap-6 mt-3">
             {[
-              { href: "https://facebook.com", icon: FaFacebookF },
-              { href: "https://x.com", icon: FaXTwitter },
-              { href: "https://linkedin.com", icon: FaLinkedinIn },
+              { href: "https://www.facebook.com", icon: FaFacebookF },
+              { href: "https://twitter.com", icon: FaTwitter },
+              { href: "https://www.linkedin.com", icon: FaLinkedinIn },
               { href: "https://telegram.org", icon: FaTelegram },
+              { href: "https://www.instagram.com", icon: FaInstagram },
             ].map(({ href, icon: Icon }) => (
               <a
                 key={href}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/80 hover:text-white"
+                className="text-white/80 hover:text-white transition"
+                aria-label={href}
               >
                 <Icon size={30} />
               </a>
