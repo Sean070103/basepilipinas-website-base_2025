@@ -100,7 +100,6 @@ export default function Partners() {
                 "https://t.me/"
               );
               const tiktokLink = sponsor.socials?.tiktok || "";
-              const discordHandle = sponsor.socials?.discord || "";
               const linkedinLink = sponsor.socials?.linkedin || "";
 
               const name = getName(sponsor);
