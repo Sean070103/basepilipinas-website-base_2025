@@ -100,6 +100,7 @@ export default function Partners() {
                 "https://t.me/"
               );
               const tiktokLink = sponsor.socials?.tiktok || "";
+
               const linkedinLink = sponsor.socials?.linkedin || "";
 
               const name = getName(sponsor);
@@ -112,7 +113,7 @@ export default function Partners() {
                 return (
                   <motion.div
                     key={index}
-                    className="bg-[#0f172a]/80 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-blue-500/20 w-full max-w-[240px] mx-auto h-[320px] border border-gray-800"
+                    className="bg-[#0f172a]/70 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-blue-500/20 w-full max-w-[240px] mx-auto h-[320px] border border-gray-800"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
@@ -145,7 +146,7 @@ export default function Partners() {
                         </p>
                       </div>
 
-                      <div className="flex flex-wrap justify-center gap-2 w-full mt-4">
+                      <div className="flex flex-wrap justify-center gap-2 w-full">
                         {skills.slice(0, 4).map((skill, idx) => (
                           <span
                             key={idx}
@@ -164,7 +165,7 @@ export default function Partners() {
               return (
                 <motion.div
                   key={index}
-                  className="bg-[#0f172a]/80 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-blue-500/20 w-full max-w-[240px] mx-auto h-[320px] border border-gray-800"
+                  className="bg-[#0f172a]/70 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-blue-500/20 w-full max-w-[240px] mx-auto h-[320px] border border-gray-800"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -174,13 +175,7 @@ export default function Partners() {
                   onClick={() => handleCardClick(index)}
                 >
                   <div className="p-5 flex flex-col items-center justify-between h-full">
-                    <h3 className="text-lg font-bold text-white text-center mt-4">
-                      Connect with
-                      <br />
-                      {name}
-                    </h3>
-
-                    <div className="flex justify-center gap-4 flex-wrap max-w-[200px]">
+                    <div className="flex justify-center gap-4 flex-wrap max-w-[200px] mt-10">
                       {facebookLink && (
                         <a
                           href={facebookLink}
@@ -190,7 +185,7 @@ export default function Partners() {
                           onClick={(e) => e.stopPropagation()}
                         >
                           <svg
-                            className="w-6 h-6"
+                            className="w-5 h-5"
                             viewBox="0 0 24 24"
                             fill="currentColor"
                           >
@@ -208,7 +203,7 @@ export default function Partners() {
                           onClick={(e) => e.stopPropagation()}
                         >
                           <svg
-                            className="w-6 h-6"
+                            className="w-5 h-5"
                             viewBox="0 0 24 24"
                             fill="currentColor"
                           >
@@ -226,7 +221,7 @@ export default function Partners() {
                           onClick={(e) => e.stopPropagation()}
                         >
                           <svg
-                            className="w-6 h-6"
+                            className="w-5 h-5"
                             viewBox="0 0 24 24"
                             fill="currentColor"
                           >
@@ -244,7 +239,7 @@ export default function Partners() {
                           onClick={(e) => e.stopPropagation()}
                         >
                           <svg
-                            className="w-6 h-6"
+                            className="w-5 h-5"
                             viewBox="0 0 24 24"
                             fill="currentColor"
                           >
@@ -262,7 +257,7 @@ export default function Partners() {
                           onClick={(e) => e.stopPropagation()}
                         >
                           <svg
-                            className="w-6 h-6"
+                            className="w-5 h-5"
                             viewBox="0 0 24 24"
                             fill="currentColor"
                           >
