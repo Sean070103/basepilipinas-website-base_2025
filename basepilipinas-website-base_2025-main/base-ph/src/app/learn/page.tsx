@@ -61,7 +61,7 @@ export default function LearnPage() {
                   <div className="text-sm text-white/70 space-y-2">
                     <p>Welcome to the Base Quickstart Guide!</p>
                     <div className="ml-4">
-                      <p className="font-medium">What You'll Build:</p>
+                      <p className="font-medium">What You&apos;ll Build:</p>
                       <ul className="list-disc ml-4 text-white/60">
                         <li>Set up development environment</li>
                         <li>Deploy smart contract on Base</li>
@@ -163,12 +163,12 @@ export default function LearnPage() {
               <div className="ml-4 mt-2 space-y-2">
                 <div className="border-l border-white/10 pl-4">
                   <div className="text-sm text-white/70 space-y-2">
-                    <p>Educational platform for smart contract development</p>
+                    <p>You&apos;ll learn about Base, a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users to web3.</p>
                     <div className="ml-4">
-                      <p className="font-medium">Core Topics:</p>
+                      <p className="font-medium">What You&apos;ll Learn:</p>
                       <ul className="list-disc ml-4 text-white/60">
-                        <li>Ethereum Basics</li>
-                        <li>Gas Fees</li>
+                        <li>Ethereum Basics – History, goals, applications</li>
+                        <li>Gas Fees – Understanding transaction costs</li>
                         <li>Smart Contract Development</li>
                         <li>Wallet Integration</li>
                         <li>Token Standards</li>
@@ -473,14 +473,11 @@ export default function LearnPage() {
                         Introduction to Base
                       </h3>
                       <p className="text-white/70 text-sm mb-4">
-                        Learn about Base, a secure, low-cost, developer-friendly
-                        Ethereum L2 built to bring the next billion users to
-                        web3. Covers Ethereum basics, gas fees, smart contract
-                        development, and wallet integration.
+                        You&apos;ll learn about Base, a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users to web3.
                       </p>
                       <div className="mb-4">
                         <h4 className="text-sm font-semibold mb-2">
-                          What You'll Learn:
+                          What You&apos;ll Learn:
                         </h4>
                         <ul className="text-white/70 text-sm space-y-1">
                           <li>
@@ -570,7 +567,7 @@ export default function LearnPage() {
                         </p>
 
                         <h4 className="text-lg font-semibold mb-2">
-                          What You'll Learn
+                          What You&apos;ll Learn
                         </h4>
                         <p className="text-white/70 mb-2">
                           The program covers essential blockchain development
