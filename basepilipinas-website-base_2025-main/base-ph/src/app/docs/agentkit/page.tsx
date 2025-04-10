@@ -1,6 +1,6 @@
 export default function AgentKitPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-w-none bg-transparent">
       <h1>AgentKit (CDP)</h1>
       <p className="text-xl text-white/70 mb-8">
         Build and deploy AI agents on Base with AgentKit. Create autonomous agents that can interact with smart contracts and perform complex tasks on the blockchain.
@@ -104,4 +104,4 @@ const monitorAgent = new Agent({
       </div>
     </div>
   );
-} 
+}

@@ -38,7 +38,6 @@ export default function Navbar() {
             <Link href="/#events" className="hover:text-gray-300">
               Events
             </Link>
-            {/* Updated Hire link to point to the hire page */}
             <Link href="/hire" className="hover:text-gray-300">
               Hire
             </Link>
@@ -61,76 +60,68 @@ export default function Navbar() {
         <div className="fixed top-20 left-0 right-0 z-50 px-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2">
           <div className="w-full sm:w-[600px] max-w-[100%]">
             <div className="relative border border-gray-500/30 rounded-xl bg-black/40 backdrop-blur-sm p-4">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-                <button
-                  onClick={toggleSocials}
-                  className="text-white mb-4 sm:mb-0"
-                >
+              <div className="flex justify-between items-center mb-6">
+                <button onClick={toggleSocials} className="text-white">
                   <X className="h-5 w-5" />
                 </button>
                 <span className="text-white bg-gray-700/50 px-3 py-1 rounded-md">
-                  Socials
+                  Connect with us
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <Link
-                    href="https://www.facebook.com/basepilipinas"
-                    className="flex items-center gap-3 text-white text-lg hover:text-blue-400"
-                  >
-                    <FaFacebookF className="h-5 w-5" /> Facebook
-                  </Link>
-                  <Link
-                    href="https://x.com/basepilipinas"
-                    className="flex items-center gap-3 text-white text-lg hover:text-blue-400"
-                  >
-                    <FaXTwitter className="h-5 w-5" /> X
-                  </Link>
-                  <Link
-                    href="https://www.linkedin.com/company/basepilipinas"
-                    className="flex items-center gap-3 text-white text-lg hover:text-blue-400"
-                  >
-                    <FaLinkedinIn className="h-5 w-5" /> LinkedIn
-                  </Link>
-                  <Link
-                    href="https://www.instagram.com/basepilipinas"
-                    className="flex items-center gap-3 text-white text-lg hover:text-pink-400"
-                  >
-                    <FaInstagram className="h-5 w-5" /> Instagram
-                  </Link>
-                </div>
-                <div className="flex items-center justify-center mt-4 sm:mt-0">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 relative flex items-center justify-center">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 border-2 border-blue-500/80 rounded-full border-dashed animate-spin-slow"></div>
-                    <Image
-                      src="/logo/Base_Symbol_White.svg"
-                      alt="Base Logo"
-                      width={40}
-                      height={40}
-                      className="absolute object-contain"
-                    />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <a
+                  href="https://facebook.com/basepilipinas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl glass border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.15)]"
+                >
+                  <div className="h-12 w-12 rounded-full bg-[#1877F2]/20 flex items-center justify-center">
+                    <FaFacebookF className="h-6 w-6 text-[#1877F2]" />
                   </div>
-                </div>
+                  <span className="text-white text-sm">Facebook</span>
+                </a>
+
+                <a
+                  href="https://twitter.com/basepilipinas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl glass border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.15)]"
+                >
+                  <div className="h-12 w-12 rounded-full bg-black/20 flex items-center justify-center">
+                    <FaXTwitter className="h-6 w-6 text-white" />
+                  </div>
+                  <span className="text-white text-sm">Twitter</span>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/company/base-pilipinas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl glass border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.15)]"
+                >
+                  <div className="h-12 w-12 rounded-full bg-[#0A66C2]/20 flex items-center justify-center">
+                    <FaLinkedinIn className="h-6 w-6 text-[#0A66C2]" />
+                  </div>
+                  <span className="text-white text-sm">LinkedIn</span>
+                </a>
+
+                <a
+                  href="https://instagram.com/basepilipinas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl glass border border-white/10 transition-all duration-300 hover:border-white/30 hover:shadow-[0px_0px_20px_rgba(255,255,255,0.15)]"
+                >
+                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#F58529]/20 via-[#DD2A7B]/20 to-[#515BD4]/20 flex items-center justify-center">
+                    <FaInstagram className="h-6 w-6 text-transparent bg-clip-text bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#515BD4]" />
+                  </div>
+                  <span className="text-white text-sm">Instagram</span>
+                </a>
               </div>
             </div>
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        @keyframes spin-slow {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 3s linear infinite;
-        }
-      `}</style>
     </>
   );
 }
