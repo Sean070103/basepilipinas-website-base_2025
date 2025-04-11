@@ -49,7 +49,7 @@ export default function LearnPage() {
               EVM-compatible chains like Ethereum and Optimism. The curriculum caters to all skill levels, from beginners
               to advanced developers, and offers NFT rewards upon module completion.
             </p>
-          </div>
+        </div>
 
           <div>
             <h4 className="text-lg font-semibold mb-2">What You&apos;ll Learn</h4>
@@ -130,7 +130,7 @@ export default function LearnPage() {
                   <li>• Contract data retrieval</li>
                   <li>• Real-time updates configuration</li>
                 </ul>
-              </div>
+                </div>
 
               <div>
                 <h5 className="text-md font-semibold mb-1">Smart Contract Interaction</h5>
@@ -369,7 +369,7 @@ export default function LearnPage() {
                 </div>
               </div>
             )}
-          </div>
+            </div>
         </nav>
       </aside>
 
@@ -388,20 +388,20 @@ export default function LearnPage() {
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-8">Learning Resources</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Documentation */}
+            {/* Documentation */}
               <div className="flex flex-col h-full rounded-xl overflow-hidden bg-transparent border border-white/10 hover:border-white/20 transition-all">
-                <div className="relative w-full h-48">
-                  <Image
-                    src="/learning-page/learning/Documentation.webp"
-                    alt="Documentation"
-                    fill
-                    className="object-cover"
-                  />
+              <div className="relative w-full h-48">
+                <Image
+                  src="/learning-page/learning/Documentation.webp"
+                  alt="Documentation"
+                  fill
+                  className="object-cover"
+                />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
-                    <FileText className="h-8 w-8 text-white" />
-                  </div>
+                  <FileText className="h-8 w-8 text-white" />
                 </div>
+              </div>
                 <div className="p-6 flex flex-col flex-grow bg-white/5 backdrop-blur-sm">
                   <h3 className="text-2xl font-semibold mb-3 text-white">Documentation</h3>
                   <p className="text-white/70 text-base mb-6">
@@ -424,30 +424,30 @@ export default function LearnPage() {
                       <li>• Building your first dApp</li>
                     </ul>
                   </div>
-                  <Link
+                <Link
                     href="/docs"
                     className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center mt-auto group"
                   >
                     <span>Read docs</span>
                     <ChevronRight className="w-4 h-4 ml-1 transform group-hover:translate-x-0.5 transition-transform" />
-                  </Link>
-                </div>
+                </Link>
               </div>
+            </div>
 
-              {/* Workshops */}
+            {/* Workshops */}
               <div className="flex flex-col h-full rounded-xl overflow-hidden bg-transparent border border-white/10 hover:border-white/20 transition-all">
-                <div className="relative w-full h-48">
-                  <Image
-                    src="/learning-page/learning/Webinar.webp"
-                    alt="Workshops"
-                    fill
-                    className="object-cover"
-                  />
+              <div className="relative w-full h-48">
+                <Image
+                  src="/learning-page/learning/Webinar.webp"
+                  alt="Workshops"
+                  fill
+                  className="object-cover"
+                />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
-                    <Calendar className="h-8 w-8 text-white" />
-                  </div>
+                  <Calendar className="h-8 w-8 text-white" />
                 </div>
+              </div>
                 <div className="p-6 flex flex-col flex-grow bg-white/5 backdrop-blur-sm">
                   <h3 className="text-2xl font-semibold mb-3 text-white">Workshops & Webinars</h3>
                   <p className="text-white/70 text-base mb-6">
@@ -460,44 +460,44 @@ export default function LearnPage() {
                       <li>• Frontend Development for Onchain Apps</li>
                     </ul>
                   </div>
-                  <Link
+                <Link
                     href="/events"
                     className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center mt-auto group"
                   >
                     <span>Join sessions</span>
                     <ChevronRight className="w-4 h-4 ml-1 transform group-hover:translate-x-0.5 transition-transform" />
-                  </Link>
+                </Link>
                 </div>
-              </div>
-            </div>
-          </section>
+          </div>
+        </div>
+      </section>
 
-          {/* Featured Content */}
+      {/* Featured Content */}
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-8">Featured Content</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Introduction to Base */}
               <div className="rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all">
-                <div className="relative aspect-video">
-                  <Image
-                    src="/learning-page/learning/Base.png"
-                    alt="Introduction to Base"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative aspect-video">
+                <Image
+                  src="/learning-page/learning/Base.png"
+                  alt="Introduction to Base"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
                     <div className="h-14 w-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
                       <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center">
                         <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
                     </div>
                   </div>
                 </div>
+              </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-3">Introduction to Base</h3>
-                  <p className="text-white/70 text-sm mb-4">
+                <p className="text-white/70 text-sm mb-4">
                     Learn about Base, a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users to web3.
                   </p>
                   <div className="mb-4">
@@ -517,47 +517,47 @@ export default function LearnPage() {
                       </li>
                     </ul>
                   </div>
-                  <div className="flex items-center text-sm text-white/60">
-                    <span>15 min</span>
-                    <span className="mx-2">•</span>
-                    <span>Beginner</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Building Your First dApp */}
-              <div className="rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all">
-                <div className="relative aspect-video">
-                  <Image
-                    src="/learning-page/learning/dApp.jpg"
-                    alt="Building Your First dApp"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="h-14 w-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                      <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center">
-                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3">Building Your First dApp</h3>
-                  <p className="text-white/70 text-sm mb-4">
-                    A comprehensive guide to building and deploying your first decentralized application on Base.
-                  </p>
-                  <div className="flex items-center text-sm text-white/60">
-                    <span>45 min</span>
-                    <span className="mx-2">•</span>
-                    <span>Intermediate</span>
-                  </div>
+                <div className="flex items-center text-sm text-white/60">
+                  <span>15 min</span>
+                  <span className="mx-2">•</span>
+                  <span>Beginner</span>
                 </div>
               </div>
             </div>
-          </section>
+
+              {/* Building Your First dApp */}
+              <div className="rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all">
+              <div className="relative aspect-video">
+                <Image
+                  src="/learning-page/learning/dApp.jpg"
+                  alt="Building Your First dApp"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="h-14 w-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                      <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3">Building Your First dApp</h3>
+                <p className="text-white/70 text-sm mb-4">
+                    A comprehensive guide to building and deploying your first decentralized application on Base.
+                </p>
+                <div className="flex items-center text-sm text-white/60">
+                  <span>45 min</span>
+                  <span className="mx-2">•</span>
+                  <span>Intermediate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
         </div>
       </main>
     </div>
