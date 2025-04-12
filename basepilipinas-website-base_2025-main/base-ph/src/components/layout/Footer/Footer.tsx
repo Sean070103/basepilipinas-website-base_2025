@@ -17,7 +17,7 @@ const menuItems = [
 export default function Footer() {
   const pathname = usePathname();
 
-  if (pathname === "/contributors") {
+  if (pathname === "/contributors" || pathname.startsWith("/docs")) {
     return null;
   }
 

@@ -34,16 +34,17 @@ export default function Partners() {
   useEffect(() => {
     setIsClient(true);
     const handleScroll = () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - 50
-      ) {
-        setVisibleSponsors((prev) => prev + 20);
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const scrollThreshold = document.documentElement.scrollHeight - 100;
+      
+      if (scrollPosition >= scrollThreshold && visibleSponsors < contributors.length) {
+        setVisibleSponsors((prev) => Math.min(prev + 10, contributors.length));
       }
     };
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [visibleSponsors]);
 
   const filteredSponsors = isClient
     ? contributors
@@ -104,10 +105,10 @@ export default function Partners() {
               const isSelected = selectedCard === index;
 
               const baseCardClass =
-                "rounded-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:-translate-y-1 w-full max-w-[240px] mx-auto h-[320px] border border-white/10";
+                "rounded-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 w-full max-w-[240px] mx-auto h-[320px] border border-white/10";
 
-              const defaultCardClass = `${baseCardClass} bg-white/5 backdrop-blur-md shadow-blue-500/20`;
-              const flippedCardClass = `${baseCardClass} bg-transparent`;
+              const defaultCardClass = `${baseCardClass} bg-white/5 backdrop-blur-md hover:bg-white/10`;
+              const flippedCardClass = `${baseCardClass} bg-transparent hover:bg-white/5`;
 
               if (!isSelected) {
                 return (
@@ -121,15 +122,19 @@ export default function Partners() {
                       delay: Math.min(index * 0.02, 0.5),
                     }}
                     onClick={() => handleCardClick(index)}
+                    whileHover={{
+                      scale: 1.02,
+                      transition: { duration: 0.2 }
+                    }}
                   >
-                    <div className="p-5 flex flex-col items-center h-full justify-between">
-                      <div className="w-28 h-28 rounded-full bg-gray-700 mb-3 overflow-hidden relative border-2 border-gray-600 shadow-lg">
+                    <div className="p-5 flex flex-col items-center h-full justify-between group">
+                      <div className="w-28 h-28 rounded-full bg-gray-700 mb-3 overflow-hidden relative border-2 border-gray-600 shadow-lg transition-all duration-300 group-hover:border-blue-500">
                         {sponsor.photoUrl ? (
                           <Image
                             src={sponsor.photoUrl}
                             alt={`${name}'s photo`}
                             fill
-                            className="object-cover transition-transform duration-500 hover:scale-110"
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-white text-4xl font-bold bg-gradient-to-br from-blue-600 to-blue-800">
@@ -138,7 +143,7 @@ export default function Partners() {
                         )}
                       </div>
                       <div className="text-center">
-                        <h3 className="text-xl font-bold text-white mb-1">
+                        <h3 className="text-xl font-bold text-white mb-1 transition-colors duration-300 group-hover:text-blue-400">
                           {name}
                         </h3>
                       </div>
@@ -146,7 +151,7 @@ export default function Partners() {
                         {skills.slice(0, 4).map((skill, idx) => (
                           <span
                             key={idx}
-                            className="px-4 py-1.5 bg-blue-600 rounded-full text-xs text-white font-medium transition-all duration-300 hover:bg-blue-500"
+                            className="px-4 py-1.5 bg-blue-600/80 rounded-full text-xs text-white font-medium transition-all duration-300 hover:bg-blue-500 group-hover:bg-blue-500"
                           >
                             {skill.split(" ")[0]}
                           </span>
@@ -168,9 +173,16 @@ export default function Partners() {
                     delay: Math.min(index * 0.02, 0.5),
                   }}
                   onClick={() => handleCardClick(index)}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { duration: 0.2 }
+                  }}
                 >
-                  <div className="p-5 flex flex-col items-center justify-between h-full">
-                    <div className="flex justify-center gap-4 flex-wrap max-w-[200px] mt-10">
+                  <div className="p-5 flex flex-col items-center justify-center h-full">
+                    <h3 className="text-2xl font-bold text-white mb-8 text-center">
+                      Connect with<br />{name}
+                    </h3>
+                    <div className="flex items-center justify-center gap-4">
                       {facebookLink && (
                         <SocialLink href={facebookLink} icon="facebook" />
                       )}
@@ -186,16 +198,6 @@ export default function Partners() {
                       {tiktokLink && (
                         <SocialLink href={tiktokLink} icon="tiktok" />
                       )}
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-2 w-full">
-                      {skills.slice(0, 4).map((skill, idx) => (
-                        <span
-                          key={idx}
-                          className="px-4 py-1.5 bg-blue-600 rounded-full text-xs text-white font-medium transition-all duration-300 hover:bg-blue-500"
-                        >
-                          {skill.split(" ")[0]}
-                        </span>
-                      ))}
                     </div>
                   </div>
                 </motion.div>

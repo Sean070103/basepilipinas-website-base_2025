@@ -1,160 +1,231 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+type SectionName = 'quickstart' | 'onchainkit' | 'minikit' | 'features' | 'base';
 
 export default function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-  const currentPath = pathname.split("/")[2];
+  const router = useRouter();
+  const [openSections, setOpenSections] = useState({
+    quickstart: true,
+    onchainkit: true,
+    minikit: true,
+    features: true,
+    base: true,
+  });
+
+  const toggleSection = (section: SectionName) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
+  const navigateToPage = (path: string) => {
+    router.push(`/docs/${path}`);
+  };
 
   return (
-    <div className="min-h-screen flex bg-[#0B1221]">
-      {/* Fixed Sidebar */}
-      <aside className="fixed w-[280px] h-screen bg-[#0B1221] border-r border-white/10">
-        <div className="h-full flex flex-col">
-          {/* Logo and Title */}
-          <div className="flex items-center gap-3 p-4 border-b border-white/10">
-            <div className="rounded-full bg-white/5 p-1.5">
-              <Image
-                src="/logo/Base_Symbol_White.svg"
-                alt="Base Logo"
-                width={24}
-                height={24}
-              />
+    <div className="min-h-screen bg-transparent flex">
+      {/* Sidebar */}
+      <aside className="fixed w-[280px] h-screen overflow-y-auto border-r border-white/10 bg-black/20 backdrop-blur-sm top-0 left-0">
+        <nav className="py-4 px-6">
+          <div className="space-y-4">
+            {/* Quickstart Section */}
+            <div>
+              <button
+                onClick={() => toggleSection('quickstart')}
+                className="flex items-center justify-between w-full text-white hover:text-white/80 transition-colors"
+              >
+                <span className="text-lg font-semibold">Quickstart Overview</span>
+                {openSections.quickstart ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+              </button>
+              {openSections.quickstart && (
+                <div className="mt-2 ml-4 space-y-2 text-[15px] text-white/70">
+                  <p>Build a simple onchain app from setup to deployment.</p>
+                  <button 
+                    onClick={() => navigateToPage('quickstart/development-environment')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Development Environment
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('quickstart/smart-contract')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Smart Contract Development
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('quickstart/frontend-integration')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Frontend Integration
+                  </button>
+                </div>
+              )}
             </div>
-            <span className="text-lg">Docs</span>
-          </div>
 
-          {/* Navigation Links */}
-          <nav className="flex-1 py-6">
             {/* OnchainKit Section */}
-            <div className="px-4 mb-6">
-              <Link 
-                href="/docs/onchainkit"
-                className={`block text-[15px] ${
-                  currentPath === "onchainkit" ? "text-white" : "text-white/70 hover:text-white"
-                }`}
+            <div>
+              <button
+                onClick={() => toggleSection('onchainkit')}
+                className="flex items-center justify-between w-full text-white hover:text-white/80 transition-colors"
               >
-                OnchainKit
-              </Link>
-              <div className="mt-2 ml-2 space-y-1 text-[14px]">
-                <div className="text-white/50">Key Features:</div>
-                <div className="text-white/70">• Developer-Centric Tools</div>
-                <div className="text-white/70">• Proven Patterns</div>
-                <div className="text-white/70">• Ready-to-Use Components</div>
-                <div className="text-white/70">• Framework Flexibility</div>
-              </div>
-              <Link 
-                href="/docs/onchainkit/docs"
-                className="inline-block mt-2 text-[14px] text-blue-400 hover:text-blue-300"
-              >
-                View Documentation →
-              </Link>
+                <span className="text-lg font-semibold">OnchainKit</span>
+                {openSections.onchainkit ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+              </button>
+              {openSections.onchainkit && (
+                <div className="mt-2 ml-4 space-y-2 text-[15px] text-white/70">
+                  <p>Build an app in 10 minutes with this all-in-one toolkit.</p>
+                  <button 
+                    onClick={() => navigateToPage('onchainkit/developer-tools')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Developer-Centric Tools
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('onchainkit/proven-patterns')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Proven Patterns
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('onchainkit/components')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Ready-to-Use Components
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('onchainkit/testing')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Testing Guide
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* MiniKit Section */}
-            <div className="px-4 mb-6">
-              <Link 
-                href="/docs/minikit"
-                className={`block text-[15px] ${
-                  currentPath === "minikit" ? "text-white" : "text-white/70 hover:text-white"
-                }`}
+            <div>
+              <button
+                onClick={() => toggleSection('minikit')}
+                className="flex items-center justify-between w-full text-white hover:text-white/80 transition-colors"
               >
-                MiniKit
-              </Link>
-              <div className="mt-1 text-[14px] text-white/70">
-                Build Mini Apps on Base with ease
-              </div>
-              <div className="mt-2 ml-2 space-y-1 text-[14px]">
-                <div className="text-white/50">Features:</div>
-                <div className="text-white/70">• Streamlined Development</div>
-                <div className="text-white/70">• Coinbase Wallet Hooks</div>
-                <div className="text-white/70">• Fast Setup</div>
-                <div className="text-white/70">• Identity Handling</div>
-              </div>
-              <Link 
-                href="/docs/minikit/docs"
-                className="inline-block mt-2 text-[14px] text-blue-400 hover:text-blue-300"
-              >
-                View Documentation →
-              </Link>
-            </div>
-
-            {/* Powerful Features Section */}
-            <div className="px-4">
-              <h3 className="text-[15px] font-medium mb-3">Powerful Features</h3>
-              <div className="space-y-2 text-[14px]">
-                <Link 
-                  href="/docs/features/wallet"
-                  className="block text-white/70 hover:text-white"
-                >
-                  • Wallet Onboarding
-                </Link>
-                <Link 
-                  href="/docs/features/payments"
-                  className="block text-white/70 hover:text-white"
-                >
-                  • Crypto Payments
-                </Link>
-                <Link 
-                  href="/docs/features/ai"
-                  className="block text-white/70 hover:text-white"
-                >
-                  • AI Agents
-                </Link>
-                <Link 
-                  href="/docs/features/social"
-                  className="block text-white/70 hover:text-white"
-                >
-                  • Social Identity
-                </Link>
-                <Link 
-                  href="/docs/features/defi"
-                  className="block text-white/70 hover:text-white"
-                >
-                  • DeFi Integration
-                </Link>
-                <Link 
-                  href="/docs/features/gasless"
-                  className="block text-white/70 hover:text-white"
-                >
-                  • Gasless Transactions
-                </Link>
-              </div>
-            </div>
-
-            {/* Introduction Link at Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
-              <Link 
-                href="/docs/introduction"
-                className="flex items-center text-[14px] text-white/70 hover:text-white"
-              >
-                <div className="mr-3 p-1 rounded bg-white/5">
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span className="text-lg font-semibold">MiniKit</span>
+                {openSections.minikit ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+              </button>
+              {openSections.minikit && (
+                <div className="mt-2 ml-4 space-y-2 text-[15px] text-white/70">
+                  <p>Feature your mini app on Warpcast and Coinbase Wallet.</p>
+                  <button 
+                    onClick={() => navigateToPage('minikit/development')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Streamlined Development
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('minikit/wallet-integration')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Coinbase Wallet Hooks
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('minikit/identity')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Identity & Social Features
+                  </button>
                 </div>
-                Introduction to Base
-                <svg className="w-4 h-4 ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              )}
             </div>
-          </nav>
-        </div>
+
+            {/* Base Features */}
+            <div>
+              <button
+                onClick={() => toggleSection('base')}
+                className="flex items-center justify-between w-full text-white hover:text-white/80 transition-colors"
+              >
+                <span className="text-lg font-semibold">Base Features</span>
+                {openSections.base ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+              </button>
+              {openSections.base && (
+                <div className="mt-2 ml-4 space-y-2 text-[15px] text-white/70">
+                  <button 
+                    onClick={() => navigateToPage('base/smart-wallet')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Smart Wallet
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('base/paymaster')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Paymaster
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('base/verifications')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Verifications
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Use Cases */}
+            <div>
+              <button
+                onClick={() => toggleSection('features')}
+                className="flex items-center justify-between w-full text-white hover:text-white/80 transition-colors"
+              >
+                <span className="text-lg font-semibold">Use Cases</span>
+                {openSections.features ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+              </button>
+              {openSections.features && (
+                <div className="mt-2 ml-4 space-y-2 text-[15px] text-white/70">
+                  <button 
+                    onClick={() => navigateToPage('use-cases/onboarding')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • User Onboarding
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('use-cases/payments')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Accept Crypto Payments
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('use-cases/ai-agents')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Launch AI Agents
+                  </button>
+                  <button 
+                    onClick={() => navigateToPage('use-cases/defi')}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • DeFi Integration
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </nav>
       </aside>
 
       {/* Main Content */}
       <main className="flex-1 ml-[280px] min-h-screen">
-        <div className="p-8 max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto py-12 px-8">
           {children}
         </div>
       </main>
     </div>
   );
-} 
+}
