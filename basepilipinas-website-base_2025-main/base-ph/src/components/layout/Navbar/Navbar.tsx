@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { X } from "lucide-react";
+import { X, Menu } from "lucide-react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -13,25 +13,35 @@ import {
 
 export default function Navbar() {
   const [socialsOpen, setSocialsOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleSocials = () => {
     setSocialsOpen(!socialsOpen);
+    if (mobileMenuOpen) setMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    if (socialsOpen) setSocialsOpen(false);
   };
 
   return (
     <>
-      <div className="w-full sticky top-0 right-0 py-4 flex justify-center items-center z-50">
-        <div className="sm:max-w-none flex flex-col sm:flex-row self-center text-center items-center justify-between gap-3 sm:gap-8 px-6 sm:px-8 py-3 sm:py-4 border border-gray-500/30 rounded-2xl bg-black/60 backdrop-blur-xl text-white shadow-lg shadow-black/5">
-          <div className="flex w-[100%] justify-center items-center gap-6 sm:gap-8 text-sm sm:text-[15px] font-medium">
-            <Link href="/#hero" className="flex items-center justify-center group">
-              <Image
-                src="/logo/Base_Symbol_White.svg"
-                alt="Logo"
-                width={32}
-                height={42}
-                className="object-contain transition-all duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
-              />
-            </Link>
+      <div className="w-full sticky top-0 right-0 py-2 sm:py-4 flex justify-center items-center z-50">
+        <div className="w-full max-w-7xl mx-4 sm:mx-6 flex flex-row items-center justify-between gap-3 sm:gap-8 px-4 sm:px-6 py-2 sm:py-3 border border-gray-500/30 rounded-2xl bg-black/60 backdrop-blur-xl text-white shadow-lg shadow-black/5">
+          {/* Logo */}
+          <Link href="/#hero" className="flex items-center justify-center group">
+            <Image
+              src="/logo/Base_Symbol_White.svg"
+              alt="Logo"
+              width={28}
+              height={28}
+              className="w-7 h-7 sm:w-8 sm:h-8 object-contain transition-all duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
+            />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden sm:flex items-center gap-6 sm:gap-8 text-sm sm:text-[15px] font-medium">
             <Link href="/#join-us" className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">
               Join
             </Link>
@@ -55,9 +65,46 @@ export default function Navbar() {
               Socials
             </button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="sm:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
 
+      {/* Mobile Navigation Menu */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-x-0 top-[72px] z-40 sm:hidden">
+          <div className="bg-black/80 backdrop-blur-lg border-t border-gray-500/30 py-4">
+            <div className="flex flex-col items-center gap-4 px-4">
+              <Link href="/#join-us" className="w-full text-center py-2 hover:bg-white/10 rounded-lg transition-colors">
+                Join
+              </Link>
+              <Link href="/#events" className="w-full text-center py-2 hover:bg-white/10 rounded-lg transition-colors">
+                Events
+              </Link>
+              <Link href="/hire" className="w-full text-center py-2 hover:bg-white/10 rounded-lg transition-colors">
+                Hire
+              </Link>
+              <Link href="/#about" className="w-full text-center py-2 hover:bg-white/10 rounded-lg transition-colors">
+                About
+              </Link>
+              <button
+                onClick={toggleSocials}
+                className="w-full text-center py-2 hover:bg-white/10 rounded-lg transition-colors"
+              >
+                Socials
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Socials Panel */}
       {socialsOpen && (
         <div className="fixed top-20 left-0 right-0 z-50 px-4 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-200">
           <div className="w-full sm:w-[600px] max-w-[100%]">
