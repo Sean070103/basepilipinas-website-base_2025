@@ -15,7 +15,8 @@ export default function LearnPage() {
               Welcome to Base Documentation
             </h1>
             <p className="text-muted-foreground leading-7 [&:not(:first-child)]:mt-6">
-              Learn how to build on Base through our comprehensive guides and tutorials.
+              Learn how to build on Base through our comprehensive guides and
+              tutorials.
             </p>
           </section>
 
@@ -40,12 +41,16 @@ export default function LearnPage() {
                   </div>
                 </div>
                 <div className="space-y-4 p-6">
-                  <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">Documentation</h3>
+                  <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">
+                    Documentation
+                  </h3>
                   <p className="text-muted-foreground text-sm leading-7">
                     Build a simple onchain app from setup to deployment.
                   </p>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-medium leading-none">Getting Started:</h4>
+                    <h4 className="text-sm font-medium leading-none">
+                      Getting Started:
+                    </h4>
                     <ul className="text-sm text-muted-foreground space-y-2">
                       <li>• Introduction to Base</li>
                       <li>• Setting up your environment</li>
@@ -77,12 +82,17 @@ export default function LearnPage() {
                   </div>
                 </div>
                 <div className="space-y-4 p-6">
-                  <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">Workshops & Webinars</h3>
+                  <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">
+                    Workshops & Webinars
+                  </h3>
                   <p className="text-muted-foreground text-sm leading-7">
-                    Interactive sessions and exercises for smart contract development on Base and other EVM-compatible chains.
+                    Interactive sessions and exercises for smart contract
+                    development on Base and other EVM-compatible chains.
                   </p>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-medium leading-none">Featured Content:</h4>
+                    <h4 className="text-sm font-medium leading-none">
+                      Featured Content:
+                    </h4>
                     <ul className="text-sm text-muted-foreground space-y-2">
                       <li>• Smart Contract Development Exercises</li>
                       <li>• Frontend Development for Onchain Apps</li>
@@ -129,16 +139,24 @@ export default function LearnPage() {
                   </Link>
                 </div>
                 <div className="space-y-4 p-6">
-                  <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">Introduction to Base</h3>
+                  <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">
+                    Introduction to Base
+                  </h3>
                   <p className="text-muted-foreground text-sm leading-7">
-                    Learn about Base, a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users to web3.
+                    Learn about Base, a secure, low-cost, developer-friendly
+                    Ethereum L2 built to bring the next billion users to web3.
                   </p>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-medium leading-none">What You'll Learn:</h4>
+                    <h4 className="text-sm font-medium leading-none">
+                      What You&apos;ll Learn:
+                    </h4>
+
                     <ul className="text-sm text-muted-foreground space-y-2">
                       <li className="flex items-center space-x-2">
                         <div className="h-1.5 w-1.5 rounded-full bg-muted"></div>
-                        <span>Ethereum Basics – History, goals, applications</span>
+                        <span>
+                          Ethereum Basics – History, goals, applications
+                        </span>
                       </li>
                       <li className="flex items-center space-x-2">
                         <div className="h-1.5 w-1.5 rounded-full bg-muted"></div>
@@ -176,12 +194,21 @@ export default function LearnPage() {
                   </Link>
                 </div>
                 <div className="space-y-4 p-6">
-                  <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">Base Batches: Global Buildathon</h3>
+                  <h3 className="scroll-m-20 text-xl font-semibold tracking-tight">
+                    Base Batches: Global Buildathon
+                  </h3>
                   <p className="text-muted-foreground text-sm leading-7">
-                    We're kicking off Base Batches, a global builder program bringing the next generation of builders to create industry-defining applications onchain. Enter the Base Batch Buildathon to earn an incubator placement and present on Demo Day!
+                    We&apos;re kicking off Base Batches, a global builder
+                    program bringing the next generation of builders to create
+                    industry-defining applications onchain. Enter the Base Batch
+                    Buildathon to earn an incubator placement and present on
+                    Demo Day!
                   </p>
+
                   <div className="space-y-2">
-                    <h4 className="text-sm font-medium leading-none">Program Highlights:</h4>
+                    <h4 className="text-sm font-medium leading-none">
+                      Program Highlights:
+                    </h4>
                     <ul className="text-sm text-muted-foreground space-y-2">
                       <li className="flex items-center space-x-2">
                         <div className="h-1.5 w-1.5 rounded-full bg-muted"></div>
@@ -223,9 +250,12 @@ export default function LearnPage() {
           {/* Community Section */}
           <section className="border-t space-y-6 py-8">
             <div className="text-center space-y-4">
-              <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Join Our Community</h3>
+              <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                Join Our Community
+              </h3>
               <p className="text-muted-foreground text-sm leading-7 md:text-base max-w-2xl mx-auto">
-                Connect with developers, share your projects, and stay updated with the latest from Base Philippines.
+                Connect with developers, share your projects, and stay updated
+                with the latest from Base Philippines.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
@@ -243,8 +273,12 @@ export default function LearnPage() {
                   rel="noopener noreferrer"
                   className="inline-flex h-10 items-center justify-center rounded-md bg-black px-8 text-sm font-medium text-white transition-colors hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 w-full sm:w-auto"
                 >
-                  <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  <svg
+                    className="mr-2 h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                   Follow on X
                 </Link>
