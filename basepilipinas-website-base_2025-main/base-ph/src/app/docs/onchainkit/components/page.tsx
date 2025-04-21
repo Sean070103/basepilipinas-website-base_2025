@@ -147,30 +147,6 @@ export function Balance() {
             </div>
           </div>
         </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Next Steps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">MiniKit</h3>
-              <p className="text-white/70">
-                Build mini applications with our specialized toolkit.
-              </p>
-              <a href="/docs/minikit/development" className="mt-4 text-blue-400 hover:text-blue-300 transition-colors inline-block">
-                Explore MiniKit →
-              </a>
-            </div>
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Base Features</h3>
-              <p className="text-white/70">
-                Learn about Base&apos;s powerful features and capabilities.
-              </p>
-              <a href="/docs/base/features" className="mt-4 text-blue-400 hover:text-blue-300 transition-colors inline-block">
-                View Features →
-              </a>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );

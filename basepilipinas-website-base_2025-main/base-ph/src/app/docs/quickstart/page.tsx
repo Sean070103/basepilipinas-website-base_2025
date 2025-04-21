@@ -101,6 +101,17 @@ export default function QuickstartPage() {
             <li className="flex items-start space-x-2">
               <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
               <div>
+                <span className="font-medium text-white">
+                  Streamlined Development:
+                </span>
+                <span className="ml-1">
+                  Optimized workflow with automated tooling and integrated development environment for rapid iterations.
+                </span>
+              </div>
+            </li>
+            <li className="flex items-start space-x-2">
+              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
+              <div>
                 <span className="font-medium text-white">Powered by Base:</span>
                 <span className="ml-1">
                   Deeply integrated with the Base network to unlock enhanced
@@ -109,46 +120,6 @@ export default function QuickstartPage() {
               </div>
             </li>
           </ul>
-        </section>
-
-        <section>
-          <h2 className="text-3xl font-semibold mb-4">Next Steps</h2>
-          <p className="text-lg text-white/70 mb-4">
-            Ready to start building? Follow our step-by-step guides:
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <a
-              href="/docs/quickstart/setup"
-              className="block p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
-            >
-              <h3 className="text-xl font-semibold mb-2">
-                Development Environment
-              </h3>
-              <p className="text-white/70">
-                Set up your local environment for Base development
-              </p>
-            </a>
-            <a
-              href="/docs/quickstart/contract"
-              className="block p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
-            >
-              <h3 className="text-xl font-semibold mb-2">Smart Contract</h3>
-              <p className="text-white/70">
-                Deploy your first smart contract on Base
-              </p>
-            </a>
-            <a
-              href="/docs/quickstart/frontend"
-              className="block p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
-            >
-              <h3 className="text-xl font-semibold mb-2">
-                Frontend Integration
-              </h3>
-              <p className="text-white/70">
-                Build a frontend that interacts with your contract
-              </p>
-            </a>
-          </div>
         </section>
 
         <section className="mt-12 p-4 rounded-xl bg-white/5">

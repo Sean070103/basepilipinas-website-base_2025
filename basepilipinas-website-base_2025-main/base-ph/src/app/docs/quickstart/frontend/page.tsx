@@ -124,30 +124,6 @@ export function useContract() {
             </div>
           </div>
         </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Next Steps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">OnchainKit</h3>
-              <p className="text-white/70">
-                Explore our toolkit for building onchain applications faster.
-              </p>
-              <a href="/docs/onchainkit/developer-tools" className="mt-4 text-blue-400 hover:text-blue-300 transition-colors inline-block">
-                Explore OnchainKit →
-              </a>
-            </div>
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">MiniKit</h3>
-              <p className="text-white/70">
-                Build mini applications for Coinbase Wallet.
-              </p>
-              <a href="/docs/minikit/development" className="mt-4 text-blue-400 hover:text-blue-300 transition-colors inline-block">
-                Learn MiniKit →
-              </a>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );

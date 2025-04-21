@@ -55,27 +55,42 @@ export default function HirePage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    // Success
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset form after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        position: "",
-        projectType: "",
-        budget: "",
-        timeline: "",
-        description: "",
+    try {
+      const response = await fetch('/api/hire', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 5000);
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      // Success
+      setIsSubmitted(true);
+      
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          position: "",
+          projectType: "",
+          budget: "",
+          timeline: "",
+          description: "",
+        });
+      }, 5000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to submit form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const talentCategories = [

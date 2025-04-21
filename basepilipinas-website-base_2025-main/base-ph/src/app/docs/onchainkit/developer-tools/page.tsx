@@ -119,30 +119,6 @@ await verify({
             </div>
           </div>
         </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Next Steps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Design Patterns</h3>
-              <p className="text-white/70">
-                Learn about proven design patterns for building secure dApps.
-              </p>
-              <a href="/docs/onchainkit/patterns" className="mt-4 text-blue-400 hover:text-blue-300 transition-colors inline-block">
-                Explore Patterns →
-              </a>
-            </div>
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Components</h3>
-              <p className="text-white/70">
-                Discover our library of ready-to-use React components.
-              </p>
-              <a href="/docs/onchainkit/components" className="mt-4 text-blue-400 hover:text-blue-300 transition-colors inline-block">
-                View Components →
-              </a>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );

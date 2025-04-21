@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type SectionName = 'quickstart' | 'onchainkit' | 'minikit' | 'features' | 'base';
@@ -12,6 +12,7 @@ export default function DocsLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(true);
   const [openSections, setOpenSections] = useState({
     quickstart: true,
     onchainkit: true,
@@ -19,6 +20,10 @@ export default function DocsLayout({
     features: true,
     base: true,
   });
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
   const toggleSection = (section: SectionName) => {
     setOpenSections(prev => ({
@@ -33,10 +38,21 @@ export default function DocsLayout({
 
   return (
     <div className="min-h-screen bg-transparent flex">
+      {/* Toggle Button */}
+      <button
+        onClick={toggleSidebar}
+        className="fixed lg:top-6 top-[4.5rem] left-2 z-50 p-2 rounded-lg bg-black/40 hover:bg-black/60 transition-colors lg:block"
+        aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
+      >
+        {isOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
+      </button>
+
       {/* Sidebar */}
-      <aside className="fixed w-[280px] h-screen overflow-y-auto border-r border-white/10 bg-black/20 backdrop-blur-sm top-0 left-0">
-        <nav className="py-4 px-6">
-          <div className="space-y-4">
+      <aside className={`fixed w-full lg:w-[280px] h-[calc(100vh-4rem)] lg:h-screen overflow-y-auto border-r border-white/10 bg-black/95 lg:bg-black/90 backdrop-blur-sm top-16 lg:top-0 left-0 transition-transform duration-300 z-40 ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <nav className="py-4 px-6 mt-16">
+          <div className="space-y-6">
             {/* Quickstart Section */}
             <div>
               <button
@@ -220,9 +236,11 @@ export default function DocsLayout({
         </nav>
       </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 ml-[280px] min-h-screen">
-        <div className="max-w-4xl mx-auto py-12 px-8">
+      {/* Main Content - Adjusted margins for mobile/desktop */}
+      <main className={`flex-1 transition-all duration-300 ${
+        isOpen ? 'lg:ml-[280px]' : 'ml-0'
+      } min-h-screen pt-16`}>
+        <div className="max-w-4xl mx-auto py-12 px-4 lg:px-8">
           {children}
         </div>
       </main>

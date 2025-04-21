@@ -180,30 +180,6 @@ async function verifyContract(address) {
             </ul>
           </div>
         </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Next Steps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Use Cases</h3>
-              <p className="text-white/70">
-                Explore common verification use cases.
-              </p>
-              <button className="mt-4 text-blue-400 hover:text-blue-300 transition-colors">
-                View Use Cases →
-              </button>
-            </div>
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Advanced Features</h3>
-              <p className="text-white/70">
-                Learn about advanced verification features.
-              </p>
-              <button className="mt-4 text-blue-400 hover:text-blue-300 transition-colors">
-                Explore Advanced Features →
-              </button>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );

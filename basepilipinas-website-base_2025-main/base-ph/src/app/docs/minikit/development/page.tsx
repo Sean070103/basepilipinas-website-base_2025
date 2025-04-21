@@ -104,30 +104,6 @@ const minikit = new MiniKit({
             </div>
           </div>
         </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Next Steps</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Wallet Integration</h3>
-              <p className="text-white/70">
-                Learn how to integrate with Coinbase Wallet.
-              </p>
-              <button className="mt-4 text-blue-400 hover:text-blue-300 transition-colors">
-                Explore Wallet Integration →
-              </button>
-            </div>
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Identity Features</h3>
-              <p className="text-white/70">
-                Add social and identity features to your mini app.
-              </p>
-              <button className="mt-4 text-blue-400 hover:text-blue-300 transition-colors">
-                View Identity Features →
-              </button>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );

@@ -284,14 +284,15 @@ export default function Home() {
 
               {/* Join Button */}
               <div className="flex justify-center md:justify-start">
-                <button
+                <Link
+                  href="/join"
                   className="w-fit px-4 sm:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
             hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                 >
                   <span className="text-sm sm:text-base lg:text-lg">
                     JOIN US NOW
                   </span>
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -431,20 +432,15 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
             Unleash the future Join our community.
           </p>
 
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdUrXLlB70lrzi_hHBbHF0RCTLmrmxgQDbYeSPhHGA3l94BVQ/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button
-              className="mt-4 sm:mt-6 px-4 sm:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
+          <Link
+            href="/join"
+            className="mt-4 sm:mt-6 px-4 sm:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
         hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
-            >
-              <span className="text-sm sm:text-base lg:text-lg">
-                JOIN US NOW
-              </span>
-            </button>
-          </a>
+          >
+            <span className="text-sm sm:text-base lg:text-lg">
+              JOIN US NOW
+            </span>
+          </Link>
         </section>
 
         {/* Schedule Meeting */}
