@@ -110,7 +110,7 @@ export default function LearnPage() {
                   <div className="p-4 sm:p-5 md:p-6">
                     <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Introduction to Base</h3>
                     <p className="text-sm md:text-base text-white/70 mb-4">
-                      Learn about Base's architecture, features, and how to get started with development.
+                      Learn about Base&apos;s architecture, features, and how to get started with development.
                     </p>
                     <Link
                       href="/docs/introduction"
