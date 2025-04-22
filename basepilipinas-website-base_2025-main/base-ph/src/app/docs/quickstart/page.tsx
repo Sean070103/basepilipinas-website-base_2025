@@ -11,7 +11,9 @@ export default function QuickstartPage() {
 
       <div className="mt-8 space-y-8">
         <section>
-          <h2 className="text-3xl font-semibold mb-4">What You&apos;ll Build</h2>
+          <h2 className="text-3xl font-semibold mb-4">
+            What Youd&apos;ll Build
+          </h2>
           <p className="text-lg text-white/70 mb-4">
             By the end of this guide, you&apos;ll have:
           </p>
@@ -105,7 +107,8 @@ export default function QuickstartPage() {
                   Streamlined Development:
                 </span>
                 <span className="ml-1">
-                  Optimized workflow with automated tooling and integrated development environment for rapid iterations.
+                  Optimized workflow with automated tooling and integrated
+                  development environment for rapid iterations.
                 </span>
               </div>
             </li>
