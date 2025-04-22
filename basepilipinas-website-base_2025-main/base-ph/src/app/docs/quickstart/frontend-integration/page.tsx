@@ -1,12 +1,13 @@
-'use client';
+"use client";
 
 export default function FrontendIntegrationPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
       <div>
         <h1 className="text-4xl font-bold mb-4">Frontend Integration</h1>
         <p className="text-lg text-white/70 mb-8">
-          Learn how to build a web frontend that interacts with your Base smart contracts using React and ethers.js.
+          Learn how to build a web frontend that interacts with your Base smart
+          contracts using React and ethers.js.
         </p>
       </div>
 
@@ -25,7 +26,9 @@ export default function FrontendIntegrationPage() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
         <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Implementing Connect Wallet</h3>
+          <h3 className="text-xl font-medium mb-3">
+            Implementing Connect Wallet
+          </h3>
           <div className="mt-4 bg-black/30 rounded p-4">
             <pre className="text-sm">
               <code>
@@ -101,7 +104,9 @@ export function SimpleStorage() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Error Handling</h2>
         <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Transaction Error Handling</h3>
+          <h3 className="text-xl font-medium mb-3">
+            Transaction Error Handling
+          </h3>
           <div className="mt-4 bg-black/30 rounded p-4">
             <pre className="text-sm">
               <code>
@@ -178,7 +183,9 @@ function EventListener() {
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Implement proper error handling</span>
+                <span className="text-white/70">
+                  Implement proper error handling
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
@@ -190,4 +197,4 @@ function EventListener() {
       </section>
     </div>
   );
-} 
+}

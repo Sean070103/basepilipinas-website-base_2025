@@ -22,7 +22,7 @@ export default function LearnPage() {
             <Menu className="h-6 w-6" />
           )}
         </button>
-      </div>
+        </div>
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
@@ -41,252 +41,236 @@ export default function LearnPage() {
         </div>
       )}
 
-      <main className="w-full overflow-x-hidden min-h-screen bg-gradient-to-b from-[#0A192F] to-black">
-        <div className="max-w-[1536px] mx-auto py-6 sm:py-8 md:py-10 lg:py-12 px-4 sm:px-6 lg:px-8">
+      <main className="w-full overflow-x-hidden">
+        <div className="max-w-[1536px] mx-auto py-4 sm:py-6 md:py-8 px-4 sm:px-6 xl:px-8">
           {/* Welcome Section */}
-          <section className="mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-center max-w-3xl mx-auto pt-16 lg:pt-4">
-            <div className="space-y-3 sm:space-y-4 md:space-y-5">
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                Welcome to Base Documentation
-              </h1>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-                Learn how to build on Base through our comprehensive guides and tutorials.
-              </p>
-            </div>
+          <section className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center max-w-3xl mx-auto pt-16 lg:pt-0">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 lg:mb-5 px-4">
+              Welcome to Base Documentation
+            </h1>
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/70 px-4 max-w-2xl mx-auto">
+              Learn how to build on Base through our comprehensive guides and tutorials.
+            </p>
           </section>
 
           {/* Learning Resources */}
-          <section className="mb-10 sm:mb-12 md:mb-14 lg:mb-16">
-            <div className="space-y-6 sm:space-y-8 md:space-y-10">
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                Learning Resources
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
-                {/* Documentation Card */}
-                <div className="group flex flex-col h-full rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                  <div className="relative w-full h-32 sm:h-36 md:h-40 lg:h-44 overflow-hidden">
-                    <Image
-                      src="/learning-page/learning/Documentation.webp"
-                      alt="Documentation"
-                      fill
-                      className="object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/90 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 transform group-hover:translate-y-[-2px] transition-transform duration-300">
-                      <FileText className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
-                    </div>
-                  </div>
-                  <div className="flex flex-col flex-grow p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4">
-                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
-                      Documentation
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/70 leading-relaxed flex-grow">
-                      Build a simple onchain app from setup to deployment.
-                    </p>
-                    <div className="space-y-2 sm:space-y-3">
-                      <h4 className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-white/90">
-                        Getting Started:
-                      </h4>
-                      <ul className="text-xs sm:text-sm md:text-base lg:text-lg text-white/70 space-y-2">
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Introduction to Base</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Setting up your environment</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Building your first dApp</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <Link
-                      href="/docs"
-                      className="inline-flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-blue-400 hover:text-blue-300 transition-colors group/link mt-4"
-                    >
-                      <span>Read docs</span>
-                      <ChevronRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
+          <section className="mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 text-center">
+              Learning Resources
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-3xl mx-auto px-4">
+              {/* Documentation Card */}
+              <div className="flex flex-col rounded bg-[#0A192F]/80 border border-white/10 hover:border-white/20 transition-all">
+                <div className="relative w-full h-20 sm:h-24">
+                  <Image
+                    src="/learning-page/learning/Documentation.webp"
+                    alt="Documentation"
+                    fill
+                    className="object-cover text-wrap"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] to-transparent"></div>
+                  <div className="absolute bottom-2 left-2">
+                    <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                   </div>
                 </div>
+                <div className="p-3">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1 text-wrap">
+                    Documentation
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/70 mb-2 text-wrap">
+                    Build a simple onchain app from setup to deployment.
+                  </p>
+                  <div className="mb-2">
+                    <h4 className="text-xs sm:text-sm font-medium mb-1 text-wrap">Getting Started:</h4>
+                    <ul className="text-xs sm:text-sm text-white/70 space-y-0.5">
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Introduction to Base</span>
+                      </li>
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Setting up your environment</span>
+                      </li>
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Building your first dApp</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <Link
+                    href="/docs"
+                    className="text-xs sm:text-sm text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center group text-wrap"
+                  >
+                    <span>Read docs</span>
+                    <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 transform group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
+              </div>
 
-                {/* Workshops Card */}
-                <div className="group flex flex-col h-full rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                  <div className="relative w-full h-32 sm:h-36 md:h-40 lg:h-44 overflow-hidden">
-                    <Image
-                      src="/learning-page/learning/Webinar.webp"
-                      alt="Workshops"
-                      fill
-                      className="object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/90 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 transform group-hover:translate-y-[-2px] transition-transform duration-300">
-                      <Calendar className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-blue-400" />
-                    </div>
+              {/* Workshops Card */}
+              <div className="flex flex-col rounded bg-[#0A192F]/80 border border-white/10 hover:border-white/20 transition-all">
+                <div className="relative w-full h-20 sm:h-24">
+                  <Image
+                    src="/learning-page/learning/Webinar.webp"
+                    alt="Workshops"
+                    fill
+                    className="object-cover text-wrap"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] to-transparent"></div>
+                  <div className="absolute bottom-2 left-2">
+                    <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                   </div>
-                  <div className="flex flex-col flex-grow p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4">
-                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
-                      Workshops & Webinars
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/70 leading-relaxed flex-grow">
-                      Interactive sessions and exercises for smart contract development on Base and other EVM-compatible chains.
-                    </p>
-                    <div className="space-y-2 sm:space-y-3">
-                      <h4 className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-white/90">
-                        Featured Content:
-                      </h4>
-                      <ul className="text-xs sm:text-sm md:text-base lg:text-lg text-white/70 space-y-2">
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Smart Contract Development Exercises</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Frontend Development for Onchain Apps</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <Link
-                      href="/events/smart-contract-workshop"
-                      className="inline-flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-blue-400 hover:text-blue-300 transition-colors group/link mt-4"
-                    >
-                      <span>Join sessions</span>
-                      <ChevronRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
+                </div>
+                <div className="p-3">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1 text-wrap">
+                    Workshops & Webinars
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/70 mb-2 text-wrap">
+                    Interactive sessions and exercises for smart contract development.
+                  </p>
+                  <div className="mb-2">
+                    <h4 className="text-xs sm:text-sm font-medium mb-1 text-wrap">Featured Content:</h4>
+                    <ul className="text-xs sm:text-sm text-white/70 space-y-0.5">
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Smart Contract Development Exercises</span>
+                      </li>
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Frontend Development for Onchain Apps</span>
+                      </li>
+                    </ul>
                   </div>
+                  <Link
+                    href="/events/smart-contract-workshop"
+                    className="text-xs sm:text-sm text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center group text-wrap"
+                  >
+                    <span>Join sessions</span>
+                    <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 transform group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
                 </div>
               </div>
             </div>
           </section>
 
           {/* Featured Content */}
-          <section className="mb-10 sm:mb-12 md:mb-14 lg:mb-16">
-            <div className="space-y-6 sm:space-y-8 md:space-y-10">
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                Featured Content
-              </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
-                {/* Introduction to Base */}
-                <div className="group flex flex-col rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                  <div className="relative aspect-video bg-black overflow-hidden">
-                    <Link
-                      href="https://www.facebook.com/reel/519212114535393"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full h-full"
-                    >
-                      <Image
-                        src="/learning-page/learning/Base.png"
-                        alt="Introduction to Base"
-                        fill
-                        className="object-cover transform group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/90 to-transparent"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-[#1877F2] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                          <Facebook className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
-                        </div>
+          <section className="mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 text-center text-wrap">
+              Featured Content
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 max-w-3xl mx-auto px-4">
+              {/* Introduction to Base */}
+              <div className="rounded bg-[#0A192F]/80 border border-white/10 hover:border-white/20 transition-all">
+                <div className="relative aspect-video bg-black">
+                  <Link
+                    href="https://www.facebook.com/reel/519212114535393"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full h-full text-wrap"
+                  >
+                    <Image
+                      src="/learning-page/learning/Base.png"
+                      alt="Introduction to Base"
+                      fill
+                      className="object-contain text-wrap"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-full bg-[#1877F2] flex items-center justify-center">
+                        <Facebook className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
                       </div>
-                    </Link>
-                  </div>
-                  <div className="p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4">
-                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
-                      Introduction to Base
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/70 leading-relaxed">
-                      Learn about Base, a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users to web3.
-                    </p>
-                    <div className="space-y-2 sm:space-y-3">
-                      <h4 className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-white/90">
-                        What You&apos;ll Learn:
-                      </h4>
-                      <ul className="text-xs sm:text-sm md:text-base lg:text-lg text-white/70 space-y-2">
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Ethereum Basics – History, goals, applications</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Gas Fees – Understanding transaction costs</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Smart Contract Development</span>
-                        </li>
-                      </ul>
                     </div>
+                  </Link>
+                </div>
+                <div className="p-3">
+                  <h3 className="text-sm sm:text-base md:text-lg font-bold mb-1 text-wrap">
+                    Introduction to Base
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/70 mb-2 text-wrap">
+                    Learn about Base, a secure, low-cost, developer-friendly Ethereum L2.
+                  </p>
+                  <div className="mb-2">
+                    <h4 className="text-xs sm:text-sm font-semibold mb-1 text-wrap">What You&apos;ll Learn:</h4>
+                    <ul className="text-xs sm:text-sm text-white/70 space-y-0.5">
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Ethereum Basics – History, goals, applications</span>
+                      </li>
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Gas Fees – Understanding transaction costs</span>
+                      </li>
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Smart Contract Development</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
+              </div>
 
-                {/* Base Batches */}
-                <div className="group flex flex-col rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                  <div className="relative aspect-video bg-black overflow-hidden">
+              {/* Base Batches */}
+              <div className="rounded bg-[#0A192F]/80 border border-white/10 hover:border-white/20 transition-all">
+                <div className="relative aspect-video bg-black">
+                  <Link
+                    href="https://www.facebook.com/share/p/15Jp9a2Ykw/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full h-full text-wrap"
+                  >
+                    <Image
+                      src="/learning-page/thumbnail.png"
+                      alt="Base Batches: Global Buildathon"
+                      fill
+                      className="object-contain text-wrap"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-full bg-[#1877F2] flex items-center justify-center">
+                        <Facebook className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" />
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+                <div className="p-3">
+                  <h3 className="text-sm sm:text-base md:text-lg font-bold mb-1 text-wrap">
+                    Base Batches: Global Buildathon
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/70 mb-2 text-wrap">
+                    Join our global builder program to create industry-defining applications onchain.
+                  </p>
+                  <div className="mb-2">
+                    <h4 className="text-xs sm:text-sm font-semibold mb-1 text-wrap">Program Highlights:</h4>
+                    <ul className="text-xs sm:text-sm text-white/70 space-y-0.5">
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Buildathon Activations</span>
+                      </li>
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Incubator Placements</span>
+                      </li>
+                      <li className="flex items-center space-x-1.5 text-wrap">
+                        <span className="text-white/70">•</span>
+                        <span>Season-ending Demo Day</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="flex items-center justify-between text-xs sm:text-sm">
+                    <div className="flex items-center text-white/60 text-wrap">
+                      <span>APAC</span>
+                      <span className="mx-1">•</span>
+                      <span>Batch 001</span>
+                      <span className="mx-1">•</span>
+                      <span>Now Open</span>
+                    </div>
                     <Link
                       href="https://www.facebook.com/share/p/15Jp9a2Ykw/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full h-full"
+                      className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center group text-wrap"
                     >
-                      <Image
-                        src="/learning-page/thumbnail.png"
-                        alt="Base Batches: Global Buildathon"
-                        fill
-                        className="object-cover transform group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/90 to-transparent"></div>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-[#1877F2] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                          <Facebook className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
-                        </div>
-                      </div>
+                      <span>Learn More</span>
+                      <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 transform group-hover:translate-x-0.5 transition-transform" />
                     </Link>
-                  </div>
-                  <div className="p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4">
-                    <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
-                      Base Batches: Global Buildathon
-                    </h3>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/70 leading-relaxed">
-                      We&apos;re kicking off Base Batches, a global builder program bringing the next generation of builders to create industry-defining applications onchain. Enter the Base Batch Buildathon to earn an incubator placement and present on Demo Day!
-                    </p>
-                    <div className="space-y-2 sm:space-y-3">
-                      <h4 className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-white/90">
-                        Program Highlights:
-                      </h4>
-                      <ul className="text-xs sm:text-sm md:text-base lg:text-lg text-white/70 space-y-2">
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Buildathon Activations</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Incubator Placements</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                          <span>Season-ending Demo Day</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="flex items-center justify-between mt-4">
-                      <div className="flex items-center text-[10px] sm:text-xs md:text-sm lg:text-base text-white/60 space-x-2">
-                        <span>APAC</span>
-                        <span>•</span>
-                        <span>Batch 001</span>
-                        <span>•</span>
-                        <span>Now Open</span>
-                      </div>
-                      <Link
-                        href="https://www.facebook.com/share/p/15Jp9a2Ykw/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-xs sm:text-sm md:text-base lg:text-lg text-blue-400 hover:text-blue-300 transition-colors group/link"
-                      >
-                        <span>Learn More</span>
-                        <ChevronRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -294,40 +278,97 @@ export default function LearnPage() {
           </section>
 
           {/* Community Section */}
-          <section className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-            <div className="flex flex-col items-center justify-center py-8 sm:py-10 md:py-12 lg:py-16 border-t border-white/10 max-w-3xl mx-auto">
-              <div className="space-y-4 sm:space-y-5 md:space-y-6 text-center">
-                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
-                  Join Our Community
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-                  Connect with developers, share your projects, and stay updated with the latest from Base Philippines.
-                </p>
-                <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto pt-4">
-                  <Link
-                    href="https://www.facebook.com/basepilipinas"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#5865F2] hover:bg-[#4752C4] transition-all duration-300 group hover:shadow-lg hover:shadow-[#5865F2]/20"
-                  >
-                    <Facebook className="h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-xs sm:text-sm md:text-base lg:text-lg text-white font-medium whitespace-nowrap">Join Base PH</span>
-                  </Link>
-                  <Link
-                    href="https://x.com/basepilipinas"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#000000] hover:bg-[#171717] transition-all duration-300 group hover:shadow-lg hover:shadow-white/20"
-                  >
-                    <svg className="h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                    <span className="text-xs sm:text-sm md:text-base lg:text-lg text-white font-medium whitespace-nowrap">Follow us on X</span>
-                  </Link>
-                </div>
+          <section className="mb-4 sm:mb-6">
+            <div className="flex flex-col items-center justify-center py-4 sm:py-6 border-t border-white/10 max-w-3xl mx-auto px-4">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 text-center">
+                Join Our Community
+              </h3>
+              <p className="text-xs sm:text-sm text-white/70 mb-3 text-center max-w-2xl">
+                Connect with developers, share your projects, and stay updated with the latest from Base Philippines.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
+                <Link
+                  href="https://www.facebook.com/basepilipinas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-[#5865F2] hover:bg-[#4752C4] transition-colors"
+                >
+                  <Facebook className="h-3.5 w-3.5" />
+                  <span className="text-xs sm:text-sm text-white font-medium whitespace-nowrap">Join Base PH</span>
+                </Link>
+                <Link
+                  href="https://x.com/basepilipinas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-[#000000] hover:bg-[#171717] transition-colors"
+                >
+                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                  <span className="text-xs sm:text-sm text-white font-medium whitespace-nowrap">Follow us on X</span>
+                </Link>
               </div>
             </div>
           </section>
+
+          <div className="mt-4 bg-black/30 rounded p-4">
+            <pre className="text-sm text-wrap">
+              <code className="text-wrap">
+                npx create-minikit-app my-mini-app
+              </code>
+            </pre>
+          </div>
+
+          <div className="mt-4 bg-black/30 rounded p-4">
+            <pre className="text-sm text-wrap">
+              <code className="text-wrap">
+                {`import { MiniKit } from '@minikit/core';
+
+const minikit = new MiniKit({
+  appName: 'My Mini App',
+  description: 'A simple mini app built with MiniKit',
+  icon: '/icon.png',
+  theme: {
+    primary: '#0066FF',
+    background: '#000000'
+  }
+});`}
+              </code>
+            </pre>
+          </div>
+
+          <div className="mt-4 bg-black/30 rounded p-4">
+            <pre className="text-sm text-wrap">
+              <code className="text-wrap">
+                {`{/* Initialize wallet */}
+import { WalletProvider } from '@minikit/wallet';
+import { CoinbaseWallet } from '@coinbase/wallet-sdk';
+
+const wallet = new CoinbaseWallet({
+  appName: 'My Mini App',
+  appLogoUrl: 'https://example.com/logo.png'
+});`}
+              </code>
+            </pre>
+          </div>
+
+          <div className="mt-4 bg-black/30 rounded p-4">
+            <pre className="text-sm text-wrap">
+              <code className="text-wrap">
+                {`import { useWallet } from '@minikit/wallet';
+
+function WalletStatus() {
+  const { address, isConnected, connect } = useWallet();
+
+  if (!isConnected) {
+    return <button onClick={connect}>Connect</button>;
+  }
+
+  return <p>Connected: {address}</p>;
+}`}
+              </code>
+            </pre>
+          </div>
         </div>
       </main>
     </div>

@@ -43,24 +43,31 @@ describe("SimpleStorage", function () {
   const deployCommand = `npx hardhat run scripts/deploy.ts --network baseGoerli`;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
       <div>
         <h1 className="text-4xl font-bold mb-4">Smart Contract Development</h1>
         <p className="text-lg text-white/70 mb-8">
-          Learn how to write, test, and deploy smart contracts on Base. This guide covers the basics of smart contract development using Solidity.
+          Learn how to write, test, and deploy smart contracts on Base. This
+          guide covers the basics of smart contract development using Solidity.
         </p>
       </div>
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">Simple Storage Contract</h2>
         <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Writing Your First Contract</h3>
+          <h3 className="text-xl font-medium mb-3">
+            Writing Your First Contract
+          </h3>
           <p className="text-white/70 mb-4">
-            Create a new file called <code className="text-sm bg-black/30 px-1.5 py-0.5 rounded">SimpleStorage.sol</code> with the following code:
+            Create a new file called{" "}
+            <code className="text-sm bg-black/30 px-1.5 py-0.5 rounded text-wrap">
+              SimpleStorage.sol
+            </code>{" "}
+            with the following code:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
             <pre className="text-sm">
-              <code>{simpleStorageCode}</code>
+              <code className="text-wrap">{simpleStorageCode}</code>
             </pre>
           </div>
         </div>
@@ -75,7 +82,7 @@ describe("SimpleStorage", function () {
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
             <pre className="text-sm">
-              <code>{testCode}</code>
+              <code className="text-wrap">{testCode}</code>
             </pre>
           </div>
         </div>
@@ -87,23 +94,25 @@ describe("SimpleStorage", function () {
           <div className="bg-white/5 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">1. Configure Network</h3>
             <p className="text-white/70 mb-4">
-              Update your <code className="text-sm bg-black/30 px-1.5 py-0.5 rounded">hardhat.config.ts</code>:
+              Update your{" "}
+              <code className="text-sm bg-black/30 px-1.5 py-0.5 rounded text-wrap">
+                hardhat.config.ts
+              </code>
+              :
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
               <pre className="text-sm">
-                <code>{configCode}</code>
+                <code className="text-wrap">{configCode}</code>
               </pre>
             </div>
           </div>
 
           <div className="bg-white/5 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">2. Deploy Contract</h3>
-            <p className="text-white/70 mb-4">
-              Run the deployment script:
-            </p>
+            <p className="text-white/70 mb-4">Run the deployment script:</p>
             <div className="mt-4 bg-black/30 rounded p-4">
               <pre className="text-sm">
-                <code>{deployCommand}</code>
+                <code className="text-wrap">{deployCommand}</code>
               </pre>
             </div>
           </div>
@@ -118,15 +127,21 @@ describe("SimpleStorage", function () {
             <ul className="space-y-2">
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Follow security best practices</span>
+                <span className="text-white/70">
+                  Follow security best practices
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Implement proper access controls</span>
+                <span className="text-white/70">
+                  Implement proper access controls
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Use secure random number generation</span>
+                <span className="text-white/70">
+                  Use secure random number generation
+                </span>
               </li>
             </ul>
           </div>
@@ -139,11 +154,15 @@ describe("SimpleStorage", function () {
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Batch operations when possible</span>
+                <span className="text-white/70">
+                  Batch operations when possible
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Use efficient data structures</span>
+                <span className="text-white/70">
+                  Use efficient data structures
+                </span>
               </li>
             </ul>
           </div>
@@ -151,4 +170,4 @@ describe("SimpleStorage", function () {
       </section>
     </div>
   );
-} 
+}

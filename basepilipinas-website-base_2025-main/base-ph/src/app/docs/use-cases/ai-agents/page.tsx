@@ -2,7 +2,7 @@
 
 export default function AIAgentsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8  overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
       <div>
         <h1 className="text-4xl font-bold mb-4">Launch AI Agents</h1>
         <p className="text-lg text-white/70 mb-8">

@@ -1,6 +1,6 @@
 export default function VerificationsPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-w-none  overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
       <h1 className="text-4xl font-bold mb-6">Verifications</h1>
 
       <p className="text-lg text-white/70 mb-8">

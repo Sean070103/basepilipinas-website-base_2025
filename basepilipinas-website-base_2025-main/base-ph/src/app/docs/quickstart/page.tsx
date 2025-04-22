@@ -12,7 +12,7 @@ export default function QuickstartPage() {
       <div className="mt-8 space-y-8">
         <section>
           <h2 className="text-3xl font-semibold mb-4">
-            What Youd&apos;ll Build
+            What You&qapos;ll Build
           </h2>
           <p className="text-lg text-white/70 mb-4">
             By the end of this guide, you&apos;ll have:

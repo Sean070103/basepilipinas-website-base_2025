@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
 export default function DeveloperToolsPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-w-none overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
       <h1 className="text-4xl font-bold mb-6">Developer-Centric Tools</h1>
-      
+
       <p className="text-lg text-white/70 mb-8">
-        OnchainKit provides a comprehensive set of developer tools to streamline your Web3 development workflow. 
-        These tools are designed to help you build faster and more efficiently.
+        OnchainKit provides a comprehensive set of developer tools to streamline
+        your Web3 development workflow. These tools are designed to help you
+        build faster and more efficiently.
       </p>
 
       <div className="space-y-12">
@@ -15,7 +16,9 @@ export default function DeveloperToolsPage() {
           <h2 className="text-2xl font-semibold mb-4">Core Tools</h2>
           <div className="space-y-6">
             <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Contract Development Kit</h3>
+              <h3 className="text-xl font-medium mb-3">
+                Contract Development Kit
+              </h3>
               <p className="text-white/70 mb-4">
                 Tools for smart contract development:
               </p>
@@ -77,7 +80,9 @@ describe('MyContract', () => {
           <h2 className="text-2xl font-semibold mb-4">Development Tools</h2>
           <div className="space-y-6">
             <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Local Development Chain</h3>
+              <h3 className="text-xl font-medium mb-3">
+                Local Development Chain
+              </h3>
               <p className="text-white/70 mb-4">
                 Run a local development blockchain:
               </p>
@@ -98,7 +103,9 @@ console.log('Local chain running at http://localhost:8545');`}
             </div>
 
             <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Contract Verification</h3>
+              <h3 className="text-xl font-medium mb-3">
+                Contract Verification
+              </h3>
               <p className="text-white/70 mb-4">
                 Verify your contracts on Base:
               </p>
@@ -122,4 +129,4 @@ await verify({
       </div>
     </div>
   );
-} 
+}

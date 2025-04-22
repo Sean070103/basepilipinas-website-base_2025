@@ -109,7 +109,7 @@ function SubscriptionForm() {
 }`;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8m overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
       <div>
         <h1 className="text-4xl font-bold mb-4">Accept Crypto Payments</h1>
         <p className="text-lg text-white/70 mb-8">

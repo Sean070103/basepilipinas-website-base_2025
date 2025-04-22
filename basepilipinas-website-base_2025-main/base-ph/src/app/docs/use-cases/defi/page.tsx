@@ -2,8 +2,8 @@
 
 export default function DeFiIntegrationPage() {
   return (
-    <div className="space-y-8">
-      <div>
+    <div className="space-y-8 overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
+      <div className="max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
         <h1 className="text-4xl font-bold mb-4">DeFi Integration</h1>
         <p className="text-lg text-white/70 mb-8">
           Here&apos;s how to integrate DeFi functionality into your dApp.
@@ -19,8 +19,8 @@ export default function DeFiIntegrationPage() {
             automated market makers.
           </p>
 
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+          <div className="mt-4 bg-black/30 rounded p-4 ">
+            <pre className="text-sm text-wrap">
               <code>
                 {`import { useContractWrite, useContractRead } from 'wagmi'
 import { parseUnits, formatUnits } from 'ethers/lib/utils'
@@ -66,7 +66,7 @@ export function TokenSwap() {
 
             <div className="mt-4 bg-black/30 rounded p-4">
               <pre className="text-sm">
-                <code>
+                <code className="text-wrap">
                   {`import { useLendingPool } from './hooks/lending'
 
 export function LendingInterface() {
@@ -113,7 +113,7 @@ export function LendingInterface() {
             providing liquidity.
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm text-wrap">
               <code>
                 {`import { useStaking } from './hooks/staking'
 
