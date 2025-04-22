@@ -1,70 +1,21 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FileText, Calendar, ChevronRight, Facebook, Menu, X } from "lucide-react";
+import { FileText, Calendar, ChevronRight, Facebook } from "lucide-react";
 
 export default function LearnPage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
   return (
     <div className="min-h-screen bg-transparent">
-      {/* Mobile Menu Button */}
-      <button
-        onClick={toggleSidebar}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800/50 backdrop-blur-sm rounded-lg hover:bg-gray-700/50 transition-colors"
-      >
-        {isSidebarOpen ? (
-          <X className="h-6 w-6 text-white" />
-        ) : (
-          <Menu className="h-6 w-6 text-white" />
-        )}
-      </button>
-
-      {/* Sidebar */}
-      <div
-        className={`fixed inset-y-0 left-0 z-40 w-64 bg-gray-900/95 backdrop-blur-sm transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="h-full flex flex-col">
-          <div className="p-4 border-b border-white/10">
-            <Image
-              src="/learning-page/learning/Base.png"
-              alt="Base Logo"
-              width={120}
-              height={40}
-              className="mx-auto"
-            />
-          </div>
-          <nav className="flex-1 p-4 space-y-2">
-            <Link href="/docs" className="flex items-center space-x-2 text-white/80 hover:text-white p-2 rounded-lg hover:bg-white/10">
-              <FileText className="h-5 w-5" />
-              <span>Documentation</span>
-            </Link>
-            <Link href="/learn" className="flex items-center space-x-2 text-white p-2 rounded-lg bg-white/10">
-              <Calendar className="h-5 w-5" />
-              <span>Learning Resources</span>
-            </Link>
-          </nav>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <main className={`transition-all duration-300 ${isSidebarOpen ? "lg:ml-64" : ""}`}>
+      <main className="w-full">
         <div className="max-w-[1536px] mx-auto py-4 sm:py-6 md:py-8 px-4 sm:px-6 xl:px-8">
           {/* Welcome Section */}
-          <section className="mb-8 sm:mb-10 md:mb-12 text-center max-w-3xl mx-auto pt-16 lg:pt-0">
+          <section className="mb-8 sm:mb-10 md:mb-12 text-center max-w-3xl mx-auto">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Welcome to Base Documentation</h1>
             <p className="text-base sm:text-lg text-white/70">
               Learn how to build on Base through our comprehensive guides and tutorials.
             </p>
-          </section>
+      </section>
 
           {/* Learning Resources */}
           <section className="mb-12 sm:mb-14 md:mb-16">
@@ -295,22 +246,14 @@ export default function LearnPage() {
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-                  <span className="text-white font-medium">Follow on X</span>
+                  </svg>
+                  <span className="text-white font-medium">Follow us on X</span>
             </Link>
           </div>
         </div>
       </section>
         </div>
       </main>
-
-      {/* Overlay for mobile */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
-          onClick={toggleSidebar}
-        ></div>
-      )}
     </div>
   );
 }
