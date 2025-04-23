@@ -66,7 +66,7 @@ describe("SimpleStorage", function () {
             with the following code:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{simpleStorageCode}</code>
             </pre>
           </div>
@@ -81,7 +81,7 @@ describe("SimpleStorage", function () {
             Create a test file for your contract:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{testCode}</code>
             </pre>
           </div>
@@ -101,7 +101,7 @@ describe("SimpleStorage", function () {
               :
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>{configCode}</code>
               </pre>
             </div>
@@ -111,7 +111,7 @@ describe("SimpleStorage", function () {
             <h3 className="text-xl font-medium mb-3">2. Deploy Contract</h3>
             <p className="text-white/70 mb-4">Run the deployment script:</p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>{deployCommand}</code>
               </pre>
             </div>
