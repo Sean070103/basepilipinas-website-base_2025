@@ -40,7 +40,7 @@ export const contributors: Contributor[] = [
       "Video Editing",
       "Food Taster",
     ],
-    photoUrl: "/contributors/El Bonuan.jpg", // Placeholder path for photo
+    photoUrl: "/contributors/EL Bonuan.jpg",
   },
   {
     name: "Ryan Lucas",
@@ -57,7 +57,7 @@ export const contributors: Contributor[] = [
       "Marketing",
       "Video Editing",
     ],
-    photoUrl: "/contributors/Ry lucas.jpg", // Placeholder path for photo
+    photoUrl: "/contributors/Ry lucas (1).jpg",
   },
   {
     name: "Rhomuel Brian Macahilig",
