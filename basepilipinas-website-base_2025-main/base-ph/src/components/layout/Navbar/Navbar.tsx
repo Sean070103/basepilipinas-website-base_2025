@@ -63,8 +63,8 @@ export default function Navbar() {
           <div className="w-full sm:w-[600px] max-w-[100%]">
             <div className="relative border-white/5 rounded-2xl bg-transparent backdrop-blur-md p-6 shadow-[0_0_30px_rgba(0,0,0,0.2)]">
               <div className="flex flex-col items-center gap-6">
-                <button 
-                  onClick={toggleSocials} 
+                <button
+                  onClick={toggleSocials}
                   className="absolute left-4 top-4 text-gray-400 hover:text-white transition-colors duration-200 rounded-lg hover:bg-white/10 p-2"
                 >
                   <X className="h-5 w-5" />
@@ -123,7 +123,7 @@ export default function Navbar() {
                   <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#F58529]/10 via-[#DD2A7B]/10 to-[#515BD4]/10 flex items-center justify-center">
                     <div className="bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#515BD4] rounded-full p-1.5">
                       <FaInstagram className="h-6 w-6 text-white" />
-                    </div>
+                </div>
                   </div>
                   <span className="text-white text-sm">Instagram</span>
                 </a>

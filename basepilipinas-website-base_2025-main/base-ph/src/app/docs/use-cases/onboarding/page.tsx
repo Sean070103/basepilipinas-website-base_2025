@@ -1,26 +1,21 @@
-"use client";
+'use client';
 
 export default function UserOnboardingPage() {
   return (
-    <div className="space-y-8 overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
+    <div className="space-y-8">
       <div>
         <h1 className="text-4xl font-bold mb-4">User Onboarding</h1>
         <p className="text-lg text-white/70 mb-8">
-          Create a seamless onboarding experience for users new to Web3 and
-          Base. Learn how to implement social logins, wallet creation, and
-          progressive user journeys.
+          Create a seamless onboarding experience for users new to Web3 and Base. Learn how to implement social logins, wallet creation, and progressive user journeys.
         </p>
       </div>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">
-          Social Login Integration
-        </h2>
+        <h2 className="text-2xl font-semibold mb-4">Social Login Integration</h2>
         <div className="bg-white/5 rounded-lg p-6">
           <h3 className="text-xl font-medium mb-3">Implementing OAuth</h3>
           <p className="text-white/70 mb-4">
-            Enable users to sign in with their existing social accounts and
-            create a Web3 wallet automatically.
+            Enable users to sign in with their existing social accounts and create a Web3 wallet automatically.
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
             <pre className="text-sm">
@@ -62,12 +57,9 @@ export function SocialLogin() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Smart Wallet Creation</h2>
         <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">
-            Account Abstraction Setup
-          </h3>
+          <h3 className="text-xl font-medium mb-3">Account Abstraction Setup</h3>
           <p className="text-white/70 mb-4">
-            Create smart contract wallets for users with social recovery and
-            advanced features.
+            Create smart contract wallets for users with social recovery and advanced features.
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
             <pre className="text-sm">
@@ -102,8 +94,7 @@ async function createWallet(user) {
           <div className="bg-white/5 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Step-by-Step Flow</h3>
             <p className="text-white/70 mb-4">
-              Guide users through Web3 concepts progressively as they explore
-              your app.
+              Guide users through Web3 concepts progressively as they explore your app.
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
               <pre className="text-sm">
@@ -155,21 +146,15 @@ export function ProgressiveOnboarding() {
             <ul className="space-y-2">
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Hide blockchain complexity initially
-                </span>
+                <span className="text-white/70">Hide blockchain complexity initially</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Provide clear explanations of Web3 concepts
-                </span>
+                <span className="text-white/70">Provide clear explanations of Web3 concepts</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Offer multiple recovery options
-                </span>
+                <span className="text-white/70">Offer multiple recovery options</span>
               </li>
             </ul>
           </div>
@@ -178,9 +163,7 @@ export function ProgressiveOnboarding() {
             <ul className="space-y-2">
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement proper authentication flows
-                </span>
+                <span className="text-white/70">Implement proper authentication flows</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
@@ -196,4 +179,4 @@ export function ProgressiveOnboarding() {
       </section>
     </div>
   );
-}
+} 

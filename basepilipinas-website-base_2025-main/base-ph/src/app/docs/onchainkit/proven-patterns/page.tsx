@@ -115,13 +115,11 @@ function SessionKeyManagement() {
 }`;
 
   return (
-    <div className="space-y-8 overflow-x-hidden max-sm:max-w-[calc(100vw-2rem)] max-sm:mx-auto">
+    <div className="space-y-8">
       <div>
         <h1 className="text-4xl font-bold mb-4">Proven Patterns</h1>
         <p className="text-lg text-white/70 mb-8">
-          Explore battle-tested patterns and best practices for building robust
-          applications with OnchainKit. These patterns have been proven
-          effective in production environments.
+          Explore battle-tested patterns and best practices for building robust applications with OnchainKit. These patterns have been proven effective in production environments.
         </p>
       </div>
 
@@ -130,8 +128,7 @@ function SessionKeyManagement() {
         <div className="bg-white/5 rounded-lg p-6">
           <h3 className="text-xl font-medium mb-3">Smart Account Setup</h3>
           <p className="text-white/70 mb-4">
-            Implement account abstraction using smart accounts for enhanced
-            security and user experience:
+            Implement account abstraction using smart accounts for enhanced security and user experience:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
             <pre className="text-sm">
@@ -141,15 +138,11 @@ function SessionKeyManagement() {
           <ul className="mt-4 space-y-2">
             <li className="flex items-start space-x-3">
               <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Enables advanced features like social recovery
-              </span>
+              <span className="text-white/70">Enables advanced features like social recovery</span>
             </li>
             <li className="flex items-start space-x-3">
               <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Supports custom validation logic
-              </span>
+              <span className="text-white/70">Supports custom validation logic</span>
             </li>
           </ul>
         </div>
@@ -174,9 +167,7 @@ function SessionKeyManagement() {
             </li>
             <li className="flex items-start space-x-3">
               <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Simplifies complex operations
-              </span>
+              <span className="text-white/70">Simplifies complex operations</span>
             </li>
           </ul>
         </div>
@@ -201,9 +192,7 @@ function SessionKeyManagement() {
             </li>
             <li className="flex items-start space-x-3">
               <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Supports custom sponsorship rules
-              </span>
+              <span className="text-white/70">Supports custom sponsorship rules</span>
             </li>
           </ul>
         </div>
@@ -212,9 +201,7 @@ function SessionKeyManagement() {
       <section>
         <h2 className="text-2xl font-semibold mb-4">Session Keys</h2>
         <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">
-            Temporary Access Management
-          </h3>
+          <h3 className="text-xl font-medium mb-3">Temporary Access Management</h3>
           <p className="text-white/70 mb-4">
             Implement secure temporary access using session keys:
           </p>
@@ -244,15 +231,11 @@ function SessionKeyManagement() {
             <ul className="space-y-2">
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Always validate user operations
-                </span>
+                <span className="text-white/70">Always validate user operations</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement proper access controls
-                </span>
+                <span className="text-white/70">Implement proper access controls</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
@@ -269,9 +252,7 @@ function SessionKeyManagement() {
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Use efficient data structures
-                </span>
+                <span className="text-white/70">Use efficient data structures</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
@@ -283,4 +264,4 @@ function SessionKeyManagement() {
       </section>
     </div>
   );
-}
+} 

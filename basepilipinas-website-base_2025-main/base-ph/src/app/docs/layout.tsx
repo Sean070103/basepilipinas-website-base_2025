@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import CodeBlock from "@/components/CodeBlock";
 
 type SectionName =
   | "quickstart"
@@ -89,6 +90,12 @@ export default function DocsLayout({
                     className="block hover:text-white transition-colors text-leftq"
                   >
                     • Development Environment
+                  </button>
+                  <button
+                    onClick={() => navigateToPage("configuration")}
+                    className="block hover:text-white transition-colors text-left w-full"
+                  >
+                    • Configuration
                   </button>
                   <button
                     onClick={() => navigateToPage("quickstart/smart-contract")}
