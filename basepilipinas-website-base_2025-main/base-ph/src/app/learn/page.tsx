@@ -2,14 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FileText,
-  Calendar,
-  ChevronRight,
-  Facebook,
-  Menu,
-  X,
-} from "lucide-react";
+import { FileText, Calendar, ChevronRight, Facebook } from "lucide-react";
 
 export default function LearnPage() {
   return (
