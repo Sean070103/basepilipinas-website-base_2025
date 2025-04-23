@@ -1,21 +1,23 @@
-import React from 'react';
+import React from "react";
 
 export default function TestingGuide() {
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4">
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Testing Guide</h1>
       <p className="text-gray-300 mb-8">
-        A comprehensive guide to testing your OnchainKit applications, covering unit tests, integration tests, 
-        smart contract tests, and end-to-end testing scenarios.
+        A comprehensive guide to testing your OnchainKit applications, covering
+        unit tests, integration tests, smart contract tests, and end-to-end
+        testing scenarios.
       </p>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Unit Testing Components</h2>
         <p className="text-gray-300 mb-4">
-          Learn how to test individual components and hooks using React Testing Library and Jest.
+          Learn how to test individual components and hooks using React Testing
+          Library and Jest.
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
-          <pre className="text-sm">
+          <pre className="text-sm overflow-x-scroll">
             <code>{`import { render, screen, fireEvent } from '@testing-library/react'
 import { useWallet } from '@onchainkit/hooks'
 import { WalletButton } from './WalletButton'
@@ -50,10 +52,11 @@ describe('WalletButton', () => {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Integration Testing</h2>
         <p className="text-gray-300 mb-4">
-          Test complete user flows and component interactions using Playwright or Cypress.
+          Test complete user flows and component interactions using Playwright
+          or Cypress.
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
-          <pre className="text-sm">
+          <pre className="text-sm overflow-x-scroll">
             <code>{`import { test, expect } from '@playwright/test'
 
 test('complete payment flow', async ({ page }) => {
@@ -79,10 +82,11 @@ test('complete payment flow', async ({ page }) => {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Smart Contract Testing</h2>
         <p className="text-gray-300 mb-4">
-          Write comprehensive tests for your smart contracts using Hardhat and Chai.
+          Write comprehensive tests for your smart contracts using Hardhat and
+          Chai.
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
-          <pre className="text-sm">
+          <pre className="text-sm overflow-x-scrollw">
             <code>{`import { expect } from 'chai'
 import { ethers } from 'hardhat'
 
@@ -123,7 +127,9 @@ describe('PaymentProcessor', function () {
             <h3 className="text-xl font-medium mb-3">Test Organization</h3>
             <ul className="list-disc list-inside space-y-2 text-gray-300">
               <li>Group tests logically by feature or component</li>
-              <li>Use descriptive test names that explain the expected behavior</li>
+              <li>
+                Use descriptive test names that explain the expected behavior
+              </li>
               <li>Follow the Arrange-Act-Assert pattern</li>
               <li>Keep test files close to the components they test</li>
             </ul>
@@ -140,7 +146,9 @@ describe('PaymentProcessor', function () {
           </div>
 
           <div className="bg-gray-800 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Security Considerations</h3>
+            <h3 className="text-xl font-medium mb-3">
+              Security Considerations
+            </h3>
             <ul className="list-disc list-inside space-y-2 text-gray-300">
               <li>Test access control and permissions</li>
               <li>Verify input validation and sanitization</li>

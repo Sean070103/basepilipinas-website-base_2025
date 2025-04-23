@@ -2,7 +2,7 @@
 
 export default function FrontendIntegrationPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-sm:max-w-[330px]">
       <div>
         <h1 className="text-4xl font-bold mb-4">Frontend Integration</h1>
         <p className="text-lg text-white/70 mb-8">
@@ -30,7 +30,7 @@ export default function FrontendIntegrationPage() {
             Implementing Connect Wallet
           </h3>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>
                 {`import { useConnect, useAccount, useDisconnect } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
@@ -65,7 +65,7 @@ export function ConnectWallet() {
           <div className="bg-white/5 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Contract Configuration</h3>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`import { useContractRead, useContractWrite } from 'wagmi'
 import { SimpleStorageABI } from './abi'
@@ -108,7 +108,7 @@ export function SimpleStorage() {
             Transaction Error Handling
           </h3>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>
                 {`const { write: setValue, isError, error } = useContractWrite({
   address: CONTRACT_ADDRESS,
@@ -132,7 +132,7 @@ export function SimpleStorage() {
         <div className="bg-white/5 rounded-lg p-6">
           <h3 className="text-xl font-medium mb-3">Subscribing to Events</h3>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>
                 {`import { useContractEvent } from 'wagmi'
 

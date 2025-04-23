@@ -1,6 +1,6 @@
 export default function WalletIntegrationPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Coinbase Wallet Integration</h1>
 
       <p className="text-lg text-white/70 mb-8">
@@ -29,7 +29,7 @@ export default function WalletIntegrationPage() {
                 Configure the Wallet Provider in your app:
               </p>
               <div className="mt-4 bg-black/30 rounded p-4">
-                <pre className="text-sm">
+                <pre className="text-sm overflow-x-scroll">
                   <code>
                     {`{/* Initialize wallet */}
 import { WalletProvider } from '@minikit/wallet';
@@ -115,7 +115,7 @@ const wallet = new CoinbaseWallet({
               </li>
             </ul>
             <div className="mt-6 bg-black/30 rounded p-4">
-              <code className="text-sm">
+              <code className="text-sm overflow-x-scroll">
                 import {"{ useWallet }"} from &apos;@minikit/wallet&apos;;
                 <br />
                 <br />

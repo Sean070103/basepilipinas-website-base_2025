@@ -130,7 +130,7 @@ const userOp = await paymaster.createTransaction({
               Implement custom fee models with your paymaster:
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <code className="text-sm">
+              <code className="text-sm overflow-x-scroll">
                 function calculateFee(UserOperation calldata userOp) internal
                 view returns (uint256) {"{"}
                 <br />

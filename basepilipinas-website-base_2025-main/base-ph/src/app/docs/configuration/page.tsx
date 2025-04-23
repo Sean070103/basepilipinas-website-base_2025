@@ -4,9 +4,11 @@ import CodeBlock from "@/components/CodeBlock";
 
 export default function ConfigurationPage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 max-sm:max-w-[330px]">
       <section>
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6">Installation Steps</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+          Installation Steps
+        </h1>
       </section>
 
       <section className="space-y-8">
@@ -43,7 +45,7 @@ export default function ConfigurationPage() {
             <span className="text-white/70 mr-3">4.</span>
             Configure Your Project
           </h2>
-          <CodeBlock 
+          <CodeBlock
             code={`import { MiniKit } from '@minikit/core';
 
 const minikit = new MiniKit({
@@ -54,7 +56,7 @@ const minikit = new MiniKit({
     primary: '#0066FF',
     background: '#000000'
   }
-});`} 
+});`}
           />
         </div>
       </section>
@@ -74,4 +76,4 @@ const minikit = new MiniKit({
       </section>
     </div>
   );
-} 
+}
