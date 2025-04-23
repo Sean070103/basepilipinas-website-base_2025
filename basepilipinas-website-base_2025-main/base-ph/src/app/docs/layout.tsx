@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import CodeBlock from "@/components/CodeBlock";
 
 type SectionName =
   | "quickstart"

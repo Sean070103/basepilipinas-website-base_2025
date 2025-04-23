@@ -9,7 +9,7 @@ interface CodeBlockProps {
   showCopy?: boolean;
 }
 
-export default function CodeBlock({ code, language = "bash", showCopy = true }: CodeBlockProps) {
+export default function CodeBlock({ code, showCopy = true }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {
@@ -41,11 +41,14 @@ export default function CodeBlock({ code, language = "bash", showCopy = true }: 
       )}
       <div className="bg-[#0A192F] rounded-lg p-3 sm:p-4">
         <div className="overflow-x-auto scrollbar-thin scrollbar-track-[#0A192F] scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20">
-          <pre className="text-[11px] xs:text-xs sm:text-sm font-mono text-white/90 whitespace-pre" style={{ WebkitOverflowScrolling: 'touch' }}>
+          <pre
+            className="text-[11px] xs:text-xs sm:text-sm font-mono text-white/90 whitespace-pre"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
             <code className="inline-block min-w-full">{code}</code>
           </pre>
         </div>
       </div>
     </div>
   );
-} 
+}
