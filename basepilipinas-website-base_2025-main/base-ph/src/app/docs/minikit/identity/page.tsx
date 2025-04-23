@@ -108,11 +108,13 @@ function ActivityFeed() {
 }`;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-sm:max-w-[330px]">
       <div>
         <h1 className="text-4xl font-bold mb-4">Identity & Social Features</h1>
         <p className="text-lg text-white/70 mb-8">
-          Add powerful identity and social features to your Base application using MiniKit. Implement user profiles, social connections, verifications, and activity feeds.
+          Add powerful identity and social features to your Base application
+          using MiniKit. Implement user profiles, social connections,
+          verifications, and activity feeds.
         </p>
       </div>
 
@@ -124,7 +126,7 @@ function ActivityFeed() {
             Implement user profiles with customizable fields and avatar support:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{profileCode}</code>
             </pre>
           </div>
@@ -139,7 +141,7 @@ function ActivityFeed() {
             Add follow/unfollow functionality and manage social connections:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{socialGraphCode}</code>
             </pre>
           </div>
@@ -154,7 +156,7 @@ function ActivityFeed() {
             Implement account verification and display verification badges:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{verificationCode}</code>
             </pre>
           </div>
@@ -169,7 +171,7 @@ function ActivityFeed() {
             Display user activities and social interactions:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{activityFeedCode}</code>
             </pre>
           </div>
@@ -184,15 +186,21 @@ function ActivityFeed() {
             <ul className="space-y-2">
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Implement proper data encryption</span>
+                <span className="text-white/70">
+                  Implement proper data encryption
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Use secure authentication methods</span>
+                <span className="text-white/70">
+                  Use secure authentication methods
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Follow GDPR compliance guidelines</span>
+                <span className="text-white/70">
+                  Follow GDPR compliance guidelines
+                </span>
               </li>
             </ul>
           </div>
@@ -201,15 +209,21 @@ function ActivityFeed() {
             <ul className="space-y-2">
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Implement proper caching strategies</span>
+                <span className="text-white/70">
+                  Implement proper caching strategies
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Use pagination for large datasets</span>
+                <span className="text-white/70">
+                  Use pagination for large datasets
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Optimize image loading and storage</span>
+                <span className="text-white/70">
+                  Optimize image loading and storage
+                </span>
               </li>
             </ul>
           </div>
@@ -217,4 +231,4 @@ function ActivityFeed() {
       </section>
     </div>
   );
-} 
+}

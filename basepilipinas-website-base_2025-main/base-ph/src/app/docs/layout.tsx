@@ -43,7 +43,7 @@ export default function DocsLayout({
   };
 
   return (
-    <div className="min-h-screen bg-transparent flex">
+    <div className="  bg-transparent flex w-full">
       {/* Toggle Button */}
       <button
         onClick={toggleSidebar}
@@ -288,7 +288,7 @@ export default function DocsLayout({
           isOpen ? "lg:ml-[280px]" : "ml-0"
         } min-h-screen pt-16`}
       >
-        <div className="max-w-4xl mx-auto py-12 px-4 lg:px-8">{children}</div>
+        <div className="w-full mx-auto py-12">{children}</div>
       </main>
     </div>
   );

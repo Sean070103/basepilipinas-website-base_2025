@@ -1,6 +1,6 @@
 export default function PaymasterPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Paymaster</h1>
 
       <p className="text-lg text-white/70 mb-8">
@@ -69,7 +69,7 @@ export default function PaymasterPage() {
               Implement a basic paymaster in your smart contract:
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <code className="text-sm">
+              <code className="text-sm overflow-x-scroll">
                 {`// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
@@ -101,7 +101,7 @@ contract MyPaymaster is BasePaymaster {
               into your dApp.
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`import { PaymasterProvider } from '@base/paymaster';
 

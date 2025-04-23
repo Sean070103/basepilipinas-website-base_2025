@@ -1,6 +1,6 @@
 export default function VerificationsPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Verifications</h1>
 
       <p className="text-lg text-white/70 mb-8">
@@ -73,7 +73,7 @@ export default function VerificationsPage() {
               Add transaction verification to your smart contracts:
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
@@ -105,7 +105,7 @@ contract MyContract is TransactionVerifier {
               Implement identity verification in your dApp:
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`import { IdentityVerifier } from '@base/verification';
 
@@ -135,7 +135,7 @@ const isVerified = await verifier.verifyIdentity({
               Verify smart contract integrity:
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`import { ContractVerifier } from '@base/verification';
 

@@ -23,7 +23,10 @@ export default function Navbar() {
       <div className="w-full sticky top-0 right-0 py-4 flex justify-center items-center z-50">
         <div className="sm:max-w-none flex flex-col sm:flex-row self-center text-center items-center justify-between gap-3 sm:gap-8 px-6 sm:px-8 py-3 sm:py-4 border border-gray-500/30 rounded-2xl bg-black/60 backdrop-blur-xl text-white shadow-lg shadow-black/5">
           <div className="flex w-[100%] justify-center items-center gap-6 sm:gap-8 text-sm sm:text-[15px] font-medium">
-            <Link href="/#hero" className="flex items-center justify-center group">
+            <Link
+              href="/#hero"
+              className="flex items-center justify-center group"
+            >
               <Image
                 src="/logo/Base_Symbol_White.svg"
                 alt="Logo"
@@ -32,24 +35,36 @@ export default function Navbar() {
                 className="object-contain transition-all duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
               />
             </Link>
-            <Link href="/#join-us" className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">
+            <Link
+              href="/#join-us"
+              className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
+            >
               Join
             </Link>
-            <Link href="/#events" className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">
+            <Link
+              href="/#events"
+              className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
+            >
               Events
             </Link>
-            <Link href="/hire" className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">
+            <Link
+              href="/hire"
+              className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
+            >
               Hire
             </Link>
-            <Link href="/#about" className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">
+            <Link
+              href="/#about"
+              className="relative hover:text-white text-gray-300 transition-colors duration-200 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
+            >
               About
             </Link>
             <button
               onClick={toggleSocials}
               className={`relative hover:text-white text-gray-300 transition-all duration-200 ${
-                socialsOpen 
-                ? "bg-white/10 px-4 py-1.5 rounded-lg" 
-                : "after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
+                socialsOpen
+                  ? "bg-white/10 px-4 py-1.5 rounded-lg"
+                  : "after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white after:bottom-0 after:left-0 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200"
               }`}
             >
               Socials
@@ -123,7 +138,7 @@ export default function Navbar() {
                   <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#F58529]/10 via-[#DD2A7B]/10 to-[#515BD4]/10 flex items-center justify-center">
                     <div className="bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#515BD4] rounded-full p-1.5">
                       <FaInstagram className="h-6 w-6 text-white" />
-                </div>
+                    </div>
                   </div>
                   <span className="text-white text-sm">Instagram</span>
                 </a>

@@ -109,7 +109,7 @@ function SubscriptionForm() {
 }`;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-sm:max-w-[330px]">
       <div>
         <h1 className="text-4xl font-bold mb-4">Accept Crypto Payments</h1>
         <p className="text-lg text-white/70 mb-8">
@@ -128,7 +128,7 @@ function SubscriptionForm() {
             Implement a simple payment button that accepts ETH or other tokens:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{paymentIntegrationCode}</code>
             </pre>
           </div>
@@ -155,7 +155,7 @@ function SubscriptionForm() {
             Handle payment notifications and update your backend:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{webhookHandlerCode}</code>
             </pre>
           </div>
@@ -182,7 +182,7 @@ function SubscriptionForm() {
             Allow users to pay with their preferred token:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{multiTokenCode}</code>
             </pre>
           </div>
@@ -207,7 +207,7 @@ function SubscriptionForm() {
             Implement subscription-based payments:
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>{subscriptionCode}</code>
             </pre>
           </div>

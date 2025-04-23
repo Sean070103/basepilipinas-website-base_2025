@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
 export default function FrontendPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Frontend Integration</h1>
-      
+
       <p className="text-lg text-white/70 mb-8">
-        Learn how to build a frontend interface for your smart contract using React and ethers.js. 
-        This guide will show you how to connect to wallets and interact with your deployed contract.
+        Learn how to build a frontend interface for your smart contract using
+        React and ethers.js. This guide will show you how to connect to wallets
+        and interact with your deployed contract.
       </p>
 
       <div className="space-y-12">
@@ -15,12 +16,11 @@ export default function FrontendPage() {
           <h2 className="text-2xl font-semibold mb-4">Setup</h2>
           <div className="bg-white/5 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Install Dependencies</h3>
-            <p className="text-white/70 mb-4">
-              Install the required packages:
-            </p>
+            <p className="text-white/70 mb-4">Install the required packages:</p>
             <div className="mt-4 bg-black/30 rounded p-4">
               <code className="text-sm">
-                npm install ethers @web3-react/core @web3-react/injected-connector
+                npm install ethers @web3-react/core
+                @web3-react/injected-connector
               </code>
             </div>
           </div>
@@ -88,7 +88,9 @@ export function useContract() {
             </div>
 
             <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Interact with Contract</h3>
+              <h3 className="text-xl font-medium mb-3">
+                Interact with Contract
+              </h3>
               <p className="text-white/70 mb-4">
                 Create a component to interact with your contract:
               </p>
@@ -127,4 +129,4 @@ export function useContract() {
       </div>
     </div>
   );
-} 
+}

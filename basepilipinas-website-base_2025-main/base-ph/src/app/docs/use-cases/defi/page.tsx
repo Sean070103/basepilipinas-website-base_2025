@@ -2,7 +2,7 @@
 
 export default function DeFiIntegrationPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-sm:max-w-[330px]">
       <div>
         <h1 className="text-4xl font-bold mb-4">DeFi Integration</h1>
         <p className="text-lg text-white/70 mb-8">
@@ -20,7 +20,7 @@ export default function DeFiIntegrationPage() {
           </p>
 
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>
                 {`import { useContractWrite, useContractRead } from 'wagmi'
 import { parseUnits, formatUnits } from 'ethers/lib/utils'
@@ -65,7 +65,7 @@ export function TokenSwap() {
             </p>
 
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`import { useLendingPool } from './hooks/lending'
 
@@ -113,7 +113,7 @@ export function LendingInterface() {
             providing liquidity.
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>
                 {`import { useStaking } from './hooks/staking'
 

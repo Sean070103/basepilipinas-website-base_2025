@@ -1,6 +1,6 @@
 export default function DevelopmentPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Streamlined Development</h1>
 
       <p className="text-lg text-white/70 mb-8">
@@ -86,7 +86,7 @@ export default function DevelopmentPage() {
               Configure your mini app in minikit.config.js:
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`import { MiniKit } from '@minikit/core';
 

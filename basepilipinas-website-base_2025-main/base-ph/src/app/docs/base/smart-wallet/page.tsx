@@ -1,6 +1,6 @@
 export default function SmartWalletPage() {
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="prose prose-invert max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Smart Wallet</h1>
 
       <p className="text-lg text-white/70 mb-8">
@@ -68,7 +68,7 @@ export default function SmartWalletPage() {
               Integrate smart wallet functionality in your dApp:
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`import { SmartWallet } from '@base/smart-wallet';
 
@@ -99,7 +99,7 @@ const tx = await wallet.execute({
               Implement social recovery for enhanced security:
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`{/* Set up guardians for social recovery */}
 await wallet.setGuardians({

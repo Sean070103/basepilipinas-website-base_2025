@@ -1,8 +1,10 @@
 export default function QuickstartPage() {
   return (
-    <div className="prose prose-invert max-w-none bg-transparent">
-      <h1 className="text-4xl font-bold mb-6">Quickstart Overview</h1>
-      <p className="text-xl text-white/70 mb-8">
+    <div className="prose prose-invert max-w-screen-lg bg-transparent mx-auto overflow-x-hidden px-4">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-6">
+        Quickstart Overview
+      </h1>
+      <p className="text-lg sm:text-xl text-white/70 mb-8">
         Welcome to the Base Quickstart Guide! This walkthrough will take you
         step-by-step through building a simple onchain app, from setup to
         deployment. It&apos;s designed for both beginners and experienced
@@ -11,7 +13,9 @@ export default function QuickstartPage() {
 
       <div className="mt-8 space-y-8">
         <section>
-          <h2 className="text-3xl font-semibold mb-4">What You&apos;ll Build</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-4">
+            What You&apos;ll Build
+          </h2>
           <p className="text-lg text-white/70 mb-4">
             By the end of this guide, you&apos;ll have:
           </p>
@@ -19,18 +23,24 @@ export default function QuickstartPage() {
           <ul className="space-y-2 text-white/70">
             <li className="flex items-center space-x-2">
               <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-              <span>Set up your development environment</span>
+              <span className="text-md sm:text-xl">
+                Set up your development environment
+              </span>
             </li>
             <li className="flex items-center space-x-2">
               <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-              <span>Deployed a smart contract on Base</span>
+              <span className="text-md sm:text-xl">
+                Deployed a smart contract on Base
+              </span>
             </li>
             <li className="flex items-center space-x-2">
               <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-              <span>Built a frontend that interacts with your contract</span>
+              <span className="text-md sm:text-xl">
+                Built a frontend that interacts with your contract
+              </span>
             </li>
           </ul>
-          <p className="mt-4 text-lg text-white/70">
+          <p className="mt-4 text-md sm:text-xl text-white/70">
             The project is a basic onchain tally app where users can increment a
             total stored on the blockchain by clicking a button.
           </p>
@@ -105,7 +115,8 @@ export default function QuickstartPage() {
                   Streamlined Development:
                 </span>
                 <span className="ml-1">
-                  Optimized workflow with automated tooling and integrated development environment for rapid iterations.
+                  Optimized workflow with automated tooling and integrated
+                  development environment for rapid iterations.
                 </span>
               </div>
             </li>

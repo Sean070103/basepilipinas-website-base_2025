@@ -2,7 +2,7 @@
 
 export default function AIAgentsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-sm:max-w-[330px]">
       <div>
         <h1 className="text-4xl font-bold mb-4">Launch AI Agents</h1>
         <p className="text-lg text-white/70 mb-8">
@@ -20,7 +20,7 @@ export default function AIAgentsPage() {
             Set up a basic AI agent that can interact with the blockchain.
           </p>
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>
                 {`import { createAgent } from '@base/agents'
 import { ethers } from 'ethers'
@@ -67,7 +67,7 @@ async function setupAgent() {
               contracts.
             </p>
             <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm">
+              <pre className="text-sm overflow-x-scroll">
                 <code>
                   {`import { AgentLogic, useMarketData } from '@base/agents'
 
@@ -116,7 +116,7 @@ export class TradingAgent extends AgentLogic {
           </p>
 
           <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm">
+            <pre className="text-sm overflow-x-scroll">
               <code>
                 {`import { useAgentMonitoring } from '@base/agents'
 
