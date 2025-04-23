@@ -17,46 +17,6 @@ export default function LearnPage() {
 
   return (
     <div className="min-h-screen bg-transparent">
-      {/* Mobile Navigation */}
-      <div className="lg:hidden fixed top-0 right-0 p-4 z-50">
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
-        >
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-black/90 z-40 lg:hidden">
-          <div className="flex flex-col items-center justify-center h-full space-y-8">
-            <Link
-              href="/docs"
-              className="text-xl font-medium hover:text-blue-400 transition-colors"
-            >
-              Documentation
-            </Link>
-            <Link
-              href="/events"
-              className="text-xl font-medium hover:text-blue-400 transition-colors"
-            >
-              Events
-            </Link>
-            <Link
-              href="/learn"
-              className="text-xl font-medium hover:text-blue-400 transition-colors"
-            >
-              Learn
-            </Link>
-          </div>
-        </div>
-      )}
-
       <main className="w-full overflow-x-hidden">
         <div className="max-w-[1536px] mx-auto py-4 sm:py-6 md:py-8 px-4 sm:px-6 xl:px-8">
           {/* Welcome Section */}

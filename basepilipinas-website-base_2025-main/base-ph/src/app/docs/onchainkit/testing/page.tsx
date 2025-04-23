@@ -86,7 +86,7 @@ test('complete payment flow', async ({ page }) => {
           Chai.
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
-          <pre className="text-sm overflow-x-scrollw">
+          <pre className="text-sm overflow-x-scroll">
             <code>{`import { expect } from 'chai'
 import { ethers } from 'hardhat'
 
