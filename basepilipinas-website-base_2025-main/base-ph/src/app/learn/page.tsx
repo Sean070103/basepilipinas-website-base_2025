@@ -10,11 +10,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { useState } from "react";
 
 export default function LearnPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-transparent">
       <main className="w-full overflow-x-hidden">
