@@ -70,7 +70,7 @@ function StakeTokens() {
       <h1 className="text-4xl font-bold mb-6">DeFi Integration</h1>
 
       <p className="text-lg text-white/70 mb-8">
-        Learn how to integrate DeFi functionality into your dApp using Base's
+        Learn how to integrate DeFi functionality into your dApp using Base&apos;s
         DeFi SDK. This guide covers token swaps, liquidity provision, and
         staking.
       </p>

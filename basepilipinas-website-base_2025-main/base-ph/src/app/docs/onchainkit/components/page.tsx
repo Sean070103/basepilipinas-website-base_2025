@@ -82,7 +82,7 @@ export function Balance() {
       <h1 className="text-4xl font-bold mb-6">Ready-to-Use Components</h1>
       
       <p className="text-lg text-white/70 mb-8">
-        Here's how to use OnchainKit's ready-to-use components.
+        Here&apos;s how to use OnchainKit&apos;s ready-to-use components.
       </p>
 
       <div className="space-y-12">
