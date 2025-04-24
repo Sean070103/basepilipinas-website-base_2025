@@ -89,7 +89,7 @@ async function improveAgent() {
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Agent Training</h2>
         <p className="text-gray-300 mb-4">
-          Enhance your agent's performance through continuous learning and optimization.
+          Enhance your agent&apos;s performance through continuous learning and optimization.
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={trainingCode} />
