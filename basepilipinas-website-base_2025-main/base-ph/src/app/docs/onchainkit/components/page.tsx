@@ -1,78 +1,87 @@
 'use client';
 
-import React from "react";
+import React, { useRef } from "react";
 import CodeBlock from "@/components/CodeBlock";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ComponentsPage() {
-  const connectButtonCode = `import { ConnectButton } from '@onchainkit/ui';
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-export function MyApp() {
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const connectButtonCode = `import { ConnectButton } from '@onchainkit/components';
+
+function Header() {
   return (
-    <ConnectButton 
+    <ConnectButton
       theme="dark"
-      label="Connect Wallet"
-      onConnect={(provider) => {
-        console.log('Connected:', provider);
-      }}
+      showBalance
     />
   );
 }`;
 
-  const accountInfoCode = `import { AccountInfo } from '@onchainkit/ui';
+  const accountInfoCode = `import { AccountInfo } from '@onchainkit/components';
 
-export function Header() {
+function Profile() {
   return (
     <AccountInfo
       showBalance
       showNetwork
-      showAvatar
-      avatarSize={32}
+      truncateAddress
     />
   );
 }`;
 
-  const transactionButtonCode = `import { TransactionButton } from '@onchainkit/ui';
+  const transactionButtonCode = `import { TransactionButton } from '@onchainkit/components';
 
-export function SendTokens() {
+function SendButton() {
   return (
     <TransactionButton
-      onClick={async () => {
-        const tx = await contract.transfer(to, amount);
-        await tx.wait();
-      }}
-      loadingText="Sending..."
-      successText="Sent!"
-      errorText="Failed to send"
+      to="0x..."
+      value="0.1"
+      onSuccess={(tx) => console.log(tx)}
+      onError={(error) => console.error(error)}
     >
-      Send Tokens
+      Send ETH
     </TransactionButton>
   );
 }`;
 
-  const transactionStatusCode = `import { TransactionStatus } from '@onchainkit/ui';
+  const transactionStatusCode = `import { TransactionStatus } from '@onchainkit/components';
 
-export function TxStatus({ hash }) {
+function Status() {
   return (
     <TransactionStatus
-      hash={hash}
-      network="base"
-      showExplorerLink
-      onConfirmed={() => {
-        console.log('Transaction confirmed!');
-      }}
+      status={txStatus}
+      onRetry={handleRetry}
     />
   );
 }`;
 
-  const tokenBalanceCode = `import { TokenBalance } from '@onchainkit/ui';
+  const tokenBalanceCode = `import { TokenBalance } from '@onchainkit/components';
 
-export function Balance() {
+function Balance() {
   return (
     <TokenBalance
-      address="0x..."
-      symbol="BASE"
-      decimals={18}
-      updateInterval={5000}
+      token="ETH"
+      showSymbol
+      showUSD
     />
   );
 }`;
@@ -80,76 +89,101 @@ export function Balance() {
   return (
     <div className="prose prose-invert max-w-none">
       <h1 className="text-4xl font-bold mb-6">Ready-to-Use Components</h1>
-      
+
       <p className="text-lg text-white/70 mb-8">
-        Here&apos;s how to use OnchainKit&apos;s ready-to-use components.
+        OnchainKit provides a collection of pre-built components to accelerate your development. These components are designed to work seamlessly with Base and follow best practices for Web3 applications.
       </p>
 
-      <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Wallet Components</h2>
-          <div className="space-y-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Connect Button</h3>
-              <p className="text-white/70 mb-4">
-                A customizable wallet connection button:
-              </p>
-              <div className="mt-4">
-                <CodeBlock code={connectButtonCode} />
-              </div>
-            </div>
+      <div className="relative">
+        <button
+          onClick={scrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
 
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Account Display</h3>
-              <p className="text-white/70 mb-4">
-                Display wallet information and balance:
-              </p>
-              <div className="mt-4">
-                <CodeBlock code={accountInfoCode} />
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto space-x-8 pb-4 scrollbar-hide"
+        >
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Wallet Components</h2>
+              <div className="space-y-6">
+                <div className="bg-white/5 rounded-lg p-6">
+                  <h3 className="text-xl font-medium mb-3">Connect Button</h3>
+                  <p className="text-white/70 mb-4">
+                    A pre-built wallet connection button:
+                  </p>
+                  <div className="mt-4">
+                    <CodeBlock code={connectButtonCode} />
+                  </div>
+                </div>
+
+                <div className="bg-white/5 rounded-lg p-6">
+                  <h3 className="text-xl font-medium mb-3">Account Info</h3>
+                  <p className="text-white/70 mb-4">
+                    Display account information:
+                  </p>
+                  <div className="mt-4">
+                    <CodeBlock code={accountInfoCode} />
+                  </div>
+                </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Transaction Components</h2>
-          <div className="space-y-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Transaction Button</h3>
-              <p className="text-white/70 mb-4">
-                Handle transactions with loading and confirmation states:
-              </p>
-              <div className="mt-4">
-                <CodeBlock code={transactionButtonCode} />
-              </div>
-            </div>
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Transaction Components</h2>
+              <div className="space-y-6">
+                <div className="bg-white/5 rounded-lg p-6">
+                  <h3 className="text-xl font-medium mb-3">Transaction Button</h3>
+                  <p className="text-white/70 mb-4">
+                    A button for sending transactions:
+                  </p>
+                  <div className="mt-4">
+                    <CodeBlock code={transactionButtonCode} />
+                  </div>
+                </div>
 
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Transaction Status</h3>
-              <p className="text-white/70 mb-4">
-                Display transaction status and progress:
-              </p>
-              <div className="mt-4">
-                <CodeBlock code={transactionStatusCode} />
+                <div className="bg-white/5 rounded-lg p-6">
+                  <h3 className="text-xl font-medium mb-3">Transaction Status</h3>
+                  <p className="text-white/70 mb-4">
+                    Display transaction status:
+                  </p>
+                  <div className="mt-4">
+                    <CodeBlock code={transactionStatusCode} />
+                  </div>
+                </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Data Display</h2>
-          <div className="space-y-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Token Balance</h3>
-              <p className="text-white/70 mb-4">
-                Display token balances with automatic updates:
-              </p>
-              <div className="mt-4">
-                <CodeBlock code={tokenBalanceCode} />
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Data Display</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Token Balance</h3>
+                <p className="text-white/70 mb-4">
+                  Display token balances:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={tokenBalanceCode} />
+                </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
+        </div>
+
+        <button
+          onClick={scrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
     </div>
   );

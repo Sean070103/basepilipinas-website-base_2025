@@ -1,9 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import CodeBlock from "@/components/CodeBlock";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function AcceptPaymentsPage() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const paymentButtonCode = `import { PaymentButton } from '@base/payments';
 
 function Checkout() {
@@ -69,45 +90,72 @@ async function generateInvoice(order) {
         covers one-time payments, subscriptions, and invoice generation.
       </p>
 
-      <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">One-Time Payments</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Payment Button</h3>
-            <p className="text-white/70 mb-4">
-              Add a payment button to your checkout flow:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={paymentButtonCode} />
-            </div>
-          </div>
-        </section>
+      <div className="relative">
+        <button
+          onClick={scrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Subscriptions</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Subscription Manager</h3>
-            <p className="text-white/70 mb-4">
-              Implement recurring payments:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={subscriptionCode} />
-            </div>
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto space-x-8 pb-4 scrollbar-hide"
+        >
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">One-Time Payments</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Payment Button</h3>
+                <p className="text-white/70 mb-4">
+                  Add a payment button to your checkout flow:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={paymentButtonCode} />
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Invoices</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Invoice Generation</h3>
-            <p className="text-white/70 mb-4">
-              Generate and manage invoices:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={invoiceCode} />
-            </div>
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Subscriptions</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Subscription Manager</h3>
+                <p className="text-white/70 mb-4">
+                  Implement recurring payments:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={subscriptionCode} />
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Invoices</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Invoice Generation</h3>
+                <p className="text-white/70 mb-4">
+                  Generate and manage invoices:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={invoiceCode} />
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <button
+          onClick={scrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
     </div>
   );

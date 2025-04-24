@@ -1,9 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import CodeBlock from "@/components/CodeBlock";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function VerificationsPage() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const verifyContractCode = `import { verify } from '@base/verify';
 
 async function verifyContract() {
@@ -49,72 +70,72 @@ async function verifyProxyContract() {
         contract verification.
       </p>
 
-      <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Standard Verification</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Verify Contract</h3>
-            <p className="text-white/70 mb-4">
-              Verify a standard smart contract:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={verifyContractCode} />
-            </div>
-          </div>
-        </section>
+      <div className="relative">
+        <button
+          onClick={scrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Source Code Verification</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Verify Source Code</h3>
-            <p className="text-white/70 mb-4">
-              Verify a contract with its source code:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={verifySourceCode} />
-            </div>
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto space-x-8 pb-4 scrollbar-hide"
+        >
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Standard Verification</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Verify Contract</h3>
+                <p className="text-white/70 mb-4">
+                  Verify a standard smart contract:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={verifyContractCode} />
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Proxy Verification</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Verify Proxy Contract</h3>
-            <p className="text-white/70 mb-4">
-              Verify a proxy contract and its implementation:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={verifyProxyCode} />
-            </div>
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Source Code Verification</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Verify Source Code</h3>
+                <p className="text-white/70 mb-4">
+                  Verify a contract with its source code:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={verifySourceCode} />
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Verification Guidelines</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Always verify contracts after deployment
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Include all constructor arguments
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Verify proxy contracts and their implementations
-                </span>
-              </li>
-            </ul>
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Proxy Verification</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Verify Proxy Contract</h3>
+                <p className="text-white/70 mb-4">
+                  Verify a proxy contract and its implementation:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={verifyProxyCode} />
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
+
+        <button
+          onClick={scrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
     </div>
   );

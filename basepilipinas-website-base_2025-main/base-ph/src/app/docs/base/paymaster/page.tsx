@@ -1,9 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import CodeBlock from "@/components/CodeBlock";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function PaymasterPage() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const paymasterCode = `// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
@@ -51,124 +72,73 @@ const userOp = await paymaster.createTransaction({
         functionality to enhance user experience.
       </p>
 
-      <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-          <div className="space-y-4">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">What is a Paymaster?</h3>
-              <p className="text-white/70">
-                A Paymaster is a smart contract that can sponsor gas fees for
-                users, enabling:
-              </p>
-              <ul className="mt-3 space-y-2">
-                <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-                  <span>Gasless transactions for better UX</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-                  <span>Custom fee models (e.g., pay in tokens)</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-                  <span>Conditional sponsorship based on rules</span>
-                </li>
-              </ul>
-            </div>
+      <div className="relative">
+        <button
+          onClick={scrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
 
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Types of Paymasters</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start space-x-3">
-                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                  <span className="text-white/70">
-                    Verifying Paymaster - Validates and approves transactions
-                  </span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                  <span className="text-white/70">
-                    Token Paymaster - Accepts token payments for gas
-                  </span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                  <span className="text-white/70">
-                    Sponsored Paymaster - Covers all gas fees
-                  </span>
-                </li>
-              </ul>
-            </div>
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto space-x-8 pb-4 scrollbar-hide"
+        >
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Implementation</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Basic Paymaster Setup</h3>
+                <p className="text-white/70 mb-4">
+                  Implement a basic paymaster in your smart contract:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={paymasterCode} />
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Implementation</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Basic Paymaster Setup</h3>
-            <p className="text-white/70 mb-4">
-              Implement a basic paymaster in your smart contract:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={paymasterCode} />
-            </div>
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Integration</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Using Paymaster in dApp</h3>
+                <p className="text-white/70 mb-4">
+                  Here&apos;s how to integrate Base&apos;s Paymaster functionality
+                  into your dApp.
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={integrationCode} />
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Integration</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">
-              Using Paymaster in dApp
-            </h3>
-            <p className="text-white/70 mb-4">
-              Here&apos;s how to integrate Base&apos;s Paymaster functionality
-              into your dApp.
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={integrationCode} />
-            </div>
+          <div className="min-w-[300px] space-y-12">
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Advanced Features</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <h3 className="text-xl font-medium mb-3">Custom Fee Models</h3>
+                <p className="text-white/70 mb-4">
+                  Implement custom fee models with your paymaster:
+                </p>
+                <div className="mt-4">
+                  <CodeBlock code={feeModelCode} />
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+        </div>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Advanced Features</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Custom Fee Models</h3>
-            <p className="text-white/70 mb-4">
-              Implement custom fee models with your paymaster:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={feeModelCode} />
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">
-              Security Considerations
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement proper access controls
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Monitor paymaster balance</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Rate limit operations</span>
-              </li>
-            </ul>
-          </div>
-        </section>
+        <button
+          onClick={scrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import CodeBlock from "@/components/CodeBlock";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function IdentityAndSocialPage() {
+export default function LaunchAIAgentPage() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -25,59 +25,66 @@ export default function IdentityAndSocialPage() {
     }
   };
 
-  const identityCode = `import { useIdentity } from '@minikit/identity';
+  const agentCode = `import { createAgent } from '@base/ai';
 
-function IdentityVerification() {
-  const { verify, status } = useIdentity();
+const agent = await createAgent({
+  name: 'TradingBot',
+  description: 'Automated trading agent',
+  capabilities: ['market_analysis', 'trade_execution'],
+  config: {
+    riskLevel: 'medium',
+    maxTradesPerDay: 5
+  }
+});`;
 
-  return (
-    <button
-      onClick={verify}
-      disabled={status === 'verifying'}
-    >
-      {status === 'verifying' ? 'Verifying...' : 'Verify Identity'}
-    </button>
-  );
-}`;
+  const interactionCode = `import { useAgent } from '@base/ai';
 
-  const socialCode = `import { useSocialRecovery } from '@minikit/identity';
+function TradingInterface() {
+  const { agent, sendMessage, messages } = useAgent('TradingBot');
 
-function RecoverySetup() {
-  const { setupGuardians, isSettingUp } = useSocialRecovery();
-
-  return (
-    <button
-      onClick={() => setupGuardians(['0x123...', '0x456...'])}
-      disabled={isSettingUp}
-    >
-      {isSettingUp ? 'Setting up...' : 'Setup Recovery'}
-    </button>
-  );
-}`;
-
-  const reputationCode = `import { useReputation } from '@minikit/identity';
-
-function ReputationScore() {
-  const { score, history } = useReputation();
+  const handleTrade = async () => {
+    const response = await sendMessage({
+      type: 'execute_trade',
+      params: {
+        token: 'ETH',
+        amount: '0.1',
+        action: 'buy'
+      }
+    });
+    
+    console.log('Trade executed:', response);
+  };
 
   return (
     <div>
-      <p>Score: {score}</p>
-      <ul>
-        {history.map((event, i) => (
-          <li key={i}>{event}</li>
+      <button onClick={handleTrade}>Execute Trade</button>
+      <div>
+        {messages.map((msg, i) => (
+          <div key={i}>{msg.content}</div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }`;
 
+  const trainingCode = `import { trainAgent } from '@base/ai';
+
+async function improveAgent() {
+  const result = await trainAgent('TradingBot', {
+    trainingData: historicalTrades,
+    metrics: ['profitability', 'risk_management'],
+    epochs: 100
+  });
+
+  console.log('Training complete:', result);
+}`;
+
   return (
     <div className="prose prose-invert max-w-none">
-      <h1 className="text-4xl font-bold mb-6">Identity & Social Features</h1>
+      <h1 className="text-4xl font-bold mb-6">Launch AI Agent</h1>
 
       <p className="text-lg text-white/70 mb-8">
-        Enhance your dApp with identity verification, social recovery, and reputation systems.
+        Learn how to create and deploy AI agents on Base. This guide covers agent creation, interaction, and training.
       </p>
 
       <div className="relative">
@@ -95,14 +102,14 @@ function ReputationScore() {
         >
           <div className="min-w-[300px] space-y-12">
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Identity Verification</h2>
+              <h2 className="text-2xl font-semibold mb-4">Agent Creation</h2>
               <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Verify Identity</h3>
+                <h3 className="text-xl font-medium mb-3">Create an Agent</h3>
                 <p className="text-white/70 mb-4">
-                  Implement identity verification:
+                  Initialize a new AI agent:
                 </p>
                 <div className="mt-4">
-                  <CodeBlock code={identityCode} />
+                  <CodeBlock code={agentCode} />
                 </div>
               </div>
             </section>
@@ -110,14 +117,14 @@ function ReputationScore() {
 
           <div className="min-w-[300px] space-y-12">
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Social Recovery</h2>
+              <h2 className="text-2xl font-semibold mb-4">Agent Interaction</h2>
               <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Setup Recovery</h3>
+                <h3 className="text-xl font-medium mb-3">Interact with Agent</h3>
                 <p className="text-white/70 mb-4">
-                  Set up social recovery for enhanced security:
+                  Send messages and receive responses:
                 </p>
                 <div className="mt-4">
-                  <CodeBlock code={socialCode} />
+                  <CodeBlock code={interactionCode} />
                 </div>
               </div>
             </section>
@@ -125,14 +132,14 @@ function ReputationScore() {
 
           <div className="min-w-[300px] space-y-12">
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Reputation System</h2>
+              <h2 className="text-2xl font-semibold mb-4">Agent Training</h2>
               <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Reputation Score</h3>
+                <h3 className="text-xl font-medium mb-3">Train Your Agent</h3>
                 <p className="text-white/70 mb-4">
-                  Track user reputation:
+                  Improve agent performance:
                 </p>
                 <div className="mt-4">
-                  <CodeBlock code={reputationCode} />
+                  <CodeBlock code={trainingCode} />
                 </div>
               </div>
             </section>
@@ -149,4 +156,4 @@ function ReputationScore() {
       </div>
     </div>
   );
-}
+} 
