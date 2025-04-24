@@ -63,14 +63,14 @@ const minikit = new MiniKit({
 
       <section className="mt-12 p-4 rounded-xl bg-white/5">
         <p className="text-sm text-white/50">
-          For more detailed configuration options, visit{" "}
+          For more detailed documentation, visit{" "}
           <a
-            href="https://docs.base.org/configuration"
+            href="https://docs.base.org/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:text-blue-300"
           >
-            docs.base.org/configuration
+            base.org
           </a>
         </p>
       </section>
