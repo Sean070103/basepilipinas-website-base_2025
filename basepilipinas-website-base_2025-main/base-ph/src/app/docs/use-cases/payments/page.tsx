@@ -1,30 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import CodeBlock from "@/components/CodeBlock";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function AcceptPaymentsPage() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const paymentButtonCode = `import { PaymentButton } from '@base/payments';
 
 function Checkout() {
@@ -82,81 +61,77 @@ async function generateInvoice(order) {
 }`;
 
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Accept Crypto Payments</h1>
-
-      <p className="text-lg text-white/70 mb-8">
-        Learn how to accept cryptocurrency payments in your dApp. This guide
-        covers one-time payments, subscriptions, and invoice generation.
+      <p className="text-gray-300 mb-8">
+        Learn how to accept cryptocurrency payments in your dApp. This guide covers
+        one-time payments, subscriptions, and invoice generation.
       </p>
 
-      <div className="relative">
-        <button
-          onClick={scrollLeft}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">One-Time Payments</h2>
+        <p className="text-gray-300 mb-4">
+          Implement secure one-time crypto payments with our PaymentButton component.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={paymentButtonCode} />
+        </div>
+      </section>
 
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto space-x-8 pb-4 scrollbar-hide"
-        >
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">One-Time Payments</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Payment Button</h3>
-                <p className="text-white/70 mb-4">
-                  Add a payment button to your checkout flow:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={paymentButtonCode} />
-                </div>
-              </div>
-            </section>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Subscriptions</h2>
+        <p className="text-gray-300 mb-4">
+          Set up recurring payments with automatic billing and management features.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={subscriptionCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Invoices</h2>
+        <p className="text-gray-300 mb-4">
+          Generate and manage professional crypto invoices for your customers.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={invoiceCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <div className="space-y-4">
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Payment Processing</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Verify transaction confirmations before fulfilling orders</li>
+              <li>Implement proper error handling for failed transactions</li>
+              <li>Use webhooks for payment notifications</li>
+              <li>Support multiple payment currencies</li>
+            </ul>
           </div>
 
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Subscriptions</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Subscription Manager</h3>
-                <p className="text-white/70 mb-4">
-                  Implement recurring payments:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={subscriptionCode} />
-                </div>
-              </div>
-            </section>
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Security Measures</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Validate payment amounts and addresses</li>
+              <li>Implement rate limiting for payment attempts</li>
+              <li>Use secure payment channels</li>
+              <li>Monitor for suspicious activity</li>
+            </ul>
           </div>
 
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Invoices</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Invoice Generation</h3>
-                <p className="text-white/70 mb-4">
-                  Generate and manage invoices:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={invoiceCode} />
-                </div>
-              </div>
-            </section>
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Customer Experience</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Provide clear payment instructions</li>
+              <li>Show real-time payment status updates</li>
+              <li>Send payment confirmation emails</li>
+              <li>Offer customer support for payment issues</li>
+            </ul>
           </div>
         </div>
-
-        <button
-          onClick={scrollRight}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
+      </section>
     </div>
   );
 }

@@ -1,30 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import CodeBlock from "@/components/CodeBlock";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function LaunchAIAgentPage() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const agentCode = `import { createAgent } from '@base/ai';
 
 const agent = await createAgent({
@@ -80,80 +59,77 @@ async function improveAgent() {
 }`;
 
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Launch AI Agent</h1>
-
-      <p className="text-lg text-white/70 mb-8">
-        Learn how to create and deploy AI agents on Base. This guide covers agent creation, interaction, and training.
+      <p className="text-gray-300 mb-8">
+        Learn how to create and deploy AI agents on Base. This guide covers agent creation, 
+        interaction, and training for automated trading and monitoring.
       </p>
 
-      <div className="relative">
-        <button
-          onClick={scrollLeft}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Agent Creation</h2>
+        <p className="text-gray-300 mb-4">
+          Set up your first AI agent with customizable capabilities and configuration.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={agentCode} />
+        </div>
+      </section>
 
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto space-x-8 pb-4 scrollbar-hide"
-        >
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Agent Creation</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Create an Agent</h3>
-                <p className="text-white/70 mb-4">
-                  Initialize a new AI agent:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={agentCode} />
-                </div>
-              </div>
-            </section>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Agent Interaction</h2>
+        <p className="text-gray-300 mb-4">
+          Implement real-time communication and trading functionality with your AI agent.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={interactionCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Agent Training</h2>
+        <p className="text-gray-300 mb-4">
+          Enhance your agent's performance through continuous learning and optimization.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={trainingCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <div className="space-y-4">
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Security Guidelines</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Always test agents thoroughly in a testnet environment</li>
+              <li>Implement proper access controls and permissions</li>
+              <li>Monitor agent activities and implement kill switches</li>
+              <li>Regular security audits and updates</li>
+            </ul>
           </div>
 
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Agent Interaction</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Interact with Agent</h3>
-                <p className="text-white/70 mb-4">
-                  Send messages and receive responses:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={interactionCode} />
-                </div>
-              </div>
-            </section>
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Performance Optimization</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Fine-tune agent parameters based on historical data</li>
+              <li>Implement efficient error handling and recovery</li>
+              <li>Optimize resource usage and response times</li>
+              <li>Regular performance monitoring and adjustments</li>
+            </ul>
           </div>
 
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Agent Training</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Train Your Agent</h3>
-                <p className="text-white/70 mb-4">
-                  Improve agent performance:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={trainingCode} />
-                </div>
-              </div>
-            </section>
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Risk Management</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Set appropriate trading limits and thresholds</li>
+              <li>Implement circuit breakers for volatile markets</li>
+              <li>Maintain detailed audit logs of all actions</li>
+              <li>Regular risk assessment and strategy updates</li>
+            </ul>
           </div>
         </div>
-
-        <button
-          onClick={scrollRight}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
+      </section>
     </div>
   );
 } 

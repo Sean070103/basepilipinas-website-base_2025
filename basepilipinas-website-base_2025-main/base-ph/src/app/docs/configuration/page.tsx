@@ -1,78 +1,125 @@
 "use client";
 
+import React from "react";
 import CodeBlock from "@/components/CodeBlock";
 
 export default function ConfigurationPage() {
-  return (
-    <div className="space-y-12 max-sm:max-w-[330px]">
-      <section>
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-          Installation Steps
-        </h1>
-      </section>
+  const hardhatConfigCode = `// hardhat.config.ts
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import * as dotenv from "dotenv";
 
-      <section className="space-y-8">
-        {/* Step 1 */}
-        <div className="relative bg-[#0A192F]/30 rounded-xl p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
-            <span className="text-white/70 mr-3">1.</span>
-            Install Base CLI
-          </h2>
-          <CodeBlock code="npm install -g @base/cli" />
-        </div>
+dotenv.config();
 
-        {/* Step 2 */}
-        <div className="relative bg-[#0A192F]/30 rounded-xl p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
-            <span className="text-white/70 mr-3">2.</span>
-            Create a New Project
-          </h2>
-          <CodeBlock code="base init my-dapp" />
-        </div>
-
-        {/* Step 3 */}
-        <div className="relative bg-[#0A192F]/30 rounded-xl p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
-            <span className="text-white/70 mr-3">3.</span>
-            Install Dependencies
-          </h2>
-          <CodeBlock code={`cd my-dapp\nnpm install`} />
-        </div>
-
-        {/* Step 4 */}
-        <div className="relative bg-[#0A192F]/30 rounded-xl p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
-            <span className="text-white/70 mr-3">4.</span>
-            Configure Your Project
-          </h2>
-          <CodeBlock
-            code={`import { MiniKit } from '@minikit/core';
-
-const minikit = new MiniKit({
-  appName: 'My Mini App',
-  description: 'A simple mini app built with MiniKit',
-  icon: '/icon.png',
-  theme: {
-    primary: '#0066FF',
-    background: '#000000'
+const config: HardhatUserConfig = {
+  solidity: "0.8.19",
+  networks: {
+    baseGoerli: {
+      url: process.env.BASE_GOERLI_RPC_URL,
+      accounts: [process.env.PRIVATE_KEY]
+    },
+    baseMainnet: {
+      url: process.env.BASE_MAINNET_RPC_URL,
+      accounts: [process.env.PRIVATE_KEY]
+    }
   }
-});`}
-          />
+};
+
+export default config;`;
+
+  const networkConfigCode = `// network.config.ts
+export const networkConfig = {
+  baseGoerli: {
+    chainId: 84531,
+    blockConfirmations: 6,
+    verifyApiKey: process.env.ETHERSCAN_API_KEY
+  },
+  baseMainnet: {
+    chainId: 8453,
+    blockConfirmations: 12,
+    verifyApiKey: process.env.ETHERSCAN_API_KEY
+  }
+};`;
+
+  const deployConfigCode = `// deploy.config.ts
+export const deployConfig = {
+  contractName: "MyContract",
+  constructorArgs: ["Arg1", "Arg2"],
+  gasLimit: 3000000,
+  waitConfirmations: 6
+};`;
+
+  return (
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
+      <h1 className="text-4xl font-bold mb-6">Configuration Guide</h1>
+      <p className="text-gray-300 mb-8">
+        Learn how to configure your Base development environment and project settings. This guide covers
+        network configuration, deployment settings, and environment variables.
+      </p>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Hardhat Configuration</h2>
+        <p className="text-gray-300 mb-4">
+          Configure Hardhat for Base network development.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={hardhatConfigCode} />
         </div>
       </section>
 
-      <section className="mt-12 p-4 rounded-xl bg-white/5">
-        <p className="text-sm text-white/50">
-          For more detailed documentation, visit{" "}
-          <a
-            href="https://docs.base.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300"
-          >
-            base.org
-          </a>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Network Settings</h2>
+        <p className="text-gray-300 mb-4">
+          Define network-specific configurations for Base Goerli and Mainnet.
         </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={networkConfigCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Deployment Configuration</h2>
+        <p className="text-gray-300 mb-4">
+          Set up deployment parameters and contract configurations.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={deployConfigCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <div className="space-y-4">
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Environment Variables</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Use .env for sensitive data</li>
+              <li>Never commit .env files</li>
+              <li>Provide .env.example</li>
+              <li>Document all variables</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Network Management</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Use appropriate block confirmations</li>
+              <li>Set realistic gas limits</li>
+              <li>Configure proper timeouts</li>
+              <li>Handle network-specific logic</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Deployment Strategy</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Use deployment scripts</li>
+              <li>Implement proper error handling</li>
+              <li>Verify contracts after deployment</li>
+              <li>Document deployment process</li>
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
   );

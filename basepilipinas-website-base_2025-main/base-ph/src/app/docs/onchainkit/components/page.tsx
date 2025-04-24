@@ -1,190 +1,126 @@
-'use client';
+"use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import CodeBlock from "@/components/CodeBlock";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ComponentsPage() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const walletCode = `import { ConnectButton, AccountInfo } from '@onchainkit/components';
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const connectButtonCode = `import { ConnectButton } from '@onchainkit/components';
-
-function Header() {
+function WalletSection() {
   return (
-    <ConnectButton
-      theme="dark"
-      showBalance
-    />
+    <div>
+      <ConnectButton theme="dark" />
+      <AccountInfo showBalance showNetwork />
+    </div>
   );
 }`;
 
-  const accountInfoCode = `import { AccountInfo } from '@onchainkit/components';
+  const transactionCode = `import { TransactionButton, TransactionStatus } from '@onchainkit/components';
 
-function Profile() {
+function TransactionSection() {
   return (
-    <AccountInfo
-      showBalance
-      showNetwork
-      truncateAddress
-    />
+    <div>
+      <TransactionButton
+        onClick={handleTransaction}
+        loading={isProcessing}
+      >
+        Send Transaction
+      </TransactionButton>
+      <TransactionStatus hash={txHash} />
+    </div>
   );
 }`;
 
-  const transactionButtonCode = `import { TransactionButton } from '@onchainkit/components';
+  const dataDisplayCode = `import { TokenBalance, NFTGallery } from '@onchainkit/components';
 
-function SendButton() {
+function DataSection() {
   return (
-    <TransactionButton
-      to="0x..."
-      value="0.1"
-      onSuccess={(tx) => console.log(tx)}
-      onError={(error) => console.error(error)}
-    >
-      Send ETH
-    </TransactionButton>
-  );
-}`;
-
-  const transactionStatusCode = `import { TransactionStatus } from '@onchainkit/components';
-
-function Status() {
-  return (
-    <TransactionStatus
-      status={txStatus}
-      onRetry={handleRetry}
-    />
-  );
-}`;
-
-  const tokenBalanceCode = `import { TokenBalance } from '@onchainkit/components';
-
-function Balance() {
-  return (
-    <TokenBalance
-      token="ETH"
-      showSymbol
-      showUSD
-    />
+    <div>
+      <TokenBalance
+        address={tokenAddress}
+        symbol="ETH"
+        decimals={18}
+      />
+      <NFTGallery
+        address={userAddress}
+        chain="base"
+      />
+    </div>
   );
 }`;
 
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Ready-to-Use Components</h1>
-
-      <p className="text-lg text-white/70 mb-8">
-        OnchainKit provides a collection of pre-built components to accelerate your development. These components are designed to work seamlessly with Base and follow best practices for Web3 applications.
+      <p className="text-gray-300 mb-8">
+        Explore our collection of pre-built React components designed for seamless blockchain integration.
+        These components handle common Web3 interactions while maintaining a professional look and feel.
       </p>
 
-      <div className="relative">
-        <button
-          onClick={scrollLeft}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Wallet Components</h2>
+        <p className="text-gray-300 mb-4">
+          Components for wallet connection and account management.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={walletCode} />
+        </div>
+      </section>
 
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto space-x-8 pb-4 scrollbar-hide"
-        >
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Wallet Components</h2>
-              <div className="space-y-6">
-                <div className="bg-white/5 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-3">Connect Button</h3>
-                  <p className="text-white/70 mb-4">
-                    A pre-built wallet connection button:
-                  </p>
-                  <div className="mt-4">
-                    <CodeBlock code={connectButtonCode} />
-                  </div>
-                </div>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Transaction Components</h2>
+        <p className="text-gray-300 mb-4">
+          Handle blockchain transactions with built-in status tracking and notifications.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={transactionCode} />
+        </div>
+      </section>
 
-                <div className="bg-white/5 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-3">Account Info</h3>
-                  <p className="text-white/70 mb-4">
-                    Display account information:
-                  </p>
-                  <div className="mt-4">
-                    <CodeBlock code={accountInfoCode} />
-                  </div>
-                </div>
-              </div>
-            </section>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Data Display Components</h2>
+        <p className="text-gray-300 mb-4">
+          Display on-chain data like token balances and NFT collections.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={dataDisplayCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <div className="space-y-4">
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Component Usage</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Keep components focused and single-purpose</li>
+              <li>Handle loading and error states</li>
+              <li>Implement proper prop validation</li>
+              <li>Document component APIs</li>
+            </ul>
           </div>
 
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Transaction Components</h2>
-              <div className="space-y-6">
-                <div className="bg-white/5 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-3">Transaction Button</h3>
-                  <p className="text-white/70 mb-4">
-                    A button for sending transactions:
-                  </p>
-                  <div className="mt-4">
-                    <CodeBlock code={transactionButtonCode} />
-                  </div>
-                </div>
-
-                <div className="bg-white/5 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-3">Transaction Status</h3>
-                  <p className="text-white/70 mb-4">
-                    Display transaction status:
-                  </p>
-                  <div className="mt-4">
-                    <CodeBlock code={transactionStatusCode} />
-                  </div>
-                </div>
-              </div>
-            </section>
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Performance</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Implement proper memoization</li>
+              <li>Optimize re-renders</li>
+              <li>Use efficient data fetching</li>
+              <li>Lazy load when possible</li>
+            </ul>
           </div>
 
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Data Display</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Token Balance</h3>
-                <p className="text-white/70 mb-4">
-                  Display token balances:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={tokenBalanceCode} />
-                </div>
-              </div>
-            </section>
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Accessibility</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Follow ARIA best practices</li>
+              <li>Support keyboard navigation</li>
+              <li>Maintain proper contrast</li>
+              <li>Provide clear feedback</li>
+            </ul>
           </div>
         </div>
-
-        <button
-          onClick={scrollRight}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
+      </section>
     </div>
   );
 } 

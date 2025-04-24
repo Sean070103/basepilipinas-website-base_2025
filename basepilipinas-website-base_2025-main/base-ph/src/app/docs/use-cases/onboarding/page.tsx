@@ -65,55 +65,78 @@ function GaslessTransaction() {
 }`;
 
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">User Onboarding</h1>
-
-      <p className="text-lg text-white/70 mb-8">
+      <p className="text-gray-300 mb-8">
         Learn how to create a seamless onboarding experience for your dApp users.
         This guide covers wallet connection, social recovery setup, and gasless
         transactions.
       </p>
 
-      <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Connect Wallet Flow</h3>
-            <p className="text-white/70 mb-4">
-              Implement a simple wallet connection flow:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={walletConnectionCode} />
-            </div>
-          </div>
-        </section>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
+        <p className="text-gray-300 mb-4">
+          Implement a simple and intuitive wallet connection flow for your users.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={walletConnectionCode} />
+        </div>
+      </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Social Recovery</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Recovery Setup</h3>
-            <p className="text-white/70 mb-4">
-              Set up social recovery for enhanced security:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={socialRecoveryCode} />
-            </div>
-          </div>
-        </section>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Social Recovery</h2>
+        <p className="text-gray-300 mb-4">
+          Add social recovery capabilities to enhance wallet security and recovery options.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={socialRecoveryCode} />
+        </div>
+      </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Gasless Transactions</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Gasless Implementation</h3>
-            <p className="text-white/70 mb-4">
-              Enable gasless transactions for better UX:
-            </p>
-            <div className="mt-4">
-              <CodeBlock code={gaslessTxCode} />
-            </div>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Gasless Transactions</h2>
+        <p className="text-gray-300 mb-4">
+          Enable gasless transactions to improve user experience and reduce friction.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={gaslessTxCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+        <div className="space-y-4">
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">User Experience</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Provide clear instructions at each step</li>
+              <li>Show loading states and progress indicators</li>
+              <li>Handle errors gracefully with helpful messages</li>
+              <li>Offer multiple wallet connection options</li>
+            </ul>
           </div>
-        </section>
-      </div>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Security Considerations</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Implement proper signature verification</li>
+              <li>Use secure communication channels</li>
+              <li>Validate all user inputs</li>
+              <li>Follow security best practices for guardian selection</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Testing Guidelines</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Test with different wallet providers</li>
+              <li>Verify recovery process thoroughly</li>
+              <li>Simulate network issues and errors</li>
+              <li>Test gasless transaction limits</li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

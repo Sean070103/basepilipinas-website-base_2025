@@ -1,199 +1,112 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import CodeBlock from "@/components/CodeBlock";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function SmartWalletPage() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const setupCode = `import { SmartWalletProvider } from '@base/smart-wallet';
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 300,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const smartWalletCode = `import { SmartWallet } from '@base/smart-wallet';
-
-const wallet = new SmartWallet({
-  provider,
+const wallet = new SmartWalletProvider({
+  rpcUrl: 'https://goerli.base.org',
   entryPoint: '0x...',
-  factoryAddress: '0x...',
-  paymasterAPI: '0x...'
+  factoryAddress: '0x...'
 });
 
-// Execute a transaction
-const tx = await wallet.execute({
-  target: contractAddress,
-  data: encodedFunction,
-  value: 0
-});`;
+// Create a new smart wallet
+const walletAddress = await wallet.createWallet();`;
 
-  const socialRecoveryCode = `// Set up guardians for social recovery
-await wallet.setGuardians({
-  guardians: [
-    '0x1234...',
-    '0x5678...'
-  ],
+  const transactionCode = `// Send a transaction through the smart wallet
+const tx = await wallet.sendTransaction({
+  to: recipientAddress,
+  value: ethers.utils.parseEther("0.1"),
+  data: "0x"
+});
+
+// Wait for confirmation
+const receipt = await tx.wait();`;
+
+  const recoveryCode = `// Set up social recovery
+await wallet.setupRecovery({
+  guardians: [guardian1, guardian2, guardian3],
   threshold: 2
 });
 
 // Initiate recovery
-await wallet.initiateRecovery({
-  newOwner: '0x9abc...'
+const recoveryProof = await wallet.initiateRecovery({
+  newOwner: newOwnerAddress,
+  signatures: [sig1, sig2]
 });`;
 
   return (
-    <div className="prose prose-invert max-w-none">
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Smart Wallet</h1>
-
-      <p className="text-lg text-white/70 mb-8">
-        Here&apos;s how to implement Base&apos;s Smart Wallet functionality.
+      <p className="text-gray-300 mb-8">
+        Base&apos;s Smart Wallet provides advanced account abstraction features for enhanced security and user experience. 
+        Learn how to implement and customize smart wallet functionality in your dApp.
       </p>
 
-      <div className="relative">
-        <button
-          onClick={scrollLeft}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto space-x-8 pb-4 scrollbar-hide"
-        >
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-              <div className="space-y-4">
-                <div className="bg-white/5 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-3">Key Features</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                      <span className="text-white/70">Account Abstraction</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                      <span className="text-white/70">Social Recovery</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                      <span className="text-white/70">Batched Transactions</span>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                      <span className="text-white/70">Gas Abstraction</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-white/5 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-3">Benefits</h3>
-                  <p className="text-white/70">
-                    Smart wallets provide several advantages:
-                  </p>
-                  <ul className="mt-3 space-y-2">
-                    <li className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-                      <span>Enhanced security through multi-signature support</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-                      <span>
-                        Improved user experience with gasless transactions
-                      </span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
-                      <span>Flexible account management and recovery options</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Implementation</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Smart Wallet Integration</h3>
-                <p className="text-white/70 mb-4">
-                  Integrate smart wallet functionality in your dApp:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={smartWalletCode} />
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <div className="min-w-[300px] space-y-12">
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Advanced Features</h2>
-              <div className="bg-white/5 rounded-lg p-6">
-                <h3 className="text-xl font-medium mb-3">Social Recovery Setup</h3>
-                <p className="text-white/70 mb-4">
-                  Implement social recovery for enhanced security:
-                </p>
-                <div className="mt-4">
-                  <CodeBlock code={socialRecoveryCode} />
-                </div>
-              </div>
-            </section>
-          </div>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Setup</h2>
+        <p className="text-gray-300 mb-4">
+          Initialize and create a new smart wallet instance.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={setupCode} />
         </div>
+      </section>
 
-        <button
-          onClick={scrollRight}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Transactions</h2>
+        <p className="text-gray-300 mb-4">
+          Send transactions and interact with smart contracts using your smart wallet.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={transactionCode} />
+        </div>
+      </section>
 
-      <section>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Social Recovery</h2>
+        <p className="text-gray-300 mb-4">
+          Implement social recovery functionality for enhanced wallet security.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={recoveryCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">
-            Security Considerations
-          </h3>
-          <ul className="space-y-3">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Always validate guardian addresses before adding them
-              </span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Implement proper error handling for recovery processes
-              </span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Regularly audit smart wallet configurations
-              </span>
-            </li>
-          </ul>
+        <div className="space-y-4">
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Security</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Use secure key management</li>
+              <li>Implement multi-signature functionality</li>
+              <li>Set up proper access controls</li>
+              <li>Regular security audits</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Performance</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Batch transactions when possible</li>
+              <li>Optimize gas usage</li>
+              <li>Implement proper caching</li>
+              <li>Monitor wallet balance</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">User Experience</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Clear error messages</li>
+              <li>Transaction status updates</li>
+              <li>Easy recovery process</li>
+              <li>Intuitive interface</li>
+            </ul>
+          </div>
         </div>
       </section>
     </div>
