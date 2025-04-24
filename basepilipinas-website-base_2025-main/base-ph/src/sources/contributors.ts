@@ -57,7 +57,7 @@ export const contributors: Contributor[] = [
       "Marketing",
       "Video Editing",
     ],
-    photoUrl: "/contributors/Ry lucas (1).jpg",
+    photoUrl: "/contributors/Lucas.jpg",
   },
   {
     name: "Rhomuel Brian Macahilig",

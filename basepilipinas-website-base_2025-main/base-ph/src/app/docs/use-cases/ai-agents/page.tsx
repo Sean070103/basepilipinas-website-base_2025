@@ -1,206 +1,144 @@
 "use client";
 
+import React from "react";
+import CodeBlock from "@/components/CodeBlock";
+
 export default function AIAgentsPage() {
+  const agentSetupCode = `import { Agent, AgentConfig } from '@base/agentkit';
+
+const config: AgentConfig = {
+  name: "MyAgent",
+  network: "base-mainnet",
+  actions: ["trade", "monitor"],
+};
+
+const agent = new Agent(config);
+await agent.initialize();
+await agent.start();`;
+
+  const tradingAgentCode = `import { Agent, TradeStrategy } from '@base/agentkit';
+
+const tradingAgent = new Agent({
+  name: "TradingBot",
+  strategy: new TradeStrategy({
+    asset: "ETH",
+    maxAmount: "1.0",
+    priceThreshold: "1800",
+  }),
+});`;
+
+  const monitoringAgentCode = `import { Agent, MonitorConfig } from '@base/agentkit';
+
+const monitorAgent = new Agent({
+  name: "SecurityMonitor",
+  type: "monitor",
+  alerts: ["suspicious_tx", "large_transfers"],
+  threshold: "100000",
+});`;
+
   return (
-    <div className="space-y-8 max-sm:max-w-[330px]">
-      <div>
-        <h1 className="text-4xl font-bold mb-4">Launch AI Agents</h1>
-        <p className="text-lg text-white/70 mb-8">
-          Learn how to create and deploy AI agents on Base. Build autonomous
-          agents that can interact with smart contracts, manage assets, and
-          execute transactions.
-        </p>
-      </div>
+    <div className="prose prose-invert max-w-none">
+      <h1 className="text-4xl font-bold mb-6">Launch AI Agents</h1>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Agent Setup</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Creating an AI Agent</h3>
-          <p className="text-white/70 mb-4">
-            Set up a basic AI agent that can interact with the blockchain.
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>
-                {`import { createAgent } from '@base/agents'
-import { ethers } from 'ethers'
+      <p className="text-lg text-white/70 mb-8">
+        Build and deploy AI agents on Base with AgentKit. Create autonomous agents that can interact with smart contracts and perform complex tasks on the blockchain.
+      </p>
 
-async function setupAgent() {
-  const agent = await createAgent({
-    name: 'Trading Bot',
-    description: 'Automated trading agent',
-    capabilities: [
-      'read_market_data',
-      'execute_trades',
-      'manage_portfolio'
-    ],
-    wallet: {
-      type: 'smart_wallet',
-      config: {
-        owner: OWNER_ADDRESS,
-        policies: {
-          maxTransactionValue: ethers.utils.parseEther('1.0'),
-          allowedTokens: [TOKEN_A, TOKEN_B],
-          dailyLimit: ethers.utils.parseEther('5.0')
-        }
-      }
-    }
-  })
-
-  return agent
-}`}
-              </code>
-            </pre>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Agent Logic</h2>
-        <div className="space-y-6">
+      <div className="space-y-12">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Overview</h2>
           <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">
-              Implementing Agent Behavior
-            </h3>
-            <p className="text-white/70 mb-4">
-              Define how your agent makes decisions and interacts with smart
-              contracts.
-            </p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm overflow-x-scroll">
-                <code>
-                  {`import { AgentLogic, useMarketData } from '@base/agents'
+            <h3 className="text-xl font-medium mb-3">Key Features</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start space-x-3">
+                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
+                <span className="text-white/70">Autonomous smart contract interactions</span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
+                <span className="text-white/70">Built-in security measures and fail-safes</span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
+                <span className="text-white/70">Customizable agent behaviors and decision-making logic</span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
+                <span className="text-white/70">Integration with popular AI models and APIs</span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
+                <span className="text-white/70">Comprehensive testing and simulation tools</span>
+              </li>
+            </ul>
+          </div>
+        </section>
 
-export class TradingAgent extends AgentLogic {
-  constructor(config) {
-    super(config)
-    this.marketData = useMarketData()
-  }
-
-  async analyze() {
-    const { price, volume } = await this.marketData.get(TOKEN_A)
-    const signal = this.generateTradingSignal(price, volume)
-    
-    if (signal > THRESHOLD) {
-      await this.executeTrade({
-        type: 'buy',
-        token: TOKEN_A,
-        amount: calculatePosition(signal)
-      })
-    }
-  }
-
-  async executeTrade(params) {
-    const tx = await this.wallet.sendTransaction({
-      to: DEX_ADDRESS,
-      data: encodeTrade(params),
-      gasLimit: 200000
-    })
-    
-    return tx
-  }
-}`}
-                </code>
-              </pre>
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Getting Started</h2>
+          <div className="bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Installation</h3>
+            <p className="text-white/70 mb-4">Install the required packages:</p>
+            <div className="mt-4">
+              <CodeBlock code="npm install @base/agentkit" />
             </div>
           </div>
-        </div>
-      </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Agent Monitoring</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Monitoring and Analytics</h3>
-          <p className="text-white/70 mb-4">
-            Track your agent&apos;s performance and monitor its activities.
-          </p>
-
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>
-                {`import { useAgentMonitoring } from '@base/agents'
-
-export function AgentDashboard({ agentId }) {
-  const {
-    status,
-    transactions,
-    performance,
-    logs
-  } = useAgentMonitoring(agentId)
-
-  return (
-    <div className="space-y-4">
-      <div>
-        <h4>Agent Status</h4>
-        <p>Status: {status}</p>
-        <p>Total Transactions: {transactions.length}</p>
-        <p>Success Rate: {performance.successRate}%</p>
-      </div>
-
-      <div>
-        <h4>Recent Activity</h4>
-        <ul>
-          {logs.map(log => (
-            <li key={log.id}>
-              {log.timestamp}: {log.action}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  )
-}`}
-              </code>
-            </pre>
+          <div className="bg-white/5 rounded-lg p-6 mt-6">
+            <h3 className="text-xl font-medium mb-3">Basic Usage</h3>
+            <p className="text-white/70 mb-4">Set up your first AI agent:</p>
+            <div className="mt-4">
+              <CodeBlock code={agentSetupCode} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Examples</h2>
+          <div className="space-y-6">
+            <div className="bg-white/5 rounded-lg p-6">
+              <h3 className="text-xl font-medium mb-3">Trading Agent</h3>
+              <p className="text-white/70 mb-4">Create a trading agent:</p>
+              <div className="mt-4">
+                <CodeBlock code={tradingAgentCode} />
+              </div>
+            </div>
+
+            <div className="bg-white/5 rounded-lg p-6">
+              <h3 className="text-xl font-medium mb-3">Monitoring Agent</h3>
+              <p className="text-white/70 mb-4">Create a monitoring agent:</p>
+              <div className="mt-4">
+                <CodeBlock code={monitoringAgentCode} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Security Considerations</h2>
           <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Security</h3>
-            <ul className="space-y-2">
+            <h3 className="text-xl font-medium mb-3">Best Practices</h3>
+            <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement proper access controls
-                </span>
+                <span className="text-white/70">Always test agents thoroughly in a testnet environment</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Validate AI agent responses
-                </span>
+                <span className="text-white/70">Implement proper access controls and permissions</span>
               </li>
               <li className="flex items-start space-x-3">
                 <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Monitor agent activities</span>
+                <span className="text-white/70">Monitor agent activities and implement kill switches</span>
+              </li>
+              <li className="flex items-start space-x-3">
+                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
+                <span className="text-white/70">Regular security audits and updates</span>
               </li>
             </ul>
           </div>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Performance</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Optimize response times</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement caching strategies
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Handle rate limits</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

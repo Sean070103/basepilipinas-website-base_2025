@@ -1,6 +1,68 @@
 "use client";
 
+import React from "react";
+import CodeBlock from "@/components/CodeBlock";
+
 export default function DeveloperToolsPage() {
+  const contractKitCode = `import { ContractKit } from '@onchainkit/contract';
+
+const kit = new ContractKit({
+  compiler: {
+    version: '0.8.19',
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  }
+});
+
+await kit.compile('contracts/');
+const deployment = await kit.deploy('MyContract');`;
+
+  const testingKitCode = `import { TestKit, mockProvider } from '@onchainkit/testing';
+
+describe('MyContract', () => {
+  const testKit = new TestKit();
+  
+  beforeEach(async () => {
+    await testKit.deployFixture('MyContract');
+  });
+
+  it('should handle transactions', async () => {
+    const tx = await testKit.sendTransaction({
+      to: contractAddress,
+      value: ethers.utils.parseEther('1.0')
+    });
+    await testKit.mineBlocks(1);
+    expect(await testKit.getBalance(contractAddress))
+      .to.equal(ethers.utils.parseEther('1.0'));
+  });
+});`;
+
+  const devChainCode = `import { DevChain } from '@onchainkit/devchain';
+
+const chain = new DevChain({
+  port: 8545,
+  networkId: 31337,
+  blockTime: 2
+});
+
+await chain.start();
+console.log('Local chain running at http://localhost:8545');`;
+
+  const verifyCode = `import { verify } from '@onchainkit/verify';
+
+await verify({
+  address: '0x...',
+  network: 'base-goerli',
+  constructorArguments: [
+    'Token Name',
+    'TKN'
+  ]
+});`;
+
   return (
     <div className="prose prose-invert max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Developer-Centric Tools</h1>
@@ -22,25 +84,8 @@ export default function DeveloperToolsPage() {
               <p className="text-white/70 mb-4">
                 Tools for smart contract development:
               </p>
-              <div className="mt-4 bg-black/30 rounded p-4">
-                <code className="text-sm">
-                  {`import { ContractKit } from '@onchainkit/contract';
-
-const kit = new ContractKit({
-  compiler: {
-    version: '0.8.19',
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200
-      }
-    }
-  }
-});
-
-await kit.compile('contracts/');
-const deployment = await kit.deploy('MyContract');`}
-                </code>
+              <div className="mt-4">
+                <CodeBlock code={contractKitCode} />
               </div>
             </div>
 
@@ -49,28 +94,8 @@ const deployment = await kit.deploy('MyContract');`}
               <p className="text-white/70 mb-4">
                 Comprehensive testing utilities:
               </p>
-              <div className="mt-4 bg-black/30 rounded p-4 overflow-x-scroll">
-                <code className="text-sm overflow-x-scroll">
-                  {`import { TestKit, mockProvider } from '@onchainkit/testing';
-
-describe('MyContract', () => {
-  const testKit = new TestKit();
-  
-  beforeEach(async () => {
-    await testKit.deployFixture('MyContract');
-  });
-
-  it('should handle transactions', async () => {
-    const tx = await testKit.sendTransaction({
-      to: contractAddress,
-      value: ethers.utils.parseEther('1.0')
-    });
-    await testKit.mineBlocks(1);
-    expect(await testKit.getBalance(contractAddress))
-      .to.equal(ethers.utils.parseEther('1.0'));
-  });
-});`}
-                </code>
+              <div className="mt-4">
+                <CodeBlock code={testingKitCode} />
               </div>
             </div>
           </div>
@@ -86,19 +111,8 @@ describe('MyContract', () => {
               <p className="text-white/70 mb-4">
                 Run a local development blockchain:
               </p>
-              <div className="mt-4 bg-black/30 rounded p-4">
-                <code className="text-sm">
-                  {`import { DevChain } from '@onchainkit/devchain';
-
-const chain = new DevChain({
-  port: 8545,
-  networkId: 31337,
-  blockTime: 2
-});
-
-await chain.start();
-console.log('Local chain running at http://localhost:8545');`}
-                </code>
+              <div className="mt-4">
+                <CodeBlock code={devChainCode} />
               </div>
             </div>
 
@@ -109,19 +123,8 @@ console.log('Local chain running at http://localhost:8545');`}
               <p className="text-white/70 mb-4">
                 Verify your contracts on Base:
               </p>
-              <div className="mt-4 bg-black/30 rounded p-4">
-                <code className="text-sm">
-                  {`import { verify } from '@onchainkit/verify';
-
-await verify({
-  address: '0x...',
-  network: 'base-goerli',
-  constructorArguments: [
-    'Token Name',
-    'TKN'
-  ]
-});`}
-                </code>
+              <div className="mt-4">
+                <CodeBlock code={verifyCode} />
               </div>
             </div>
           </div>

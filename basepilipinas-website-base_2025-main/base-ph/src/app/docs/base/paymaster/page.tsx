@@ -1,6 +1,48 @@
+"use client";
+
+import React from "react";
+import CodeBlock from "@/components/CodeBlock";
+
 export default function PaymasterPage() {
+  const paymasterCode = `// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import "@base/contracts/paymaster/BasePaymaster.sol";
+
+contract MyPaymaster is BasePaymaster {
+  function validatePaymasterUserOp(
+    UserOperation calldata userOp,
+    bytes32 userOpHash,
+    uint256 maxCost
+  ) external returns (bytes memory context, uint256 validationData) {
+    // Implement validation logic
+    return (abi.encode(), 0);
+  }
+}`;
+
+  const integrationCode = `import { PaymasterProvider } from '@base/paymaster';
+
+const paymaster = new PaymasterProvider({
+  rpcUrl: 'https://goerli.base.org',
+  paymasterAddress: '0x...',
+  entryPoint: '0x...'
+});
+
+// Create a gasless transaction
+const userOp = await paymaster.createTransaction({
+  target: contractAddress,
+  data: encodedFunction
+});`;
+
+  const feeModelCode = `function calculateFee(UserOperation calldata userOp) internal view returns (uint256) {
+  // Custom fee calculation logic
+  uint256 baseGas = userOp.callGasLimit + userOp.verificationGasLimit;
+  uint256 tokenAmount = baseGas * getTokenPrice();
+  return tokenAmount;
+}`;
+
   return (
-    <div className="prose prose-invert max-sm:max-w-[330px]">
+    <div className="prose prose-invert max-w-none">
       <h1 className="text-4xl font-bold mb-6">Paymaster</h1>
 
       <p className="text-lg text-white/70 mb-8">
@@ -68,24 +110,8 @@ export default function PaymasterPage() {
             <p className="text-white/70 mb-4">
               Implement a basic paymaster in your smart contract:
             </p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <code className="text-sm overflow-x-scroll">
-                {`// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
-
-import @base/contracts/paymaster/BasePaymaster.sol;
-
-contract MyPaymaster is BasePaymaster {
-  function validatePaymasterUserOp(
-    UserOperation calldata userOp,
-    bytes32 userOpHash,
-    uint256 maxCost
-  ) external returns (bytes memory context, uint256 validationData) {
-    // Implement validation logic
-    return (abi.encode(), 0);
-  }
-}`}
-              </code>
+            <div className="mt-4">
+              <CodeBlock code={paymasterCode} />
             </div>
           </div>
         </section>
@@ -100,24 +126,8 @@ contract MyPaymaster is BasePaymaster {
               Here&apos;s how to integrate Base&apos;s Paymaster functionality
               into your dApp.
             </p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm overflow-x-scroll">
-                <code>
-                  {`import { PaymasterProvider } from '@base/paymaster';
-
-const paymaster = new PaymasterProvider({
-  rpcUrl: 'https://goerli.base.org',
-  paymasterAddress: '0x...',
-  entryPoint: '0x...'
-});
-
-// Create a gasless transaction
-const userOp = await paymaster.createTransaction({
-  target: contractAddress,
-  data: encodedFunction
-});`}
-                </code>
-              </pre>
+            <div className="mt-4">
+              <CodeBlock code={integrationCode} />
             </div>
           </div>
         </section>
@@ -129,22 +139,8 @@ const userOp = await paymaster.createTransaction({
             <p className="text-white/70 mb-4">
               Implement custom fee models with your paymaster:
             </p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <code className="text-sm overflow-x-scroll">
-                function calculateFee(UserOperation calldata userOp) internal
-                view returns (uint256) {"{"}
-                <br />
-                &nbsp;&nbsp;// Custom fee calculation logic
-                <br />
-                &nbsp;&nbsp;uint256 baseGas = userOp.callGasLimit +
-                userOp.verificationGasLimit;
-                <br />
-                &nbsp;&nbsp;uint256 tokenAmount = baseGas * getTokenPrice();
-                <br />
-                &nbsp;&nbsp;return tokenAmount;
-                <br />
-                {"}"}
-              </code>
+            <div className="mt-4">
+              <CodeBlock code={feeModelCode} />
             </div>
           </div>
         </section>

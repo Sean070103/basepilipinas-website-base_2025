@@ -1,200 +1,123 @@
 "use client";
 
+import React from "react";
+import CodeBlock from "@/components/CodeBlock";
+
 export default function FrontendIntegrationPage() {
+  const setupCode = `import { Web3Provider } from '@web3-react/core';
+import { MetaMask } from '@web3-react/metamask';
+
+const provider = new MetaMask();
+const web3Provider = new Web3Provider(provider);
+
+function App() {
   return (
-    <div className="space-y-8 max-sm:max-w-[330px]">
-      <div>
-        <h1 className="text-4xl font-bold mb-4">Frontend Integration</h1>
-        <p className="text-lg text-white/70 mb-8">
-          Learn how to build a web frontend that interacts with your Base smart
-          contracts using React and ethers.js.
-        </p>
-      </div>
+    <Web3Provider provider={web3Provider}>
+      <YourApp />
+    </Web3Provider>
+  );
+}`;
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Setup</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Install Dependencies</h3>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <code className="text-sm">
-              npm install ethers@5.7.2 @wagmi/core wagmi viem
-            </code>
-          </div>
-        </div>
-      </section>
+  const connectWalletCode = `import { useWeb3React } from '@web3-react/core';
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">
-            Implementing Connect Wallet
-          </h3>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>
-                {`import { useConnect, useAccount, useDisconnect } from 'wagmi'
-import { InjectedConnector } from 'wagmi/connectors/injected'
+function ConnectButton() {
+  const { activate, deactivate, account } = useWeb3React();
 
-export function ConnectWallet() {
-  const { address, isConnected } = useAccount()
-  const { connect } = useConnect({
-    connector: new InjectedConnector(),
-  })
-  const { disconnect } = useDisconnect()
+  return (
+    <button
+      onClick={() => activate(provider)}
+      className="px-4 py-2 bg-blue-500 rounded"
+    >
+      {account ? \`Connected: \${account}\` : 'Connect Wallet'}
+    </button>
+  );
+}`;
 
-  if (isConnected) {
-    return (
-      <div>
-        Connected to {address}
-        <button onClick={() => disconnect()}>Disconnect</button>
-      </div>
-    )
-  }
+  const contractInteractionCode = `import { ethers } from 'ethers';
+import YourContract from './artifacts/YourContract.json';
 
-  return <button onClick={() => connect()}>Connect Wallet</button>
-}`}
-              </code>
-            </pre>
-          </div>
-        </div>
-      </section>
+function ContractInteraction() {
+  const { library, account } = useWeb3React();
+  const [value, setValue] = useState('');
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Contract Integration</h2>
-        <div className="space-y-6">
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Contract Configuration</h3>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm overflow-x-scroll">
-                <code>
-                  {`import { useContractRead, useContractWrite } from 'wagmi'
-import { SimpleStorageABI } from './abi'
+  const contract = new ethers.Contract(
+    CONTRACT_ADDRESS,
+    YourContract.abi,
+    library?.getSigner(account)
+  );
 
-const CONTRACT_ADDRESS = 'your_contract_address'
-
-export function SimpleStorage() {
-  const { data: value } = useContractRead({
-    address: CONTRACT_ADDRESS,
-    abi: SimpleStorageABI,
-    functionName: 'getValue',
-  })
-
-  const { write: setValue } = useContractWrite({
-    address: CONTRACT_ADDRESS,
-    abi: SimpleStorageABI,
-    functionName: 'setValue',
-  })
+  const handleSubmit = async () => {
+    try {
+      const tx = await contract.setValue(value);
+      await tx.wait();
+      alert('Value set successfully!');
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <div>
-      <p>Current Value: {value?.toString()}</p>
-      <button onClick={() => setValue({ args: [42] })}>
-        Set Value to 42
-      </button>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Enter value"
+      />
+      <button onClick={handleSubmit}>Set Value</button>
     </div>
-  )
-}`}
-                </code>
-              </pre>
+  );
+}`;
+
+  return (
+    <div className="prose prose-invert max-sm:max-w-[330px]">
+      <h1 className="text-4xl font-bold mb-6">Frontend Integration</h1>
+
+      <p className="text-lg text-white/70 mb-8">
+        Learn how to integrate your smart contract with a React frontend using
+        Web3-React and ethers.js. This guide covers wallet connection and
+        contract interaction.
+      </p>
+
+      <div className="space-y-12">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Setup</h2>
+          <div className="bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Provider Setup</h3>
+            <p className="text-white/70 mb-4">
+              Set up the Web3 provider in your app:
+            </p>
+            <div className="mt-4">
+              <CodeBlock code={setupCode} />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Error Handling</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">
-            Transaction Error Handling
-          </h3>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>
-                {`const { write: setValue, isError, error } = useContractWrite({
-  address: CONTRACT_ADDRESS,
-  abi: SimpleStorageABI,
-  functionName: 'setValue',
-  onError(error) {
-    console.error('Error:', error)
-  },
-  onSuccess(data) {
-    console.log('Success:', data)
-  },
-})`}
-              </code>
-            </pre>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Event Listening</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Subscribing to Events</h3>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>
-                {`import { useContractEvent } from 'wagmi'
-
-function EventListener() {
-  useContractEvent({
-    address: CONTRACT_ADDRESS,
-    abi: SimpleStorageABI,
-    eventName: 'ValueChanged',
-    listener(newValue) {
-      console.log('Value changed to:', newValue)
-    },
-  })
-
-  return null
-}`}
-              </code>
-            </pre>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
           <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Performance</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Optimize bundle size</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Implement proper caching</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Use lazy loading</span>
-              </li>
-            </ul>
+            <h3 className="text-xl font-medium mb-3">Connect Wallet Button</h3>
+            <p className="text-white/70 mb-4">
+              Create a wallet connection component:
+            </p>
+            <div className="mt-4">
+              <CodeBlock code={connectWalletCode} />
+            </div>
           </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Contract Interaction</h2>
           <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Security</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Validate user inputs</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement proper error handling
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Use secure communication</span>
-              </li>
-            </ul>
+            <h3 className="text-xl font-medium mb-3">Contract Interface</h3>
+            <p className="text-white/70 mb-4">
+              Create a component to interact with your contract:
+            </p>
+            <div className="mt-4">
+              <CodeBlock code={contractInteractionCode} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

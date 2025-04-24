@@ -1,24 +1,8 @@
 import React from "react";
+import CodeBlock from "@/components/CodeBlock";
 
 export default function TestingGuide() {
-  return (
-    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
-      <h1 className="text-4xl font-bold mb-6">Testing Guide</h1>
-      <p className="text-gray-300 mb-8">
-        A comprehensive guide to testing your OnchainKit applications, covering
-        unit tests, integration tests, smart contract tests, and end-to-end
-        testing scenarios.
-      </p>
-
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Unit Testing Components</h2>
-        <p className="text-gray-300 mb-4">
-          Learn how to test individual components and hooks using React Testing
-          Library and Jest.
-        </p>
-        <div className="bg-gray-800 rounded-lg p-6 mb-6">
-          <pre className="text-sm overflow-x-scroll">
-            <code>{`import { render, screen, fireEvent } from '@testing-library/react'
+  const unitTestCode = `import { render, screen, fireEvent } from '@testing-library/react'
 import { useWallet } from '@onchainkit/hooks'
 import { WalletButton } from './WalletButton'
 
@@ -44,20 +28,9 @@ describe('WalletButton', () => {
     render(<WalletButton />)
     expect(screen.getByText('0x123...')).toBeInTheDocument()
   })
-})`}</code>
-          </pre>
-        </div>
-      </section>
+})`;
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Integration Testing</h2>
-        <p className="text-gray-300 mb-4">
-          Test complete user flows and component interactions using Playwright
-          or Cypress.
-        </p>
-        <div className="bg-gray-800 rounded-lg p-6 mb-6">
-          <pre className="text-sm overflow-x-scroll">
-            <code>{`import { test, expect } from '@playwright/test'
+  const integrationTestCode = `import { test, expect } from '@playwright/test'
 
 test('complete payment flow', async ({ page }) => {
   await page.goto('/checkout')
@@ -74,20 +47,9 @@ test('complete payment flow', async ({ page }) => {
   await page.waitForSelector('[data-testid="success-message"]')
   const message = await page.textContent('[data-testid="success-message"]')
   expect(message).toContain('Payment successful')
-})`}</code>
-          </pre>
-        </div>
-      </section>
+})`;
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Smart Contract Testing</h2>
-        <p className="text-gray-300 mb-4">
-          Write comprehensive tests for your smart contracts using Hardhat and
-          Chai.
-        </p>
-        <div className="bg-gray-800 rounded-lg p-6 mb-6">
-          <pre className="text-sm overflow-x-scroll">
-            <code>{`import { expect } from 'chai'
+  const contractTestCode = `import { expect } from 'chai'
 import { ethers } from 'hardhat'
 
 describe('PaymentProcessor', function () {
@@ -115,8 +77,47 @@ describe('PaymentProcessor', function () {
     const balance = await ethers.provider.getBalance(paymentProcessor.address)
     expect(balance).to.equal(amount)
   })
-})`}</code>
-          </pre>
+})`;
+
+  return (
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
+      <h1 className="text-4xl font-bold mb-6">Testing Guide</h1>
+      <p className="text-gray-300 mb-8">
+        A comprehensive guide to testing your OnchainKit applications, covering
+        unit tests, integration tests, smart contract tests, and end-to-end
+        testing scenarios.
+      </p>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Unit Testing Components</h2>
+        <p className="text-gray-300 mb-4">
+          Learn how to test individual components and hooks using React Testing
+          Library and Jest.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={unitTestCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Integration Testing</h2>
+        <p className="text-gray-300 mb-4">
+          Test complete user flows and component interactions using Playwright
+          or Cypress.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={integrationTestCode} />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Smart Contract Testing</h2>
+        <p className="text-gray-300 mb-4">
+          Write comprehensive tests for your smart contracts using Hardhat and
+          Chai.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={contractTestCode} />
         </div>
       </section>
 

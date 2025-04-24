@@ -1,6 +1,41 @@
+"use client";
+
+import React from "react";
+import CodeBlock from "@/components/CodeBlock";
+
 export default function SmartWalletPage() {
+  const smartWalletCode = `import { SmartWallet } from '@base/smart-wallet';
+
+const wallet = new SmartWallet({
+  provider,
+  entryPoint: '0x...',
+  factoryAddress: '0x...',
+  paymasterAPI: '0x...'
+});
+
+// Execute a transaction
+const tx = await wallet.execute({
+  target: contractAddress,
+  data: encodedFunction,
+  value: 0
+});`;
+
+  const socialRecoveryCode = `// Set up guardians for social recovery
+await wallet.setGuardians({
+  guardians: [
+    '0x1234...',
+    '0x5678...'
+  ],
+  threshold: 2
+});
+
+// Initiate recovery
+await wallet.initiateRecovery({
+  newOwner: '0x9abc...'
+});`;
+
   return (
-    <div className="prose prose-invert max-sm:max-w-[330px]">
+    <div className="prose prose-invert max-w-none">
       <h1 className="text-4xl font-bold mb-6">Smart Wallet</h1>
 
       <p className="text-lg text-white/70 mb-8">
@@ -67,26 +102,8 @@ export default function SmartWalletPage() {
             <p className="text-white/70 mb-4">
               Integrate smart wallet functionality in your dApp:
             </p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm overflow-x-scroll">
-                <code>
-                  {`import { SmartWallet } from '@base/smart-wallet';
-
-const wallet = new SmartWallet({
-  provider,
-  entryPoint: '0x...',
-  factoryAddress: '0x...',
-  paymasterAPI: '0x...'
-});
-
-{/* Execute a transaction */}
-const tx = await wallet.execute({
-  target: contractAddress,
-  data: encodedFunction,
-  value: 0
-});`}
-                </code>
-              </pre>
+            <div className="mt-4">
+              <CodeBlock code={smartWalletCode} />
             </div>
           </div>
         </section>
@@ -98,24 +115,8 @@ const tx = await wallet.execute({
             <p className="text-white/70 mb-4">
               Implement social recovery for enhanced security:
             </p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <pre className="text-sm overflow-x-scroll">
-                <code>
-                  {`{/* Set up guardians for social recovery */}
-await wallet.setGuardians({
-  guardians: [
-    '0x1234...',
-    '0x5678...'
-  ],
-  threshold: 2
-});
-
-{/* Initiate recovery */}
-await wallet.initiateRecovery({
-  newOwner: '0x9abc...'
-});`}
-                </code>
-              </pre>
+            <div className="mt-4">
+              <CodeBlock code={socialRecoveryCode} />
             </div>
           </div>
         </section>

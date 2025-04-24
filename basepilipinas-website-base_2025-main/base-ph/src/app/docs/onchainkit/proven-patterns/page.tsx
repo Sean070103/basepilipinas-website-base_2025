@@ -1,282 +1,169 @@
-export default function ProvenPatternsPage() {
-  const accountAbstractionCode = `import { createSmartAccount } from '@onchainkit/account';
-import { useWallet } from '@onchainkit/wallet';
+import React from "react";
+import CodeBlock from "@/components/CodeBlock";
 
-function SmartAccountSetup() {
-  const { address } = useWallet();
-  
-  const setupSmartAccount = async () => {
-    const account = await createSmartAccount({
-      owner: address,
-      entryPoint: '0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789',
-      factory: '0x3ABe5285dE84676fbe75856c631EF355BAf5Ef44'
-    });
-    
-    return account;
-  };
+export default function ProvenPatterns() {
+  const accountAbstractionCode = `import { useWallet, useSmartWallet } from '@onchainkit/hooks'
+
+function SmartWalletSetup() {
+  const { address } = useWallet()
+  const { createWallet, isCreating } = useSmartWallet()
+
+  const handleCreate = async () => {
+    try {
+      await createWallet({
+        owner: address,
+        salt: Date.now().toString()
+      })
+    } catch (error) {
+      console.error('Failed to create smart wallet:', error)
+    }
+  }
 
   return (
-    <button onClick={setupSmartAccount}>
-      Create Smart Account
+    <button 
+      onClick={handleCreate}
+      disabled={isCreating}
+    >
+      {isCreating ? 'Creating...' : 'Create Smart Wallet'}
     </button>
-  );
+  )
 }`;
 
-  const batchTransactionsCode = `import { useBundler } from '@onchainkit/bundler';
+  const gaslessTransactionCode = `import { useGasless } from '@onchainkit/hooks'
 
-interface Transaction {
-  to: string;
-  value: string;
-  data: string;
-}
+function GaslessTransfer() {
+  const { sendTransaction, isProcessing } = useGasless()
 
-function BatchTransactions() {
-  const { bundleTransactions } = useBundler();
-
-  const executeBatch = async (transactions: Transaction[]) => {
-    const userOp = await bundleTransactions({
-      transactions,
-      gasLimit: '1000000'
-    });
-
-    await userOp.wait();
-  };
+  const handleTransfer = async () => {
+    try {
+      await sendTransaction({
+        to: '0x123...',
+        value: '0.1',
+        gasless: true
+      })
+    } catch (error) {
+      console.error('Gasless transaction failed:', error)
+    }
+  }
 
   return (
-    <button onClick={() => executeBatch([
+    <button 
+      onClick={handleTransfer}
+      disabled={isProcessing}
+    >
+      {isProcessing ? 'Processing...' : 'Send Transaction'}
+    </button>
+  )
+}`;
+
+  const batchTransactionCode = `import { useBatchTransactions } from '@onchainkit/hooks'
+
+function BatchTransfer() {
+  const { executeBatch, isPending } = useBatchTransactions()
+
+  const handleBatchTransfer = async () => {
+    const transactions = [
       {
-        to: '0x...',
+        to: '0x123...',
         value: '0.1',
         data: '0x...'
       },
       {
-        to: '0x...',
+        to: '0x456...',
         value: '0.2',
         data: '0x...'
       }
-    ])}>
-      Execute Batch
-    </button>
-  );
-}`;
+    ]
 
-  const gaslessTransactionsCode = `import { usePaymaster } from '@onchainkit/paymaster';
-
-function GaslessTransaction() {
-  const { sponsorTransaction } = usePaymaster({
-    paymasterUrl: 'https://api.paymaster.base.org'
-  });
-
-  const sendTransaction = async () => {
-    const userOp = await sponsorTransaction({
-      to: '0x...',
-      value: '0.1',
-      data: '0x...'
-    });
-
-    await userOp.wait();
-  };
+    try {
+      await executeBatch(transactions)
+    } catch (error) {
+      console.error('Batch transaction failed:', error)
+    }
+  }
 
   return (
-    <button onClick={sendTransaction}>
-      Send Gasless Transaction
+    <button 
+      onClick={handleBatchTransfer}
+      disabled={isPending}
+    >
+      {isPending ? 'Processing Batch...' : 'Execute Batch'}
     </button>
-  );
-}`;
-
-  const sessionKeysCode = `import { createSessionKey } from '@onchainkit/account';
-
-interface SessionKeyParams {
-  validUntil: number;
-  validAfter: number;
-  permissions: string[];
-}
-
-function SessionKeyManagement() {
-  const createTemporaryAccess = async (params: SessionKeyParams) => {
-    const sessionKey = await createSessionKey({
-      ...params,
-      paymaster: '0x...',
-      verifier: '0x...'
-    });
-
-    return sessionKey;
-  };
-
-  return (
-    <button onClick={() => createTemporaryAccess({
-      validUntil: Date.now() + 3600000, // 1 hour
-      validAfter: Date.now(),
-      permissions: ['0x...'] // specific method signatures
-    })}>
-      Create Session Key
-    </button>
-  );
+  )
 }`;
 
   return (
-    <div className="space-y-8 max-sm:max-w-[330px]">
-      <div>
-        <h1 className="text-4xl font-bold mb-4">Proven Patterns</h1>
-        <p className="text-lg text-white/70 mb-8">
-          Explore battle-tested patterns and best practices for building robust
-          applications with OnchainKit. These patterns have been proven
-          effective in production environments.
-        </p>
-      </div>
+    <div className="max-w-4xl mx-auto py-8 px-4 max-sm:max-w-[330px]">
+      <h1 className="text-4xl font-bold mb-6">Proven Patterns</h1>
+      <p className="text-gray-300 mb-8">
+        Explore battle-tested patterns for building robust dApps with OnchainKit.
+        These patterns have been proven in production environments and follow
+        best practices for security and user experience.
+      </p>
 
-      <section>
+      <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Account Abstraction</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Smart Account Setup</h3>
-          <p className="text-white/70 mb-4">
-            Implement account abstraction using smart accounts for enhanced
-            security and user experience:
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>{accountAbstractionCode}</code>
-            </pre>
-          </div>
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Enables advanced features like social recovery
-              </span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Supports custom validation logic
-              </span>
-            </li>
-          </ul>
+        <p className="text-gray-300 mb-4">
+          Implement smart contract wallets to enhance user experience and enable
+          advanced features like batched transactions and gasless operations.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={accountAbstractionCode} />
         </div>
       </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Batch Transactions</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Transaction Bundling</h3>
-          <p className="text-white/70 mb-4">
-            Optimize gas costs and improve UX by bundling multiple transactions:
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>{batchTransactionsCode}</code>
-            </pre>
-          </div>
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Reduces overall gas costs</span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Simplifies complex operations
-              </span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
+      <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Gasless Transactions</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Paymaster Integration</h3>
-          <p className="text-white/70 mb-4">
-            Implement gasless transactions using paymasters:
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>{gaslessTransactionsCode}</code>
-            </pre>
-          </div>
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Improves user onboarding</span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Supports custom sponsorship rules
-              </span>
-            </li>
-          </ul>
+        <p className="text-gray-300 mb-4">
+          Enable gasless transactions by implementing meta-transactions and
+          relayers to improve user onboarding and reduce friction.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={gaslessTransactionCode} />
         </div>
       </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Session Keys</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">
-            Temporary Access Management
-          </h3>
-          <p className="text-white/70 mb-4">
-            Implement secure temporary access using session keys:
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>{sessionKeysCode}</code>
-            </pre>
-          </div>
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Time-bound permissions</span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Method-level access control</span>
-            </li>
-          </ul>
+      <section className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Batch Transactions</h2>
+        <p className="text-gray-300 mb-4">
+          Optimize gas usage and improve UX by batching multiple transactions
+          into a single transaction.
+        </p>
+        <div className="bg-gray-800 rounded-lg p-6 mb-6">
+          <CodeBlock code={batchTransactionCode} />
         </div>
       </section>
 
-      <section>
+      <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Security</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Always validate user operations
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement proper access controls
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Use secure key management</span>
-              </li>
+        <div className="space-y-4">
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Error Handling</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Always wrap async operations in try-catch blocks</li>
+              <li>Provide meaningful error messages to users</li>
+              <li>Implement proper error recovery mechanisms</li>
+              <li>Log errors for debugging and monitoring</li>
             </ul>
           </div>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Gas Optimization</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Batch similar operations</span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Use efficient data structures
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Optimize calldata usage</span>
-              </li>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">State Management</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Use loading states for async operations</li>
+              <li>Implement proper transaction status tracking</li>
+              <li>Cache and invalidate data appropriately</li>
+              <li>Handle network state changes gracefully</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Security</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-300">
+              <li>Validate all user inputs</li>
+              <li>Implement proper access controls</li>
+              <li>Use secure dependencies and keep them updated</li>
+              <li>Follow smart contract security best practices</li>
             </ul>
           </div>
         </div>

@@ -1,8 +1,34 @@
 'use client';
 
+import React from "react";
 import Link from 'next/link';
+import CodeBlock from "@/components/CodeBlock";
 
 export default function PatternsPage() {
+  const accessControlCode = `import "@openzeppelin/contracts/access/AccessControl.sol";
+
+contract MyContract is AccessControl {
+  bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
+  bytes32 public constant OPERATOR_ROLE = keccak256("OPERATOR_ROLE");
+
+  constructor() {
+    _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+  }
+}`;
+
+  const stateManagementCode = `import { createWeb3State } from '@onchainkit/core';
+
+const {
+  Provider,
+  useWeb3State,
+  useWeb3Action
+} = createWeb3State({
+  initialState: {
+    wallet: null,
+    network: null
+  }
+});`;
+
   return (
     <div className="prose prose-invert max-w-none">
       <h1 className="text-4xl font-bold mb-6">Proven Design Patterns</h1>
@@ -21,19 +47,8 @@ export default function PatternsPage() {
               <p className="text-white/70 mb-4">
                 Implement secure role-based access control in your contracts:
               </p>
-              <div className="mt-4 bg-black/30 rounded p-4">
-                <code className="text-sm">
-                  {`import "@openzeppelin/contracts/access/AccessControl.sol";
-
-contract MyContract is AccessControl {
-  bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
-  bytes32 public constant OPERATOR_ROLE = keccak256("OPERATOR_ROLE");
-
-  constructor() {
-    _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-  }
-}`}
-                </code>
+              <div className="mt-4">
+                <CodeBlock code={accessControlCode} />
               </div>
             </div>
 
@@ -67,21 +82,8 @@ contract MyContract is AccessControl {
             <p className="text-white/70 mb-4">
               Efficient patterns for managing Web3 application state:
             </p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <code className="text-sm">
-                {`import { createWeb3State } from '@onchainkit/core';
-
-const {
-  Provider,
-  useWeb3State,
-  useWeb3Action
-} = createWeb3State({
-  initialState: {
-    wallet: null,
-    network: null
-  }
-});`}
-              </code>
+            <div className="mt-4">
+              <CodeBlock code={stateManagementCode} />
             </div>
           </div>
         </section>

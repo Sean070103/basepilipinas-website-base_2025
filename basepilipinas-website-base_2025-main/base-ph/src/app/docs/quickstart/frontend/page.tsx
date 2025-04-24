@@ -1,41 +1,12 @@
 "use client";
 
+import React from "react";
+import CodeBlock from "@/components/CodeBlock";
+
 export default function FrontendPage() {
-  return (
-    <div className="prose prose-invert max-sm:max-w-[330px]">
-      <h1 className="text-4xl font-bold mb-6">Frontend Integration</h1>
+  const installDepsCode = `npm install ethers @web3-react/core @web3-react/injected-connector`;
 
-      <p className="text-lg text-white/70 mb-8">
-        Learn how to build a frontend interface for your smart contract using
-        React and ethers.js. This guide will show you how to connect to wallets
-        and interact with your deployed contract.
-      </p>
-
-      <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Setup</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Install Dependencies</h3>
-            <p className="text-white/70 mb-4">Install the required packages:</p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <code className="text-sm">
-                npm install ethers @web3-react/core
-                @web3-react/injected-connector
-              </code>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Connect Wallet Button</h3>
-            <p className="text-white/70 mb-4">
-              Create a wallet connection component:
-            </p>
-            <div className="mt-4 bg-black/30 rounded p-4">
-              <code className="text-sm">
-                {`import { useWeb3React } from '@web3-react/core';
+  const connectWalletCode = `import { useWeb3React } from '@web3-react/core';
 import { InjectedConnector } from '@web3-react/injected-connector';
 
 const injected = new InjectedConnector({
@@ -53,23 +24,9 @@ export function ConnectWallet() {
       {active ? \`Connected: \${account}\` : 'Connect Wallet'}
     </button>
   );
-}`}
-              </code>
-            </div>
-          </div>
-        </section>
+}`;
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Contract Integration</h2>
-          <div className="space-y-6">
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">Contract Interface</h3>
-              <p className="text-white/70 mb-4">
-                Create a hook to interact with your contract:
-              </p>
-              <div className="mt-4 bg-black/30 rounded p-4">
-                <code className="text-sm">
-                  {`import { ethers } from 'ethers';
+  const contractHookCode = `import { ethers } from 'ethers';
 import SimpleStorage from './artifacts/contracts/SimpleStorage.sol/SimpleStorage.json';
 
 export function useContract() {
@@ -82,21 +39,9 @@ export function useContract() {
   );
 
   return contract;
-}`}
-                </code>
-              </div>
-            </div>
+}`;
 
-            <div className="bg-white/5 rounded-lg p-6">
-              <h3 className="text-xl font-medium mb-3">
-                Interact with Contract
-              </h3>
-              <p className="text-white/70 mb-4">
-                Create a component to interact with your contract:
-              </p>
-              <div className="mt-4 bg-black/30 rounded p-4">
-                <code className="text-sm">
-                  {`export function StorageComponent() {
+  const storageComponentCode = `export function StorageComponent() {
   const contract = useContract();
   const [value, setValue] = useState('');
   
@@ -120,8 +65,65 @@ export function useContract() {
       <button onClick={handleStore}>Store Value</button>
     </div>
   );
-}`}
-                </code>
+}`;
+
+  return (
+    <div className="prose prose-invert max-sm:max-w-[330px]">
+      <h1 className="text-4xl font-bold mb-6">Frontend Integration</h1>
+
+      <p className="text-lg text-white/70 mb-8">
+        Learn how to build a frontend interface for your smart contract using
+        React and ethers.js. This guide will show you how to connect to wallets
+        and interact with your deployed contract.
+      </p>
+
+      <div className="space-y-12">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Setup</h2>
+          <div className="bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Install Dependencies</h3>
+            <p className="text-white/70 mb-4">Install the required packages:</p>
+            <div className="mt-4">
+              <CodeBlock code={installDepsCode} />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
+          <div className="bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Connect Wallet Button</h3>
+            <p className="text-white/70 mb-4">
+              Create a wallet connection component:
+            </p>
+            <div className="mt-4">
+              <CodeBlock code={connectWalletCode} />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Contract Integration</h2>
+          <div className="space-y-6">
+            <div className="bg-white/5 rounded-lg p-6">
+              <h3 className="text-xl font-medium mb-3">Contract Interface</h3>
+              <p className="text-white/70 mb-4">
+                Create a hook to interact with your contract:
+              </p>
+              <div className="mt-4">
+                <CodeBlock code={contractHookCode} />
+              </div>
+            </div>
+
+            <div className="bg-white/5 rounded-lg p-6">
+              <h3 className="text-xl font-medium mb-3">
+                Interact with Contract
+              </h3>
+              <p className="text-white/70 mb-4">
+                Create a component to interact with your contract:
+              </p>
+              <div className="mt-4">
+                <CodeBlock code={storageComponentCode} />
               </div>
             </div>
           </div>

@@ -1,278 +1,114 @@
 "use client";
 
+import React from "react";
+import CodeBlock from "@/components/CodeBlock";
+
 export default function AcceptPaymentsPage() {
-  const paymentIntegrationCode = `import { usePayments } from '@onchainkit/payments';
+  const paymentButtonCode = `import { PaymentButton } from '@base/payments';
 
-function PaymentButton() {
-  const { createPayment, status } = usePayments();
-
-  const handlePayment = async () => {
-    try {
-      const payment = await createPayment({
-        amount: '0.1',
-        currency: 'ETH',
-        recipient: '0x...',
-        metadata: {
-          productId: '123',
-          orderId: 'order_456'
-        }
-      });
-      
-      console.log('Payment created:', payment);
-    } catch (error) {
-      console.error('Payment failed:', error);
-    }
-  };
-
+function Checkout() {
   return (
-    <button 
-      onClick={handlePayment}
-      disabled={status === 'processing'}
+    <PaymentButton
+      amount="0.1"
+      currency="ETH"
+      onSuccess={(tx) => {
+        console.log('Payment successful:', tx);
+      }}
+      onError={(error) => {
+        console.error('Payment failed:', error);
+      }}
     >
-      {status === 'processing' ? 'Processing...' : 'Pay with ETH'}
-    </button>
+      Pay with Crypto
+    </PaymentButton>
   );
 }`;
 
-  const webhookHandlerCode = `// pages/api/payment-webhook.ts
-import { verifyPaymentSignature } from '@onchainkit/payments';
+  const subscriptionCode = `import { useSubscription } from '@base/payments';
 
-export default async function handler(req, res) {
-  const signature = req.headers['x-payment-signature'];
-  const payload = req.body;
-
-  try {
-    const isValid = await verifyPaymentSignature(payload, signature);
-    if (!isValid) {
-      return res.status(400).json({ error: 'Invalid signature' });
-    }
-
-    // Handle successful payment
-    if (payload.status === 'completed') {
-      await updateOrderStatus(payload.metadata.orderId);
-    }
-
-    res.status(200).json({ received: true });
-  } catch (error) {
-    res.status(400).json({ error: 'Webhook error' });
-  }
-}`;
-
-  const multiTokenCode = `import { useSupportedTokens } from '@onchainkit/payments';
-
-function TokenSelector() {
-  const { tokens, selectedToken, selectToken } = useSupportedTokens();
+function SubscriptionManager() {
+  const { subscribe, cancel, status } = useSubscription({
+    planId: 'premium_monthly',
+    amount: '0.05',
+    interval: 'month'
+  });
 
   return (
-    <select 
-      value={selectedToken?.symbol} 
-      onChange={(e) => selectToken(e.target.value)}
-    >
-      {tokens.map((token) => (
-        <option key={token.address} value={token.symbol}>
-          {token.name} ({token.symbol})
-        </option>
-      ))}
-    </select>
+    <div>
+      <button onClick={subscribe} disabled={status === 'active'}>
+        Subscribe
+      </button>
+      {status === 'active' && (
+        <button onClick={cancel}>Cancel Subscription</button>
+      )}
+    </div>
   );
 }`;
 
-  const subscriptionCode = `import { useSubscriptions } from '@onchainkit/payments';
+  const invoiceCode = `import { createInvoice } from '@base/payments';
 
-function SubscriptionForm() {
-  const { createSubscription } = useSubscriptions();
-
-  const startSubscription = async () => {
-    try {
-      const subscription = await createSubscription({
-        amount: '10',
-        currency: 'USDC',
-        interval: 'monthly',
-        recipient: '0x...',
-        metadata: {
-          planId: 'premium',
-          userId: 'user_123'
-        }
-      });
-      
-      console.log('Subscription created:', subscription);
-    } catch (error) {
-      console.error('Subscription failed:', error);
+async function generateInvoice(order) {
+  const invoice = await createInvoice({
+    items: order.items,
+    currency: 'USDC',
+    dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    metadata: {
+      orderId: order.id,
+      customerEmail: order.email
     }
-  };
+  });
 
-  return (
-    <button onClick={startSubscription}>
-      Subscribe Monthly
-    </button>
-  );
+  return invoice;
 }`;
 
   return (
-    <div className="space-y-8 max-sm:max-w-[330px]">
-      <div>
-        <h1 className="text-4xl font-bold mb-4">Accept Crypto Payments</h1>
-        <p className="text-lg text-white/70 mb-8">
-          Learn how to integrate crypto payments into your application using
-          OnchainKit&apos;s payment features.
-        </p>
+    <div className="prose prose-invert max-w-none">
+      <h1 className="text-4xl font-bold mb-6">Accept Crypto Payments</h1>
+
+      <p className="text-lg text-white/70 mb-8">
+        Learn how to accept cryptocurrency payments in your dApp. This guide
+        covers one-time payments, subscriptions, and invoice generation.
+      </p>
+
+      <div className="space-y-12">
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">One-Time Payments</h2>
+          <div className="bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Payment Button</h3>
+            <p className="text-white/70 mb-4">
+              Add a payment button to your checkout flow:
+            </p>
+            <div className="mt-4">
+              <CodeBlock code={paymentButtonCode} />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Subscriptions</h2>
+          <div className="bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Subscription Manager</h3>
+            <p className="text-white/70 mb-4">
+              Implement recurring payments:
+            </p>
+            <div className="mt-4">
+              <CodeBlock code={subscriptionCode} />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">Invoices</h2>
+          <div className="bg-white/5 rounded-lg p-6">
+            <h3 className="text-xl font-medium mb-3">Invoice Generation</h3>
+            <p className="text-white/70 mb-4">
+              Generate and manage invoices:
+            </p>
+            <div className="mt-4">
+              <CodeBlock code={invoiceCode} />
+            </div>
+          </div>
+        </section>
       </div>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">
-          Basic Payment Integration
-        </h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Payment Button</h3>
-          <p className="text-white/70 mb-4">
-            Implement a simple payment button that accepts ETH or other tokens:
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>{paymentIntegrationCode}</code>
-            </pre>
-          </div>
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Simple one-click payment flow
-              </span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Built-in error handling</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Webhook Integration</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Payment Webhooks</h3>
-          <p className="text-white/70 mb-4">
-            Handle payment notifications and update your backend:
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>{webhookHandlerCode}</code>
-            </pre>
-          </div>
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">
-                Secure signature verification
-              </span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Real-time payment updates</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Multi-Token Support</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Token Selection</h3>
-          <p className="text-white/70 mb-4">
-            Allow users to pay with their preferred token:
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>{multiTokenCode}</code>
-            </pre>
-          </div>
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Support multiple tokens</span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Automatic price conversion</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Subscription Payments</h2>
-        <div className="bg-white/5 rounded-lg p-6">
-          <h3 className="text-xl font-medium mb-3">Recurring Payments</h3>
-          <p className="text-white/70 mb-4">
-            Implement subscription-based payments:
-          </p>
-          <div className="mt-4 bg-black/30 rounded p-4">
-            <pre className="text-sm overflow-x-scroll">
-              <code>{subscriptionCode}</code>
-            </pre>
-          </div>
-          <ul className="mt-4 space-y-2">
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Automated recurring charges</span>
-            </li>
-            <li className="flex items-start space-x-3">
-              <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-              <span className="text-white/70">Flexible billing intervals</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">Security</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement proper access controls
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Use secure payment channels
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">Validate all transactions</span>
-              </li>
-            </ul>
-          </div>
-          <div className="bg-white/5 rounded-lg p-6">
-            <h3 className="text-xl font-medium mb-3">User Experience</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Provide clear transaction status
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Implement proper error handling
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <div className="w-1.5 h-1.5 bg-white/40 rounded-full mt-2"></div>
-                <span className="text-white/70">
-                  Support multiple payment methods
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
