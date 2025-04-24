@@ -116,7 +116,7 @@ export default function Navbar() {
                 </a>
 
                 <a
-                  href="https://www.linkedin.com/company/base-pilipinas"
+                  href="https://www.linkedin.com/company/basepilipinas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-2 p-4 rounded-xl transition-all duration-300 hover:bg-white/5 group"

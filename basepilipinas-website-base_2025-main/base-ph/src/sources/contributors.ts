@@ -137,7 +137,6 @@ export const contributors: Contributor[] = [
     email: "joelmonjardino@gmail.com",
     socials: {
       twitter: "https://x.com/JoelMonjardino",
-      telegram: "@joel.monjardin",
       tiktok: "https://www.tiktok.com/@joel.monjardin",
       discord: "Jofi04493",
       linkedin: "https://www.linkedin.com/in/joel-monjardin-727a6b269/",
@@ -152,7 +151,7 @@ export const contributors: Contributor[] = [
       facebook: "https://www.facebook.com/nickibuyat/",
       twitter: "https://x.com/AoinoKen",
       telegram: "Nicc_kun",
-      tiktok: "nicc_kun",
+
       linkedin: "https://www.linkedin.com/in/nickjohn-ibuyat/",
     },
     skills: ["Researcher", "Marketing", "Sales", "Business Development"],

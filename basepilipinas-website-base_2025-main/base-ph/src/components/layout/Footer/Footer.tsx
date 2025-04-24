@@ -6,16 +6,22 @@ import Link from "next/link";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { PiTelegramLogoLight } from "react-icons/pi";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const menuItems = [
-  { name: "LEARN", href: "/learn" },
-  { name: "BUILD", href: "#schedule-meeting" },
-  { name: "CONTRIBUTE", href: "#join-us" },
-  { name: "CHILL", href: "#faqs" },
+  { name: "LEARN", href: "/docs" },
+  { name: "BUILD", href: "/hire#book-now" },
+  { name: "CONTRIBUTE", href: "/join" },
+  { name: "CHILL", href: "/events" },
 ];
 
 export default function Footer() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   if (pathname === "/contributors" || pathname.startsWith("/docs")) {
     return null;
@@ -27,30 +33,35 @@ export default function Footer() {
         <div className="flex flex-col gap-8 w-full px-4 md:flex-row md:justify-between">
           {/* Logo Section */}
           <div className="flex flex-col items-center">
-            <div className="relative w-auto min-w-[150px] min-h-[40px]">
-              <Image
-                src="/base/Base_Wordmark_White.png"
-                alt="Logo"
-                width={150}
-                height={40}
-                className="object-contain"
-                quality={90}
-              />
-            </div>
+            <Link href="/">
+              <div className="relative w-[150px] h-[40px]">
+                {mounted && (
+                  <Image
+                    src="/base/Base_Wordmark_White.png"
+                    alt="Logo"
+                    fill
+                    sizes="150px"
+                    className="object-contain"
+                    quality={90}
+                    priority
+                  />
+                )}
+              </div>
+            </Link>
           </div>
 
           {/* Menu Items */}
-          <div className="flex flex-wrap justify-center gap-4 text-gray-300 tracking-wide">
+          <nav className="flex flex-wrap justify-center gap-4 text-gray-300 tracking-wide">
             {menuItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm hover:text-white transition-colors"
+                className="text-sm hover:text-white transition-colors duration-300"
               >
                 {item.name}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
 
         {/* Separator Line */}
@@ -67,19 +78,25 @@ export default function Footer() {
           <div className="flex items-center gap-4 md:order-2">
             <a
               href="https://www.facebook.com/basepilipinas"
-              className="text-gray-400 hover:text-[#1877F2] transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#1877F2] transition-colors duration-300"
             >
               <Facebook className="w-5 h-5" />
             </a>
             <a
               href="https://www.instagram.com/basepilipinas"
-              className="text-gray-400 hover:text-[#E1306C] transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#E1306C] transition-colors duration-300"
             >
               <Instagram className="w-5 h-5" />
             </a>
             <a
               href="https://x.com/basepilipinas"
-              className="text-gray-400 hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors duration-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -93,13 +110,17 @@ export default function Footer() {
             </a>
             <a
               href="https://www.linkedin.com/company/basepilipinas"
-              className="text-gray-400 hover:text-[#0A66C2] transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#0A66C2] transition-colors duration-300"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
               href="https://t.me/basepilipinas"
-              className="text-gray-400 hover:text-[#0088cc] transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#0088cc] transition-colors duration-300"
             >
               <PiTelegramLogoLight className="w-5 h-5" />
             </a>
