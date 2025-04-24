@@ -21,6 +21,6 @@ export const CTA_ITEMS = [
     icon: "/hero/relax-work.png",
     title: "Chill",
     description: "Equip yourself with better future all while having fun.",
-    link: "/events",
+    link: "/events/11",
   },
 ];

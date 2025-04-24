@@ -12,7 +12,7 @@ const menuItems = [
   { name: "LEARN", href: "/docs" },
   { name: "BUILD", href: "/hire#book-now" },
   { name: "CONTRIBUTE", href: "/join" },
-  { name: "CHILL", href: "/events" },
+  { name: "CHILL", href: "/events/11" },
 ];
 
 export default function Footer() {
