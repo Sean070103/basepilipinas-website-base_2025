@@ -56,7 +56,7 @@ const userOp = await paymaster.createTransaction({
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={paymasterCode} />
-        </div>
+            </div>
       </section>
 
       <section className="mb-12">
@@ -66,21 +66,21 @@ const userOp = await paymaster.createTransaction({
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={integrationCode} />
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Fee Models</h2>
         <p className="text-gray-300 mb-4">
           Implement custom fee calculation logic for different transaction types.
-        </p>
+            </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={feeModelCode} />
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
         <div className="space-y-4">
           <div className="bg-gray-800 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Security Guidelines</h3>
@@ -111,8 +111,8 @@ const userOp = await paymaster.createTransaction({
               <li>Monitor failed transactions</li>
             </ul>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
     </div>
   );
 }

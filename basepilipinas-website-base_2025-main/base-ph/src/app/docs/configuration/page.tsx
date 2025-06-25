@@ -98,7 +98,7 @@ export const deployConfig = {
               <li>Provide .env.example</li>
               <li>Document all variables</li>
             </ul>
-          </div>
+        </div>
 
           <div className="bg-gray-800 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Network Management</h3>

@@ -49,9 +49,9 @@ function SubscriptionManager() {
 async function generateInvoice(order) {
   const invoice = await createInvoice({
     items: order.items,
-    currency: 'USDC',
+        currency: 'USDC',
     dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-    metadata: {
+        metadata: {
       orderId: order.id,
       customerEmail: order.email
     }

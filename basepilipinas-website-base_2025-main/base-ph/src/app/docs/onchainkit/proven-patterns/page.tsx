@@ -11,7 +11,7 @@ function SmartWalletSetup() {
   const handleCreate = async () => {
     try {
       await createWallet({
-        owner: address,
+      owner: address,
         salt: Date.now().toString()
       })
     } catch (error) {
@@ -99,7 +99,7 @@ function BatchTransfer() {
         Explore battle-tested patterns for building robust dApps with OnchainKit.
         These patterns have been proven in production environments and follow
         best practices for security and user experience.
-      </p>
+        </p>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Account Abstraction</h2>

@@ -54,28 +54,28 @@ async function verifyProxyContract() {
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={verifyContractCode} />
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Source Code Verification</h2>
         <p className="text-gray-300 mb-4">
           Verify contracts by providing the complete source code and compiler settings.
-        </p>
+            </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={verifySourceCode} />
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Proxy Verification</h2>
         <p className="text-gray-300 mb-4">
           Verify proxy contracts and their implementations for transparent upgrades.
-        </p>
+            </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={verifyProxyCode} />
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
@@ -88,7 +88,7 @@ async function verifyProxyContract() {
               <li>Include all external library references</li>
               <li>Verify contracts immediately after deployment</li>
             </ul>
-          </div>
+            </div>
 
           <div className="bg-gray-800 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Common Issues</h3>
@@ -109,8 +109,8 @@ async function verifyProxyContract() {
               <li>Regularly audit verified implementations</li>
             </ul>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
     </div>
   );
 }

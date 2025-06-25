@@ -15,7 +15,7 @@ function IdentityVerification() {
       disabled={status === 'verifying'}
     >
       {status === 'verifying' ? 'Verifying...' : 'Verify Identity'}
-    </button>
+      </button>
   );
 }`;
 
@@ -40,12 +40,12 @@ function ReputationScore() {
   const { score, history } = useReputation();
 
   return (
-    <div>
+          <div>
       <p>Score: {score}</p>
       <ul>
         {history.map((event, i) => (
           <li key={i}>{event}</li>
-        ))}
+      ))}
       </ul>
     </div>
   );
@@ -57,13 +57,13 @@ function ReputationScore() {
       <p className="text-gray-300 mb-8">
         Enhance your dApp with identity verification, social recovery, and reputation systems.
         Learn how to implement these features using MiniKit&apos;s identity tools.
-      </p>
+        </p>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Identity Verification</h2>
         <p className="text-gray-300 mb-4">
           Implement secure identity verification for your users.
-        </p>
+          </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={identityCode} />
         </div>
@@ -73,7 +73,7 @@ function ReputationScore() {
         <h2 className="text-2xl font-semibold mb-4">Social Recovery</h2>
         <p className="text-gray-300 mb-4">
           Set up social recovery mechanisms to enhance wallet security.
-        </p>
+          </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={socialCode} />
         </div>
@@ -83,7 +83,7 @@ function ReputationScore() {
         <h2 className="text-2xl font-semibold mb-4">Reputation System</h2>
         <p className="text-gray-300 mb-4">
           Track and display user reputation scores and history.
-        </p>
+          </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={reputationCode} />
         </div>

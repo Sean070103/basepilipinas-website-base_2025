@@ -36,6 +36,11 @@ export default function Page() {
     setExpandedEvent((prev) => (prev === eventId ? null : eventId));
   };
 
+  // Check if text needs truncation (more than 150 characters and contains multiple sentences)
+  const needsTruncation = (text: string) => {
+    return text.length > 150 && text.split('.').length > 2;
+  };
+
   return (
     <div className='min-h-screen bg-transparent text-white'>
       <div className='container mx-auto py-4 px-4 max-w-xl'>
@@ -102,17 +107,16 @@ export default function Page() {
                   {/* Event Description */}
                   <p
                     className={`mt-2 text-sm ${
-                      event.sentence.length > 100 && expandedEvent !== event.id
+                      needsTruncation(event.sentence) && expandedEvent !== event.id
                         ? 'line-clamp-3'
                         : ''
                     }`}
-                    onClick={() => toggleExpand(event.id)}
                   >
                     {event.sentence}
                   </p>
 
-                  {/* Show More/Less Button (only if description is longer than 100 characters) */}
-                  {event.sentence.length > 100 && (
+                  {/* Show More/Less Button (only if text actually needs truncation) */}
+                  {needsTruncation(event.sentence) && (
                     <button
                       className='text-blue-400 text-xs mt-1 hover:underline'
                       onClick={() => toggleExpand(event.id)}

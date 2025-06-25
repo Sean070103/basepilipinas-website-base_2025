@@ -14,14 +14,14 @@ function OnboardingFlow() {
       {!isConnected ? (
         <button onClick={connect}>Connect Wallet</button>
       ) : (
-        <div>
+      <div>
           <p>Connected: {address}</p>
           <button onClick={() => {/* Next step */}}>
             Continue
           </button>
         </div>
       )}
-    </div>
+      </div>
   );
 }`;
 
@@ -40,7 +40,7 @@ function RecoverySetup() {
   return (
     <button onClick={handleSetup} disabled={isSettingUp}>
       {isSettingUp ? 'Setting up...' : 'Setup Recovery'}
-    </button>
+      </button>
   );
 }`;
 
@@ -60,7 +60,7 @@ function GaslessTransaction() {
   return (
     <button onClick={handleSend} disabled={isProcessing}>
       {isProcessing ? 'Processing...' : 'Send Gasless'}
-    </button>
+      </button>
   );
 }`;
 
@@ -87,7 +87,7 @@ function GaslessTransaction() {
         <h2 className="text-2xl font-semibold mb-4">Social Recovery</h2>
         <p className="text-gray-300 mb-4">
           Add social recovery capabilities to enhance wallet security and recovery options.
-        </p>
+          </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={socialRecoveryCode} />
         </div>

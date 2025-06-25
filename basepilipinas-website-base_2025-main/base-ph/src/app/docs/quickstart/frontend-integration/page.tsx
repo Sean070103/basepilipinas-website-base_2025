@@ -57,7 +57,7 @@ function ContractInteraction() {
   };
 
   return (
-    <div>
+      <div>
       <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -72,40 +72,40 @@ function ContractInteraction() {
     <div className="prose prose-invert max-sm:max-w-[330px]">
       <h1 className="text-4xl font-bold mb-6">Frontend Integration</h1>
 
-      <p className="text-lg text-white/70 mb-8">
+        <p className="text-lg text-white/70 mb-8">
         Learn how to integrate your smart contract with a React frontend using
         Web3-React and ethers.js. This guide covers wallet connection and
         contract interaction.
-      </p>
+        </p>
 
       <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Setup</h2>
-          <div className="bg-white/5 rounded-lg p-6">
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Setup</h2>
+        <div className="bg-white/5 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Provider Setup</h3>
             <p className="text-white/70 mb-4">
               Set up the Web3 provider in your app:
             </p>
             <div className="mt-4">
               <CodeBlock code={setupCode} />
-            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
-          <div className="bg-white/5 rounded-lg p-6">
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Wallet Connection</h2>
+        <div className="bg-white/5 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Connect Wallet Button</h3>
             <p className="text-white/70 mb-4">
               Create a wallet connection component:
             </p>
             <div className="mt-4">
               <CodeBlock code={connectWalletCode} />
-            </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section>
+      <section>
           <h2 className="text-2xl font-semibold mb-4">Contract Interaction</h2>
           <div className="bg-white/5 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Contract Interface</h3>
@@ -114,10 +114,10 @@ function ContractInteraction() {
             </p>
             <div className="mt-4">
               <CodeBlock code={contractInteractionCode} />
-            </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+        </div>
     </div>
   );
 }

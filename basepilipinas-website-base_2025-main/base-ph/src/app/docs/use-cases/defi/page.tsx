@@ -77,7 +77,7 @@ function StakeTokens() {
         <h2 className="text-2xl font-semibold mb-4">Token Swaps</h2>
         <p className="text-gray-300 mb-4">
           Implement token swaps in your dApp with our simple-to-use hooks.
-        </p>
+          </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={swapCode} />
         </div>
@@ -97,7 +97,7 @@ function StakeTokens() {
         <h2 className="text-2xl font-semibold mb-4">Staking</h2>
         <p className="text-gray-300 mb-4">
           Enable token staking functionality with customizable duration and rewards.
-        </p>
+          </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={stakingCode} />
         </div>

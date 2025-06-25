@@ -52,31 +52,31 @@ const recoveryProof = await wallet.initiateRecovery({
         </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={setupCode} />
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Transactions</h2>
         <p className="text-gray-300 mb-4">
           Send transactions and interact with smart contracts using your smart wallet.
-        </p>
+            </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={transactionCode} />
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Social Recovery</h2>
         <p className="text-gray-300 mb-4">
           Implement social recovery functionality for enhanced wallet security.
-        </p>
+            </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={recoveryCode} />
-        </div>
-      </section>
+          </div>
+        </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
+          <h2 className="text-2xl font-semibold mb-4">Best Practices</h2>
         <div className="space-y-4">
           <div className="bg-gray-800 rounded-lg p-6">
             <h3 className="text-xl font-medium mb-3">Security</h3>
@@ -107,8 +107,8 @@ const recoveryProof = await wallet.initiateRecovery({
               <li>Intuitive interface</li>
             </ul>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
     </div>
   );
 }

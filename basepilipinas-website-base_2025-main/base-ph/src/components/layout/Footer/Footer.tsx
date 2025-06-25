@@ -36,17 +36,17 @@ export default function Footer() {
             <Link href="/">
               <div className="relative w-[150px] h-[40px]">
                 {mounted && (
-                  <Image
-                    src="/base/Base_Wordmark_White.png"
-                    alt="Logo"
+              <Image
+                src="/base/Base_Wordmark_White.png"
+                alt="Logo"
                     fill
                     sizes="150px"
-                    className="object-contain"
-                    quality={90}
+                className="object-contain"
+                quality={90}
                     priority
-                  />
+              />
                 )}
-              </div>
+            </div>
             </Link>
           </div>
 

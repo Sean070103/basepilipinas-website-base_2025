@@ -42,13 +42,13 @@ const monitorAgent = new Agent({
       <p className="text-gray-300 mb-8">
         Build and deploy AI agents on Base with AgentKit. Create autonomous agents that can interact 
         with smart contracts and perform complex tasks on the blockchain.
-      </p>
+        </p>
 
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Getting Started</h2>
         <p className="text-gray-300 mb-4">
           Set up your first AI agent with customizable capabilities and configuration.
-        </p>
+          </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={agentSetupCode} />
         </div>
@@ -58,7 +58,7 @@ const monitorAgent = new Agent({
         <h2 className="text-2xl font-semibold mb-4">Trading Agent</h2>
         <p className="text-gray-300 mb-4">
           Create an automated trading agent with customizable strategies.
-        </p>
+            </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={tradingAgentCode} />
         </div>
@@ -68,7 +68,7 @@ const monitorAgent = new Agent({
         <h2 className="text-2xl font-semibold mb-4">Monitoring Agent</h2>
         <p className="text-gray-300 mb-4">
           Deploy agents to monitor blockchain activity and detect specific events.
-        </p>
+          </p>
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           <CodeBlock code={monitoringAgentCode} />
         </div>
