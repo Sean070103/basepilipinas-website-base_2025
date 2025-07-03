@@ -414,12 +414,22 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         </section>
 
         {/* Link to Contributors Page */}
-        <section className="text-center">
+        <section className="flex justify-center my-12">
           <Link
             href="/contributors"
-            className="text-customBlue text-2xl font-bold hover:text-blue-400 transition duration-300 hover:shadow-blue-500 hover:shadow-md"
+            className="relative bg-white/10 backdrop-blur-xl text-2xl sm:text-3xl md:text-4xl font-extrabold rounded-2xl shadow-xl border-4 border-blue-400/40 hover:border-blue-500/80 hover:shadow-blue-500/40 transition-all duration-300 tracking-wide px-4 py-3 sm:px-8 sm:py-5 md:px-12 md:py-8 inline-block drop-shadow-lg hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-400/40 overflow-hidden"
+            style={{ textShadow: '0 0 16px #3b82f6, 0 0 4px #fff' }}
           >
-            View All Contributors ➜
+            <span className="absolute inset-0 rounded-2xl pointer-events-none animate-[borderMove_3s_linear_infinite] border-4 border-transparent" style={{
+              background: 'conic-gradient(from 0deg, #3b82f6, #60a5fa, #3b82f6 360deg)',
+              mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+              WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+              maskComposite: 'exclude',
+              WebkitMaskComposite: 'xor',
+              zIndex: 1,
+              opacity: 0.7
+            }}></span>
+            <span className="relative z-10">Our Team</span>
           </Link>
         </section>
 

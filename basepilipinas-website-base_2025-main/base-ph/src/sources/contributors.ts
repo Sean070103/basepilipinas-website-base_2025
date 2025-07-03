@@ -41,6 +41,7 @@ export const contributors: Contributor[] = [
       "Food Taster",
     ],
     photoUrl: "/contributors/EL Bonuan.jpg",
+    tags: ["Contributor"],
   },
   {
     name: "Ryan Lucas",
@@ -58,6 +59,7 @@ export const contributors: Contributor[] = [
       "Video Editing",
     ],
     photoUrl: "/contributors/Lucas.jpg",
+    tags: ["Contributor"],
   },
   {
     name: "Rhomuel Brian Macahilig",
@@ -78,6 +80,7 @@ export const contributors: Contributor[] = [
       "Web3 Forensics and Security",
     ],
     photoUrl: "/contributors/Rhomuel Macahilig.jpg", // Placeholder path for photo
+    tags: ["Contributor"],
   },
   {
     name: "Missy Reign Dela Cruz",
@@ -98,6 +101,7 @@ export const contributors: Contributor[] = [
       "Marketing",
     ],
     photoUrl: "/contributors/Missy Reign Dela Cruz.jpg", // Placeholder path for photo
+    tags: ["Contributor"],
   },
   {
     name: "Jazz Michael Nase",
@@ -117,6 +121,7 @@ export const contributors: Contributor[] = [
       "Content Creation",
     ],
     photoUrl: "/contributors/Jazz Michael Nase.jpg", // Placeholder path for photo
+    tags: ["Contributor"],
   },
   {
     name: "Neil John Rivera",
@@ -131,6 +136,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Creatives (UI/UX, graphic designer)"],
     photoUrl: "/contributors/Neil John Rivera.jpg", // Placeholder path for photo
+    tags: ["Contributor"],
   },
   {
     name: "Joel Monjardino",
@@ -143,6 +149,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Social Media", "Sales"],
     photoUrl: "/contributors/Joel.jpg", // Placeholder path for photo
+    tags: ["Contributor"],
   },
   {
     name: "Nickjohn Ibuyat",
@@ -156,6 +163,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Researcher", "Marketing", "Sales", "Business Development"],
     photoUrl: "/contributors/Nickjohn Ibuyat.jpg",
+    tags: ["Ambassador", "Regional Ambassador"],
   },
   {
     name: "Patrick Joseph Carangan",
@@ -174,6 +182,7 @@ export const contributors: Contributor[] = [
       "Content Creation",
     ],
     photoUrl: "/contributors/Patrick Joseph Carangan.jpg",
+    tags: ["Contributor"],
   },
   {
     name: "Jezza Penaflor",
@@ -188,6 +197,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Social Media", "Video Editing", "Event Lead / Community Lead"],
     photoUrl: "/contributors/Jezza Penaflor.jpg",
+    tags: ["Contributor"],
   },
   {
     name: "MARVEE FASOY",
@@ -198,6 +208,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Social Media", "Marketing"],
     photoUrl: "/contributors/Marvee Fasoy.jpg",
+    tags: ["Contributor"],
   },
   {
     name: "Francis Esparagoza",
@@ -211,6 +222,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Social Media", "Writer", "Content Creation", "Marketing"],
     photoUrl: "/contributors/Francis Esparagoza.jpg", // Placeholder path for photo
+    tags: ["Contributor"],
   },
   {
     name: "Marc Edison Maniling",
@@ -225,6 +237,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Social Media", "Writer", "Content Creation", "Moderator"],
     photoUrl: "/contributors/Marc Edison Maniling.jpg", // Placeholder path for photo
+    tags: ["Contributor"],
   },
   {
     name: "Aaron (FYCEE) Aranez",
@@ -248,5 +261,64 @@ export const contributors: Contributor[] = [
       "Lead-generation",
     ],
     photoUrl: "/contributors/Aaron.jpg", // Placeholder path for photo
+    tags: ["Contributor"],
+  },
+  {
+    name: "Elixes Becislao",
+    email: "elixes.becislao@gmail.com",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/elixes-becislao/",
+    },
+    skills: ["Leadership", "Strategy", "Community Building"],
+    tags: ["Country Lead", "Leads"],
+    photoUrl: "",
+  },
+  {
+    name: "Jerome Monte",
+    email: "jerome.monte@gmail.com",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/jerome-monte/",
+    },
+    skills: ["Tech Lead", "Development", "Blockchain"],
+    tags: ["Tech Lead", "Leads"],
+    photoUrl: "",
+  },
+  {
+    name: "Christine Chavez",
+    email: "christine.chavez@gmail.com",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/christine-chavez/",
+    },
+    skills: ["Marketing Lead", "Marketing", "Community"],
+    tags: ["Marketing Lead", "Leads"],
+    photoUrl: "",
+  },
+  {
+    name: "Ryan Ariego",
+    email: "ryan.ariego@gmail.com",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/ryan-ariego/",
+    },
+    skills: ["Regional Ambassador", "Community"],
+    tags: ["Ambassador", "Regional Ambassador"],
+    photoUrl: "",
+  },
+  {
+    name: "Ruben Lacumba",
+    email: "ruben.lacumba@gmail.com",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/ruben-lacumba/",
+    },
+    skills: ["Regional Ambassador", "Community"],
+    tags: ["Ambassador", "Regional Ambassador"],
+    photoUrl: "",
+  },
+  {
+    name: "Sean Michael Andrew B. Mendoza",
+    email: "",
+    socials: {},
+    skills: ["Developer"],
+    tags: ["Contributor", "Developer"],
+    photoUrl: "",
   },
 ];

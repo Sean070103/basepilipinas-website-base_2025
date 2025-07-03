@@ -48,6 +48,18 @@ export default function Partners() {
 
   const filteredSponsors = isClient
     ? contributors
+        .slice()
+        .sort((a, b) => {
+          const getRank = (c: Contributor) => {
+            if (c.tags?.includes('Leads')) return 0;
+            if (c.tags?.includes('Ambassador') || c.tags?.includes('Regional Ambassador')) return 1;
+            return 2;
+          };
+          const rankA = getRank(a);
+          const rankB = getRank(b);
+          if (rankA !== rankB) return rankA - rankB;
+          return (a.name || '').localeCompare(b.name || '');
+        })
         .filter((sponsor) => {
           const name = getName(sponsor);
           const skills = getSkills(sponsor);
@@ -66,7 +78,7 @@ export default function Partners() {
       <div className="flex flex-col justify-center space-y-8 max-w-7xl mx-auto">
         <div>
           <h2 className="text-3xl font-bold mb-6 text-center text-white">
-            Our Contributors
+            Our Team
           </h2>
           <div className="relative max-w-lg mx-auto mb-10">
             <div className="relative">
@@ -143,15 +155,35 @@ export default function Partners() {
                         )}
                       </div>
                       <div className="text-center">
-                        <h3 className="text-xl font-bold text-white mb-1 transition-colors duration-300 group-hover:text-blue-400">
+                        <h3 className="text-lg font-bold text-white mb-1.5 transition-colors duration-300 group-hover:text-blue-400">
                           {name}
                         </h3>
+                        {sponsor.tags && sponsor.tags.length > 0 && (
+                          <div className="text-xs text-blue-300 font-semibold mt-1 whitespace-nowrap text-ellipsis overflow-hidden">
+                            {(() => {
+                              const tags = sponsor.tags || [];
+                              if (tags.includes('Developer') && tags.includes('Contributor')) {
+                                return 'Contributor';
+                              }
+                              if (tags.includes('Developer')) {
+                                return 'Developer';
+                              }
+                              if (tags.includes('Regional Ambassador')) {
+                                return 'Regional Ambassador';
+                              }
+                              const leadTags = ['Country Lead', 'Tech Lead', 'Marketing Lead'];
+                              const hasSpecificLead = tags.some(tag => leadTags.includes(tag));
+                              const filteredTags = hasSpecificLead ? tags.filter(tag => tag !== 'Leads') : tags;
+                              return filteredTags.join(', ');
+                            })()}
+                          </div>
+                        )}
                       </div>
-                      <div className="flex flex-wrap justify-center gap-2 w-full">
+                      <div className="flex flex-wrap justify-center items-center gap-2 w-full">
                         {skills.slice(0, 4).map((skill, idx) => (
                           <span
                             key={idx}
-                            className="px-4 py-1.5 bg-blue-600/80 rounded-full text-xs text-white font-medium transition-all duration-300 hover:bg-blue-500 group-hover:bg-blue-500"
+                            className="text-xs font-medium text-white drop-shadow-[0_0_6px_rgba(59,130,246,0.8)]"
                           >
                             {skill.split(" ")[0]}
                           </span>
