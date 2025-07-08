@@ -414,24 +414,21 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         </section>
 
         {/* Link to Contributors Page */}
-        <section className="flex justify-center my-12 relative">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 w-6 h-32 pointer-events-none">
-            <div className="w-full h-full bg-white/60 rounded-xl blur-[2px] shadow-[0_0_32px_8px_#3b82f6cc] animate-vertical-rotate"></div>
-          </div>
+        <section className="flex justify-center my-12">
           <Link
             href="/contributors"
-            className="flex items-center gap-4 group cursor-pointer relative z-10"
+            className="flex items-center gap-4 group cursor-pointer"
           >
             <Image
               src="/logo/Base_Symbol_White.svg"
               alt="Base Logo"
               width={40}
               height={40}
-              className="group-hover:scale-110 transition-transform duration-200 z-10"
+              className="drop-shadow-[0_0_12px_#3b82f6] group-hover:scale-110 transition-transform duration-200 z-10"
               priority
             />
             <span
-              className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold text-center group-hover:text-blue-200 transition-colors duration-200 z-10"
+              className="underline decoration-4 decoration-blue-400 underline-offset-8 text-white text-3xl sm:text-4xl md:text-5xl font-extrabold text-center group-hover:text-blue-200 transition-colors duration-200 z-10"
             >
               Our Team
             </span>
