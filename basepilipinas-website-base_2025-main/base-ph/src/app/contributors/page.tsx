@@ -117,7 +117,7 @@ export default function Partners() {
               const isSelected = selectedCard === index;
 
               const baseCardClass =
-                "rounded-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 w-full max-w-[240px] mx-auto h-[320px] border border-white/10";
+                "rounded-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/60 hover:ring-4 hover:ring-blue-400/40 w-full max-w-[240px] mx-auto h-[320px] border border-white/10";
 
               const defaultCardClass = `${baseCardClass} bg-white/5 backdrop-blur-md hover:bg-white/10`;
               const flippedCardClass = `${baseCardClass} bg-transparent hover:bg-white/5`;
@@ -139,14 +139,14 @@ export default function Partners() {
                       transition: { duration: 0.2 }
                     }}
                   >
-                    <div className="p-5 flex flex-col items-center h-full justify-between group">
-                      <div className="w-28 h-28 rounded-full bg-gray-700 mb-3 overflow-hidden relative border-2 border-gray-600 shadow-lg transition-all duration-300 group-hover:border-blue-500">
+                    <div className="p-5 flex flex-col items-center h-full justify-center group gap-2 relative">
+                      <div className="w-28 h-28 rounded-full bg-gray-700 mb-1 overflow-hidden relative border-2 border-gray-600 shadow-lg transition-all duration-300 group-hover:border-blue-500">
                         {sponsor.photoUrl ? (
                           <Image
                             src={sponsor.photoUrl}
                             alt={`${name}'s photo`}
                             fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            className="object-cover object-center bg-white transition-transform duration-500 group-hover:scale-110"
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-white text-4xl font-bold bg-gradient-to-br from-blue-600 to-blue-800">
@@ -155,7 +155,7 @@ export default function Partners() {
                         )}
                       </div>
                       <div className="text-center">
-                        <h3 className="text-lg font-bold text-white mb-1.5 transition-colors duration-300 group-hover:text-blue-400">
+                        <h3 className="text-lg font-bold text-white mb-1 transition-colors duration-300 group-hover:text-blue-400">
                           {name}
                         </h3>
                         {sponsor.tags && sponsor.tags.length > 0 && (
@@ -179,11 +179,11 @@ export default function Partners() {
                           </div>
                         )}
                       </div>
-                      <div className="flex flex-wrap justify-center items-center gap-2 w-full">
+                      <div className="flex flex-wrap justify-center items-center gap-2 w-full mt-1">
                         {skills.slice(0, 4).map((skill, idx) => (
                           <span
                             key={idx}
-                            className="text-xs font-medium text-white drop-shadow-[0_0_6px_rgba(59,130,246,0.8)]"
+                            className="text-xs font-medium text-white drop-shadow-[0_0_12px_rgba(147,197,253,1)] animate-glow-skill"
                           >
                             {skill.split(" ")[0]}
                           </span>
@@ -210,7 +210,7 @@ export default function Partners() {
                     transition: { duration: 0.2 }
                   }}
                 >
-                  <div className="p-5 flex flex-col items-center justify-center h-full">
+                  <div className="p-5 flex flex-col items-center justify-center h-full gap-4 relative">
                     <h3 className="text-2xl font-bold text-white mb-8 text-center">
                       Connect with<br />{name}
                     </h3>

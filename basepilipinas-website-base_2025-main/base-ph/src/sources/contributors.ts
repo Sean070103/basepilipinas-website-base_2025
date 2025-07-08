@@ -271,7 +271,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Leadership", "Strategy", "Community Building"],
     tags: ["Country Lead", "Leads"],
-    photoUrl: "",
+    photoUrl: "/contributors/Sir.eli.jpg",
   },
   {
     name: "Jerome Monte",
@@ -291,7 +291,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Marketing Lead", "Marketing", "Community"],
     tags: ["Marketing Lead", "Leads"],
-    photoUrl: "",
+    photoUrl: "/contributors/Ms.Christine.jpg",
   },
   {
     name: "Ryan Ariego",
@@ -301,7 +301,7 @@ export const contributors: Contributor[] = [
     },
     skills: ["Regional Ambassador", "Community"],
     tags: ["Ambassador", "Regional Ambassador"],
-    photoUrl: "",
+    photoUrl: "/contributors/Ryanchris.jpg",
   },
   {
     name: "Ruben Lacumba",
@@ -316,9 +316,35 @@ export const contributors: Contributor[] = [
   {
     name: "Sean Michael Andrew B. Mendoza",
     email: "",
-    socials: {},
+    socials: {
+      facebook: "https://www.facebook.com/mndzsma",
+      linkedin: "https://www.linkedin.com/in/sean-michael-andrew-mendoza-213223324/",
+      telegram: "https://t.me/Seanniiea",
+    },
     skills: ["Developer"],
     tags: ["Contributor", "Developer"],
-    photoUrl: "",
+    photoUrl: "/contributors/sean3.jpg",
   },
+  {
+    name: "Dan Vincent Laguimun",
+    email: "",
+    socials: {
+      facebook: "https://www.facebook.com/share/1AvLjUMg34/",
+      telegram: "@naD",
+      linkedin: "https://www.linkedin.com/in/dan-vincent-laguimun-148112278/",
+    },
+    skills: ["Creatives (UI/UX, graphic designer)"],
+    tags: ["Contributor"],
+    photoUrl: "/contributors/Dan.jpg",
+  }, // Dan Vincent Laguimun
+  {
+    name: "Maerhyl Bautista",
+    email: "",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/maerhylbautista/",
+    },
+    skills: ["Creatives (UI/UX, graphic designer)"],
+    tags: ["Contributor"],
+    photoUrl: "/contributors/Bautista.jpg",
+  }, // Maerhyl Bautista
 ];
