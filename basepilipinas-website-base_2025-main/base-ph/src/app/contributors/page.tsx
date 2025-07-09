@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { type Contributor, contributors } from "@/sources/contributors";
 import Image from "next/image";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Partners() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -158,6 +159,14 @@ export default function Partners() {
                         <h3 className="text-lg font-bold text-white mb-1 transition-colors duration-300 group-hover:text-blue-400">
                           {name}
                         </h3>
+                        {sponsor.region && (
+                          <div className="flex items-center justify-center mt-1 mb-1">
+                            <FaMapMarkerAlt className="text-blue-400 mr-1 w-3.5 h-3.5" />
+                            <span className="text-xs font-semibold text-blue-400 bg-blue-100/10 px-2 py-0.5 rounded-full">
+                              {sponsor.region}
+                            </span>
+                          </div>
+                        )}
                         {sponsor.tags && sponsor.tags.length > 0 && (
                           <div className="text-xs text-blue-300 font-semibold mt-1 whitespace-nowrap text-ellipsis overflow-hidden">
                             {(() => {

@@ -414,11 +414,8 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         </section>
 
         {/* Link to Contributors Page */}
-        <section className="flex justify-center my-12">
-          <Link
-            href="/contributors"
-            className="flex items-center gap-4 group cursor-pointer"
-          >
+        <section className="flex flex-col items-center justify-center my-12">
+          <Link href="/contributors" className="flex items-center gap-4 group cursor-pointer">
             <Image
               src="/logo/Base_Symbol_White.svg"
               alt="Base Logo"
@@ -427,12 +424,12 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
               className="drop-shadow-[0_0_12px_#3b82f6] group-hover:scale-110 transition-transform duration-200 z-10"
               priority
             />
-            <span
-              className="underline decoration-4 decoration-blue-400 underline-offset-8 text-white text-3xl sm:text-4xl md:text-5xl font-extrabold text-center group-hover:text-blue-200 transition-colors duration-200 z-10"
-            >
+            <span className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold text-center group-hover:text-blue-200 transition-colors duration-200 z-10">
               Our Team
             </span>
           </Link>
+          {/* Loading/Unloading Glass Button */}
+          <GlassLoadingButton />
         </section>
 
         {/* Join Us */}
@@ -722,9 +719,11 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
               {EVENTS.slice(0, 6).map((event) => (
                 <div
                   key={event.id}
-                  className="bg-[#1a2234] rounded-lg overflow-hidden shadow-lg h-full"
+                  className="relative bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden shadow-lg h-full transition-all duration-300 group hover:border-blue-400 hover:shadow-blue-400/40 hover:shadow-2xl hover:scale-105"
                 >
-                  <Link href={`/events/${event.id}`} className="block h-full">
+                  {/* Gradient overlay for vibrancy */}
+                  <span className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 via-transparent to-blue-400/10 opacity-80 group-hover:opacity-100 transition-all duration-300 z-0"></span>
+                  <Link href={`/events/${event.id}`} className="block h-full relative z-10">
                     <div className="relative h-36 sm:h-48">
                       <Image
                         src={
@@ -740,19 +739,19 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                       />
                     </div>
                     <div className="p-3 sm:p-4">
-                      <div className="flex justify-between items-start mb-2">
-                        <div>
-                          <p className="text-xs text-gray-400">{event.date}</p>
-                          <h3 className="text-sm sm:text-base font-medium">
-                            {event.title}
-                          </h3>
-                          <p className="text-xs sm:text-sm text-gray-400">
-                            Location: {event.location}
-                          </p>
-                        </div>
-                        <div className="text-xs text-gray-400 text-right">
-                          <p>{event.time}</p>
-                        </div>
+                      <div className="flex justify-between items-center mb-2">
+                        <h3 className="text-sm sm:text-base font-medium text-white">
+                          {event.title}
+                        </h3>
+                        <span className="text-xs text-gray-400 whitespace-nowrap ml-2">
+                          {event.time}
+                        </span>
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-400 mb-1">{event.date}</p>
+                        <p className="text-xs sm:text-sm text-gray-400 mb-1">
+                          Location: {event.location}
+                        </p>
                       </div>
                       <div className="flex justify-end mt-3 sm:mt-4">
                         <button
@@ -906,5 +905,29 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         </section>
       </div>
     </>
+  );
+}
+
+function GlassLoadingButton() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+  return (
+    <button
+      className={`mt-3 px-6 py-2 rounded-md bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold shadow-lg transition-all duration-300 relative overflow-hidden ${loading ? 'animate-pulse' : 'hover:bg-white/20 hover:scale-105'}`}
+      style={{ minWidth: 120 }}
+      disabled={loading}
+    >
+      <span className="relative z-10 flex items-center justify-center">
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="w-6 h-6 drop-shadow-[0_0_8px_#3b82f6] group-hover:drop-shadow-[0_0_16px_#60a5fa] transition-all duration-300">
+          <path d="M12 19V5m0 0l-6 6m6-6l6 6" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+      {loading && (
+        <span className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-white/30 to-blue-400/20 animate-shimmer" style={{ zIndex: 1 }}></span>
+      )}
+    </button>
   );
 }

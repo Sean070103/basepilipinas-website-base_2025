@@ -36,9 +36,10 @@ export default function Page() {
     setExpandedEvent((prev) => (prev === eventId ? null : eventId));
   };
 
-  // Check if text needs truncation (more than 150 characters and contains multiple sentences)
+  // Check if text needs truncation (more than 220 characters and at least 3 sentences)
   const needsTruncation = (text: string) => {
-    return text.length > 150 && text.split('.').length > 2;
+    const sentences = text.split('.').filter(Boolean);
+    return text.length > 220 && sentences.length >= 3 && sentences.length <= 4 ? true : sentences.length > 4;
   };
 
   return (

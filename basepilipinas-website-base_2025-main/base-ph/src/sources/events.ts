@@ -249,7 +249,7 @@ Thank you to everyone who joined onsite at Adamson University and online via Zoo
     date: "May 2, 2025",
     time: "10:00 AM - 6:00 PM",
     image: "/Event/ADU.jpg",
-    status: "Upcoming",
+    status: "Done",
   },
   {
     id: "26",

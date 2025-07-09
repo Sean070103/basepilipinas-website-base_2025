@@ -14,6 +14,7 @@ export interface Contributor {
   skills: string[];
   tags?: string[];
   photoUrl?: string; // Added photoUrl property for profile images
+  region?: string; // Added region property for regional ambassadors
 }
 
 export const contributors: Contributor[] = [
@@ -164,6 +165,7 @@ export const contributors: Contributor[] = [
     skills: ["Researcher", "Marketing", "Sales", "Business Development"],
     photoUrl: "/contributors/Nickjohn Ibuyat.jpg",
     tags: ["Ambassador", "Regional Ambassador"],
+    region: "North Luzon",
   },
   {
     name: "Patrick Joseph Carangan",
@@ -281,7 +283,8 @@ export const contributors: Contributor[] = [
     },
     skills: ["Tech Lead", "Development", "Blockchain"],
     tags: ["Tech Lead", "Leads"],
-    photoUrl: "",
+    photoUrl: "/contributors/Jerome.png",
+    region: "Metro & Mega Manila",
   },
   {
     name: "Christine Chavez",
@@ -302,6 +305,7 @@ export const contributors: Contributor[] = [
     skills: ["Regional Ambassador", "Community"],
     tags: ["Ambassador", "Regional Ambassador"],
     photoUrl: "/contributors/Ryanchris.jpg",
+    region: "Visayas",
   },
   {
     name: "Ruben Lacumba",
@@ -311,7 +315,8 @@ export const contributors: Contributor[] = [
     },
     skills: ["Regional Ambassador", "Community"],
     tags: ["Ambassador", "Regional Ambassador"],
-    photoUrl: "",
+    photoUrl: "/contributors/Ruben.jpg",
+    region: "Mindanao",
   },
   {
     name: "Sean Michael Andrew B. Mendoza",

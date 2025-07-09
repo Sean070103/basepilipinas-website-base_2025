@@ -102,7 +102,7 @@ export default function Navbar() {
                 </a>
 
                 <a
-                  href="https://twitter.com/basepilipinas"
+                  href="https://x.com/basepilipinas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-2 p-4 rounded-xl transition-all duration-300 hover:bg-white/5 group"
@@ -112,7 +112,7 @@ export default function Navbar() {
                       <FaXTwitter className="h-6 w-6 text-white" />
                     </div>
                   </div>
-                  <span className="text-white text-sm">Twitter</span>
+                  <span className="text-white text-sm">X</span>
                 </a>
 
                 <a
