@@ -715,55 +715,71 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
               EVENTS
             </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 items-stretch">
               {EVENTS.slice(0, 6).map((event) => (
-                <div
+                <Link
                   key={event.id}
-                  className="relative bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden shadow-lg h-full transition-all duration-300 group hover:border-blue-400 hover:shadow-blue-400/40 hover:shadow-2xl hover:scale-105"
+                  href={`/events/${event.id}`}
+                  className="w-full h-auto lg:h-[540px] flex flex-col bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 rounded-3xl shadow-xl overflow-hidden transition-transform duration-200 hover:scale-105 cursor-pointer"
                 >
-                  {/* Gradient overlay for vibrancy */}
-                  <span className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 via-transparent to-blue-400/10 opacity-80 group-hover:opacity-100 transition-all duration-300 z-0"></span>
-                  <Link href={`/events/${event.id}`} className="block h-full relative z-10">
-                    <div className="relative h-36 sm:h-48">
-                      <Image
-                        src={
-                          event.image ||
-                          "/placeholder.svg?height=800&width=1200" ||
-                          "/placeholder.svg"
-                        }
-                        alt={event.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                        quality={90}
-                      />
-                    </div>
-                    <div className="p-3 sm:p-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <h3 className="text-sm sm:text-base font-medium text-white">
-                          {event.title}
-                        </h3>
-                        <span className="text-xs text-gray-400 whitespace-nowrap ml-2">
-                          {event.time}
-                        </span>
+                  {/* Event Image Banner */}
+                  <div className="relative w-full aspect-[1/1] sm:aspect-[4/3] rounded-t-3xl overflow-hidden bg-blue-900 min-h-[120px] sm:min-h-[180px] shadow-md">
+                    <Image
+                      src={event.image || "/placeholder.svg"}
+                      alt={event.title}
+                      fill
+                      className="object-cover object-left w-full h-full"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                      quality={90}
+                      priority
+                    />
+                    <span className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-blue-950/90 to-transparent z-10"></span>
+                  </div>
+                  {/* Card Content */}
+                  <div className="flex-1 flex flex-col justify-between p-5 sm:p-6 gap-4 z-20">
+                    {/* Title and Subtitle */}
+                    <h3 className="text-lg sm:text-2xl font-extrabold text-white mb-1">
+                      {event.title.split('Base Philippines').length > 1 ? (
+                        <>
+                          {event.title.split('Base Philippines')[0]}
+                          <span className="text-blue-400">Base Philippines</span>
+                          {event.title.split('Base Philippines')[1]}
+                        </>
+                      ) : (
+                        event.title
+                      )}
+                    </h3>
+                    {/* Details Row */}
+                    <div className="flex flex-wrap gap-6 text-white/90 text-sm mb-2 items-center">
+                      <div className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="4"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                        <span>{event.date}</span>
                       </div>
-                      <div>
-                        <p className="text-xs text-gray-400 mb-1">{event.date}</p>
-                        <p className="text-xs sm:text-sm text-gray-400 mb-1">
-                          Location: {event.location}
-                        </p>
-                      </div>
-                      <div className="flex justify-end mt-3 sm:mt-4">
-                        <button
-                          className="text-xs bg-gray-700 hover:bg-gray-600 px-2 sm:px-3 py-1 rounded"
-                          onClick={(e) => e.stopPropagation()} // Prevents navigation when clicking the button
-                        >
-                          Details
-                        </button>
+                      <div className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                        <span>{event.location}</span>
                       </div>
                     </div>
-                  </Link>
-                </div>
+                    {/* Session Topic Box */}
+                    <div className="bg-blue-900/60 border border-blue-700 rounded-xl p-4 mb-2">
+                      <div className="flex items-center gap-2 mb-1">
+                        <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 17l4 4 4-4m-4-5v9"/><rect x="3" y="3" width="18" height="4" rx="2"/></svg>
+                        <span className="font-semibold text-white">Session Topic</span>
+                      </div>
+                      <div className="text-white/90 font-bold text-base mb-1">{event.title}</div>
+                      {event.sentence && event.sentence.length <= 160 && (
+                        <div className="text-white/70 text-sm">{event.sentence}</div>
+                      )}
+                    </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      <span className="bg-blue-700/80 text-white text-xs font-semibold px-3 py-1 rounded-full">Blockchain</span>
+                      <span className="bg-blue-800/80 text-white text-xs font-semibold px-3 py-1 rounded-full">Web3</span>
+                      <span className="bg-blue-600/80 text-white text-xs font-semibold px-3 py-1 rounded-full">Base Network</span>
+                      <span className="bg-green-700/80 text-white text-xs font-semibold px-3 py-1 rounded-full">Philippines</span>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

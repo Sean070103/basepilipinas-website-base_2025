@@ -631,4 +631,14 @@ Thank you to everyone who joined onsite at Adamson University and online via Zoo
     image: "/updates/scenario.jpg",
     status: "Done",
   },
+  {
+    id: "64",
+    title: "ChadFi AMA with Nickjohn Ibuyat (Tobi)",
+    sentence: `🎤 Hosting tonight’s AMA is Nickjohn Ibuyat (Tobi), our Regional Ambassador representing North Luzon for Base Philippines! 🇵🇭💪\nHe’ll be leading the convo as we talk all things ChadFi — AI trading, beta access, affiliate perks, and raffles you won’t want to miss.\nLet’s show our support for Nickjohn and tune in! 🙌\n🗓️ Set your reminder and join us live tonight at 8PM:\n🔗 https://x.com/i/spaces/1jMKgkppAwgKL\n#BasePhilippines #ChadFiAMA`,
+    location: "Online",
+    date: "July 10, 2025",
+    time: "8:00 PM",
+    image: "/Event/Chadfi.jpg",
+    status: "Done",
+  },
 ];
