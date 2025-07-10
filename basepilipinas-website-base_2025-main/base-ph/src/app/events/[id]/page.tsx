@@ -1,7 +1,7 @@
 'use client';
 
 import { EVENTS } from '@/sources/events';
-import { Calendar, Clock, MoreHorizontal } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
