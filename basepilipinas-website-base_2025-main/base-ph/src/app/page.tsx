@@ -415,41 +415,107 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
 
         {/* Link to Contributors Page */}
         <section className="flex flex-col items-center justify-center my-12">
-          <Link href="/contributors" className="flex items-center gap-4 group cursor-pointer">
-            <Image
-              src="/logo/Base_Symbol_White.svg"
-              alt="Base Logo"
-              width={40}
-              height={40}
-              className="drop-shadow-[0_0_12px_#3b82f6] group-hover:scale-110 transition-transform duration-200 z-10"
-              priority
-            />
-            <span className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold text-center group-hover:text-blue-200 transition-colors duration-200 z-10">
-              Our Team
+          <div className="relative flex items-center justify-center w-fit mx-auto" style={{ minHeight: 80, minWidth: 220 }}>
+            <Link href="/contributors" className="flex items-center gap-4 group cursor-pointer z-10">
+              <Image
+                src="/logo/Base_Symbol_White.svg"
+                alt="Base Logo"
+                width={40}
+                height={40}
+                className="drop-shadow-[0_0_24px_#3b82f6] group-hover:scale-110 transition-transform duration-200 z-10"
+                priority
+              />
+              <span className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold text-center group-hover:text-blue-200 transition-colors duration-200 z-10 drop-shadow-[0_0_16px_#3b82f6]">
+                Our Team
+              </span>
+            </Link>
+            {/* Base Circle */}
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" style={{ width: 180, height: 180 }}>
+              <span className="block w-full h-full animate-base-spin" style={{ boxSizing: 'border-box' }}>
+                <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                  <circle cx="90" cy="90" r="88" stroke="white" strokeWidth="2" fill="none" />
+                  <ellipse cx="90" cy="90" rx="88" ry="28" stroke="white" strokeWidth="1.2" fill="none" opacity="0.5" />
+                  <ellipse cx="90" cy="90" rx="88" ry="58" stroke="white" strokeWidth="1.2" fill="none" opacity="0.3" />
+                  <ellipse cx="90" cy="90" rx="88" ry="80" stroke="white" strokeWidth="1.2" fill="none" opacity="0.2" />
+                  <ellipse cx="90" cy="90" rx="28" ry="88" stroke="white" strokeWidth="1.2" fill="none" opacity="0.5" />
+                  <ellipse cx="90" cy="90" rx="58" ry="88" stroke="white" strokeWidth="1.2" fill="none" opacity="0.3" />
+                  <ellipse cx="90" cy="90" rx="80" ry="88" stroke="white" strokeWidth="1.2" fill="none" opacity="0.2" />
+                </svg>
+              </span>
             </span>
-          </Link>
-          {/* Loading/Unloading Glass Button */}
-          <GlassLoadingButton />
+          </div>
         </section>
 
         {/* Join Us */}
         <section
           id="join-us"
-          className="flex flex-col items-center justify-center p-4 sm:p-6 py-10 sm:py-16"
+          className="relative flex flex-col items-center justify-center p-4 sm:p-6 py-14 sm:py-20"
         >
-          <p className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-bold leading-tight text-white opacity-80 text-center">
-            Unleash the future Join our community.
-          </p>
+          {/* Animated SVG network background */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+            <svg width="600" height="220" viewBox="0 0 600 220" fill="none" className="w-full h-full max-w-4xl opacity-40 blur-sm animate-pulse-slow">
+              <g stroke="#38bdf8" strokeWidth="1.2" opacity="0.25">
+                <circle cx="120" cy="110" r="90" />
+                <circle cx="300" cy="110" r="100" />
+                <circle cx="480" cy="110" r="90" />
+                <ellipse cx="300" cy="110" rx="250" ry="80" />
+                <ellipse cx="300" cy="110" rx="180" ry="60" />
+                <ellipse cx="300" cy="110" rx="120" ry="40" />
+                <polyline points="50,110 300,30 550,110 300,190 50,110" />
+                <polyline points="120,20 300,110 480,200" />
+                <polyline points="120,200 300,110 480,20" />
+              </g>
+              <g>
+                <circle cx="120" cy="110" r="5" fill="#38bdf8" />
+                <circle cx="300" cy="30" r="4" fill="#0ea5e9" />
+                <circle cx="480" cy="110" r="5" fill="#38bdf8" />
+                <circle cx="300" cy="190" r="4" fill="#0ea5e9" />
+                <circle cx="300" cy="110" r="6" fill="#06b6d4" />
+                <circle cx="120" cy="20" r="3" fill="#0ea5e9" />
+                <circle cx="120" cy="200" r="3" fill="#0ea5e9" />
+                <circle cx="480" cy="20" r="3" fill="#0ea5e9" />
+                <circle cx="480" cy="200" r="3" fill="#0ea5e9" />
+              </g>
+            </svg>
+          </div>
 
-          <Link
-            href="/join"
-            className="mt-4 sm:mt-6 px-4 sm:px-6 py-2 sm:py-3 border-2 border-white text-white rounded-full flex items-center gap-2 transition-all duration-300
-        hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
-          >
-            <span className="text-sm sm:text-base lg:text-lg">
+          {/* Partner/Tech Logos - REMOVED */}
+
+          <div className="relative z-10 flex flex-col items-center">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-center mb-3">
+              <span className="block text-white/90">Unleash the future</span>
+              <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">Join our community.</span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-white/80 text-center mb-7 max-w-2xl">
+              Be part of a thriving network of innovators, builders, and dreamers. Shape the next wave of Web3 in the Philippines and beyond.
+            </p>
+            {/* Live Members Counter - REMOVED */}
+            <Link
+              href="/join"
+              className="group mt-2 sm:mt-4 px-7 py-3 border-2 border-white text-white rounded-full flex items-center gap-3 text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-blue-700 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
               JOIN US NOW
-            </span>
-          </Link>
+              <svg className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </Link>
+            {/* Mini Features */}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl">
+              <div className="feature-card-hover flex flex-col items-center bg-white/5 border border-cyan-400/30 rounded-xl p-4 backdrop-blur-sm">
+                <svg className="feature-icon-glow w-8 h-8 mb-2 text-cyan-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20v-6m0 0V4m0 10l-4-4m4 4l4-4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <span className="text-white font-semibold text-base">For Builders</span>
+                <span className="text-white/60 text-xs mt-1 text-center">Collaborate, code, and launch projects</span>
+              </div>
+              <div className="feature-card-hover flex flex-col items-center bg-white/5 border border-cyan-400/30 rounded-xl p-4 backdrop-blur-sm">
+                <svg className="feature-icon-glow w-8 h-8 mb-2 text-cyan-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M8 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <span className="text-white font-semibold text-base">For Learners</span>
+                <span className="text-white/60 text-xs mt-1 text-center">Workshops, resources, and mentorship</span>
+              </div>
+              <div className="feature-card-hover flex flex-col items-center bg-white/5 border border-cyan-400/30 rounded-xl p-4 backdrop-blur-sm">
+                <svg className="feature-icon-glow w-8 h-8 mb-2 text-cyan-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2h5" /><circle cx="12" cy="7" r="4" /></svg>
+                <span className="text-white font-semibold text-base">For Dreamers</span>
+                <span className="text-white/60 text-xs mt-1 text-center">Network, share ideas, and get inspired</span>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Schedule Meeting */}
@@ -921,29 +987,5 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         </section>
       </div>
     </>
-  );
-}
-
-function GlassLoadingButton() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(timer);
-  }, []);
-  return (
-    <button
-      className={`mt-3 px-6 py-2 rounded-md bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold shadow-lg transition-all duration-300 relative overflow-hidden ${loading ? 'animate-pulse' : 'hover:bg-white/20 hover:scale-105'}`}
-      style={{ minWidth: 120 }}
-      disabled={loading}
-    >
-      <span className="relative z-10 flex items-center justify-center">
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="w-6 h-6 drop-shadow-[0_0_8px_#3b82f6] group-hover:drop-shadow-[0_0_16px_#60a5fa] transition-all duration-300">
-          <path d="M12 19V5m0 0l-6 6m6-6l6 6" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
-      {loading && (
-        <span className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-white/30 to-blue-400/20 animate-shimmer" style={{ zIndex: 1 }}></span>
-      )}
-    </button>
   );
 }
