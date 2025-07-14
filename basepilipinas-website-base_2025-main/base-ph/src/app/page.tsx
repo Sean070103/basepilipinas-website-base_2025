@@ -8,54 +8,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils";
 import { EVENTS } from "@/sources/events";
 import { CTA_ITEMS } from "@/sources/hero";
 import { MISSIONS } from "@/sources/missions";
-import { format } from "date-fns";
-import { CalendarIcon, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaTelegram,
-  FaXTwitter,
-} from "react-icons/fa6";
+import { X } from "lucide-react";
 
 export default function Home() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    contact: "",
-    subject: "",
-    date: "",
-    time: "",
-  });
-  const [notification, setNotification] = useState("");
   const [socialsOpen, setSocialsOpen] = useState(false);
-  const [date, setDate] = useState<Date>();
-  const [isOpen, setIsOpen] = useState(false);
 
   // Function to handle smooth scrolling to sections
   const scrollToSection = (sectionId: string) => {
@@ -88,66 +52,6 @@ export default function Home() {
 
   const toggleSocials = () => {
     setSocialsOpen(!socialsOpen);
-  };
-
-  const hours = Array.from({ length: 24 }, (_, i) => i);
-  const handleDateSelect = (selectedDate: Date | undefined) => {
-    if (selectedDate) {
-      setDate(selectedDate);
-    }
-  };
-
-  const handleTimeChange = (type: "hour" | "minute", value: string) => {
-    if (date) {
-      const newDate = new Date(date);
-      if (type === "hour") {
-        newDate.setHours(Number.parseInt(value));
-      } else if (type === "minute") {
-        newDate.setMinutes(Number.parseInt(value));
-      }
-      setDate(newDate);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    console.log("Meeting Scheduled with details:", formData);
-
-    try {
-      const response = await fetch("/api/mail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        console.log("Email sent successfully");
-        setNotification("Meeting scheduled successfully!");
-      } else {
-        console.error("Failed to send email");
-        setNotification("Failed to schedule meeting. Try again.");
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
-      setNotification("An error occurred. Please try again later.");
-    }
-
-    setFormData({
-      name: "",
-      email: "",
-      contact: "",
-      subject: "",
-      date: "",
-      time: "",
-    });
-    setTimeout(() => setNotification(""), 3000);
   };
 
   // Handle CTA item click
@@ -538,224 +442,14 @@ hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.8)]"
               </span>
             </p>
 
-            <Dialog>
-              <DialogTrigger asChild>
-                <button className="mt-4 sm:mt-6 px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition duration-300">
-                  BOOK NOW
-                </button>
-              </DialogTrigger>
-              <DialogContent className="bg-gray-700/60 backdrop-blur-md max-w-md w-[95vw] sm:w-full border-0">
-                <button className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-                  <X className="h-4 w-4 text-white" />
-                  <span className="sr-only">Close</span>
-                </button>
-                <DialogHeader className="p-0">
-                  <DialogTitle className="text-center text-2xl font-bold text-white">
-                    Schedule a Meeting with us!
-                  </DialogTitle>
-
-                  <DialogDescription asChild>
-                    <div>
-                      <p className="text-white/80 text-center text-sm mt-2">
-                        Connect with us at your convenience! Book a meeting to
-                        discuss your ideas, projects, or inquiries.
-                      </p>
-                      <>
-                        {notification && (
-                          <div className="text-green-400 text-center font-semibold mt-4">
-                            {notification}
-                          </div>
-                        )}
-
-                        <form
-                          className="mt-4 space-y-4"
-                          onSubmit={handleSubmit}
-                        >
-                          <Input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            placeholder="Name"
-                            required
-                            className="w-full h-12 px-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60"
-                          />
-                          <Input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="Email"
-                            required
-                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
-                            className="w-full h-12 px-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60"
-                          />
-                          <Input
-                            type="text"
-                            name="contact"
-                            value={formData.contact}
-                            onChange={handleChange}
-                            placeholder="Contact Number"
-                            required
-                            minLength={10}
-                            className="w-full h-12 px-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60"
-                          />
-                          <Input
-                            type="text"
-                            name="subject"
-                            value={formData.subject}
-                            onChange={handleChange}
-                            placeholder="Subject / Purpose"
-                            required
-                            className="w-full h-12 px-4 bg-white/20 border border-white/30 rounded-lg text-white outline-none placeholder:text-white/60"
-                          />
-
-                          <div className="">
-                            <Popover open={isOpen} onOpenChange={setIsOpen}>
-                              <PopoverTrigger asChild>
-                                <Button
-                                  variant="outline"
-                                  className={cn(
-                                    "w-full h-12 px-4 bg-white/20 border border-white/60 rounded-lg text-white outline-none placeholder:text-white/80 justify-start text-left font-normal",
-                                    !date && "text-muted-foreground"
-                                  )}
-                                >
-                                  <CalendarIcon className="mr-2 h-4 w-4" />
-                                  {date ? (
-                                    format(date, "MM/dd/yyyy hh:mm")
-                                  ) : (
-                                    <span>MM/DD/YYYY hh:mm</span>
-                                  )}
-                                </Button>
-                              </PopoverTrigger>
-                              <PopoverContent className="w-auto p-0">
-                                <div className="sm:flex">
-                                  <Calendar
-                                    mode="single"
-                                    selected={date}
-                                    onSelect={handleDateSelect}
-                                    initialFocus
-                                  />
-                                  <div className="flex flex-col sm:flex-row sm:h-[300px] divide-y sm:divide-y-0 sm:divide-x">
-                                    <ScrollArea className="w-64 sm:w-auto">
-                                      <div className="flex sm:flex-col p-2">
-                                        {hours.reverse().map((hour) => (
-                                          <Button
-                                            key={hour}
-                                            size="icon"
-                                            variant={
-                                              date && date.getHours() === hour
-                                                ? "default"
-                                                : "ghost"
-                                            }
-                                            className="sm:w-full shrink-0 aspect-square"
-                                            onClick={() =>
-                                              handleTimeChange(
-                                                "hour",
-                                                hour.toString()
-                                              )
-                                            }
-                                          >
-                                            {hour}
-                                          </Button>
-                                        ))}
-                                      </div>
-                                      <ScrollBar
-                                        orientation="horizontal"
-                                        className="sm:hidden"
-                                      />
-                                    </ScrollArea>
-                                    <ScrollArea className="w-64 sm:w-auto">
-                                      <div className="flex sm:flex-col p-2">
-                                        {Array.from(
-                                          { length: 12 },
-                                          (_, i) => i * 5
-                                        ).map((minute) => (
-                                          <Button
-                                            key={minute}
-                                            size="icon"
-                                            variant={
-                                              date &&
-                                              date.getMinutes() === minute
-                                                ? "default"
-                                                : "ghost"
-                                            }
-                                            className="sm:w-full shrink-0 aspect-square"
-                                            onClick={() =>
-                                              handleTimeChange(
-                                                "minute",
-                                                minute.toString()
-                                              )
-                                            }
-                                          >
-                                            {minute.toString().padStart(2, "0")}
-                                          </Button>
-                                        ))}
-                                      </div>
-                                      <ScrollBar
-                                        orientation="horizontal"
-                                        className="sm:hidden"
-                                      />
-                                    </ScrollArea>
-                                  </div>
-                                </div>
-                              </PopoverContent>
-                            </Popover>
-                          </div>
-
-                          <button
-                            type="submit"
-                            className="w-full h-12 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition"
-                            disabled={!formData.date || !formData.time}
-                            aria-label="Submit Meeting Form"
-                          >
-                            Submit
-                          </button>
-                        </form>
-
-                        <div className="text-center text-white mt-6">
-                          <p className="text-sm">Stay Connected!</p>
-                          <div className="flex justify-center gap-6 mt-3">
-                            <a
-                              href="https://www.facebook.com/basepilipinas"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white hover:text-blue-400 transition-colors duration-200"
-                            >
-                              <FaFacebookF size={20} />
-                            </a>
-                            <a
-                              href="https://x.com/basepilipinas"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white hover:text-blue-400 transition-colors duration-200"
-                            >
-                              <FaXTwitter size={20} />
-                            </a>
-                            <a
-                              href="https://www.linkedin.com/company/basepilipinas"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white hover:text-blue-400 transition-colors duration-200"
-                            >
-                              <FaLinkedinIn size={20} />
-                            </a>
-                            <a
-                              href="https://t.me/basepilipinas"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-white hover:text-blue-400 transition-colors duration-200"
-                            >
-                              <FaTelegram size={20} />
-                            </a>
-                          </div>
-                        </div>
-                      </>
-                    </div>
-                  </DialogDescription>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
+            <div className="flex justify-center">
+              <Link
+                href="/book-now"
+                className="mt-4 sm:mt-6 w-fit px-7 py-3 border-2 border-white text-white rounded-full flex items-center gap-3 text-lg font-bold transition-all duration-300 bg-transparent hover:bg-white hover:text-blue-700 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                BOOK NOW
+              </Link>
+            </div>
           </div>
 
           {/* Image Section */}

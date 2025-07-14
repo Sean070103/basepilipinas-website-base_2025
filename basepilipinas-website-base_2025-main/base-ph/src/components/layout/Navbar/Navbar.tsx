@@ -29,16 +29,16 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="w-full sticky top-0 right-0 py-4 flex justify-center items-center z-50">
-        <div className="sm:max-w-none flex flex-col sm:flex-row self-center text-center items-center justify-between gap-3 sm:gap-8 px-6 sm:px-8 py-3 sm:py-4 border border-gray-500/30 rounded-2xl bg-black/60 backdrop-blur-xl text-white shadow-lg shadow-black/5">
+      <div className="w-full fixed top-0 left-0 right-0 py-4 flex justify-center items-center z-[100]">
+        <div className="navbar-bg sm:max-w-none flex flex-col sm:flex-row self-center text-center items-center justify-between gap-3 sm:gap-8 px-6 sm:px-8 py-3 sm:py-4 border border-gray-500/30 rounded-2xl bg-black/60 backdrop-blur-xl text-white shadow-lg shadow-black/5">
           {/* Mobile Layout */}
-          <div className="flex sm:hidden items-center justify-between w-[90vw] max-w-[400px] mx-auto min-h-[12px] py-0 px-2 rounded-2xl border border-white/70 bg-transparent">
+          <div className="flex sm:hidden items-center justify-between w-[90vw] max-w-[400px] mx-auto min-h-[12px] py-0 px-2 rounded-2xl border border-gray-200 bg-white">
             <Link
               href="/#hero"
               className="flex items-center justify-center group transition-all duration-200 p-1 flex sm:hidden"
             >
               <Image
-                src="/logo/Base_Symbol_White.svg"
+                src="/logo/base_ph.png"
                 alt="Logo"
                 width={28}
                 height={36}
@@ -53,9 +53,9 @@ export default function Navbar() {
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6 text-white transition-all duration-200 rotate-90" />
+                <X className="h-6 w-6 text-black transition-all duration-200 rotate-90" />
               ) : (
-                <Menu className="h-6 w-6 text-white transition-all duration-200" />
+                <Menu className="h-6 w-6 text-black transition-all duration-200" />
               )}
             </button>
           </div>

@@ -294,3 +294,10 @@ body::before {
 .feature-card-hover:hover .feature-icon-glow {
   filter: drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 16px #0ea5e9);
 }
+
+/* Hide navbar background on mobile */
+@media (max-width: 767px) {
+  .navbar-bg {
+    display: none !important;
+  }
+}

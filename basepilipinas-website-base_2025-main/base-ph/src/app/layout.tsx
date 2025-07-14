@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/Footer/Footer";
 import Navbar from "@/components/layout/Navbar/Navbar";
+import MobileNavbar from "@/components/layout/Navbar/MobileNavbar";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -62,7 +63,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        <div className="hidden sm:block">
+          <Navbar />
+        </div>
+        <div className="block sm:hidden">
+          <MobileNavbar />
+        </div>
         <main className="mx-auto p-6">{children}</main>
         <Footer />
       </body>
