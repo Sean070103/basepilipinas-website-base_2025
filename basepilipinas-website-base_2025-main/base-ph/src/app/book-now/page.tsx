@@ -15,6 +15,8 @@ export default function BookNowPage() {
     date: "",
     time: "",
   });
+  const [contactError, setContactError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -25,6 +27,21 @@ export default function BookNowPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (e.target.name === "contact") {
+      if (/[^0-9]/.test(e.target.value)) {
+        setContactError("Contact number must contain numbers only.");
+      } else {
+        setContactError("");
+      }
+    }
+    if (e.target.name === "email") {
+      const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      if (e.target.value && !emailPattern.test(e.target.value)) {
+        setEmailError("Please enter a valid email address.");
+      } else {
+        setEmailError("");
+      }
+    }
   };
   const handleHourClick = (hour: number) => {
     setSelectedHour(hour);
@@ -56,6 +73,7 @@ export default function BookNowPage() {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (contactError || emailError) return;
     setIsSubmitting(true);
     setIsSuccess(false);
     try {
@@ -111,9 +129,9 @@ export default function BookNowPage() {
               {[
                 { name: "name", label: "Name", type: "text" },
                 { name: "email", label: "Email", type: "email" },
-                { name: "contact", label: "Contact Number", type: "text" },
+                { name: "contact", label: "Contact Number", type: "text", inputMode: "numeric", pattern: "[0-9]*" },
                 { name: "subject", label: "Subject / Purpose", type: "text" },
-              ].map(({ name, label, type }) => (
+              ].map(({ name, label, type, pattern }) => (
                 <div key={name} className="mb-4">
                   <label htmlFor={name} className="block text-white/80 text-base mb-1 ml-1">
                     {label}
@@ -122,12 +140,24 @@ export default function BookNowPage() {
                     type={type}
                     name={name}
                     value={formData[name as keyof typeof formData]}
-                    onChange={handleChange}
+                    onChange={name === "contact"
+                      ? (e) => {
+                          handleChange(e);
+                        }
+                      : handleChange}
                     required
                     className="w-full h-14 px-4 bg-transparent border border-white/40 rounded-xl text-white outline-none focus:border-blue-400 transition text-lg"
                     placeholder=""
                     autoComplete="off"
+                    {...(name === "contact" ? { inputMode: 'numeric' as const } : {})}
+                    {...(pattern ? { pattern } : {})}
                   />
+                  {name === "email" && emailError && (
+                    <p className="text-red-500 text-sm mt-1">{emailError}</p>
+                  )}
+                  {name === "contact" && contactError && (
+                    <p className="text-red-500 text-sm mt-1">{contactError}</p>
+                  )}
                 </div>
               ))}
               {/* Combined Date & Time Picker Popover */}
