@@ -319,12 +319,16 @@ export const contributors: Contributor[] = [
     name: "Ruben Lacumba",
     email: "ruben.lacumba@gmail.com",
     socials: {
-      linkedin: "https://www.linkedin.com/in/ruben-lacumba/",
+      linkedin: "https://www.linkedin.com/in/rubenlacumba/",
+      facebook: "https://www.facebook.com/ruben.lacumba",
+      twitter: "https://x.com/rlacumba",
+      telegram: "https://t.me/ruben231",
     },
     skills: ["Regional Ambassador", "Community"],
     tags: ["Ambassador", "Regional Ambassador"],
     photoUrl: "/contributors/Ruben.jpg",
     region: "Mindanao",
+    // Facebook display name: Rubz
   },
   {
     name: "Sean Michael Andrew B. Mendoza",
@@ -360,4 +364,15 @@ export const contributors: Contributor[] = [
     tags: ["Contributor"],
     photoUrl: "/contributors/Bautista.jpg",
   }, // Maerhyl Bautista
+  {
+    name: "Cherryl Jarilla",
+    email: "",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/cherryl-jarilla-380a38254/",
+      facebook: "https://www.facebook.com/chedj009/?_rdc=1&_rdr",
+    },
+    skills: ["Creatives"],
+    tags: ["Contributor"],
+    photoUrl: "/contributors/Cherryl.jpg",
+  },
 ];

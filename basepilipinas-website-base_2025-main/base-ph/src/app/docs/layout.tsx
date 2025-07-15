@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronRight, X, Book } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type SectionName =
@@ -46,13 +46,14 @@ export default function DocsLayout({
       {/* Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className="fixed lg:top-6 top-[4.5rem] left-2 z-50 p-2 rounded-lg bg-black/40 hover:bg-black/60 transition-colors lg:block"
-        aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
+        className="fixed top-16 left-2 z-[9999] p-2 rounded-lg bg-black/60 hover:bg-blue-700/80 transition-colors shadow-lg border border-white/10 block lg:hidden focus-visible:ring-2 focus-visible:ring-blue-400 pointer-events-auto"
+        aria-label={isOpen ? "Close docs menu" : "Open docs menu"}
+        title="Open docs menu"
       >
         {isOpen ? (
-          <X className="w-5 h-5 text-white" />
+          <X className="w-6 h-6 text-white" />
         ) : (
-          <Menu className="w-5 h-5 text-white" />
+          <Book className="w-6 h-6 text-white" />
         )}
       </button>
 

@@ -87,7 +87,7 @@ export default function BookNowPage() {
   };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-6 px-2 sm:px-4 md:px-8" style={{ background: 'transparent' }}>
-      <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl bg-white/10 backdrop-blur-2xl border border-white/30 rounded-3xl shadow-2xl p-4 sm:p-6 md:p-10 flex flex-col gap-6 sm:gap-8">
+      <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl bg-transparent backdrop-blur-2xl border border-white/30 rounded-3xl shadow-2xl p-4 sm:p-6 md:p-10 flex flex-col gap-6 sm:gap-8">
         <div className="text-center">
           <h2 className="text-4xl font-extrabold text-white drop-shadow mb-2">Schedule a Meeting with us!</h2>
           <p className="text-white/90 text-lg mb-4">Connect with us at your convenience! Book a meeting to discuss your ideas, projects, or inquiries.</p>
@@ -114,20 +114,20 @@ export default function BookNowPage() {
                 { name: "contact", label: "Contact Number", type: "text" },
                 { name: "subject", label: "Subject / Purpose", type: "text" },
               ].map(({ name, label, type }) => (
-                <div key={name} className="relative">
+                <div key={name} className="mb-4">
+                  <label htmlFor={name} className="block text-white/80 text-base mb-1 ml-1">
+                    {label}
+                  </label>
                   <input
                     type={type}
                     name={name}
                     value={formData[name as keyof typeof formData]}
                     onChange={handleChange}
                     required
-                    className="peer w-full h-14 px-4 pt-6 bg-white/20 border border-white/40 rounded-xl text-white placeholder-transparent outline-none focus:border-blue-400 focus:bg-white/30 transition text-lg"
-                    placeholder={label}
+                    className="w-full h-14 px-4 bg-transparent border border-white/40 rounded-xl text-white outline-none focus:border-blue-400 transition text-lg"
+                    placeholder=""
                     autoComplete="off"
                   />
-                  <label className="absolute left-4 top-4 text-white/70 text-base pointer-events-none transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-lg peer-focus:top-2 peer-focus:text-sm bg-transparent px-1">
-                    {label}
-                  </label>
                 </div>
               ))}
               {/* Combined Date & Time Picker Popover */}
@@ -138,12 +138,10 @@ export default function BookNowPage() {
                     <Button
                       type="button"
                       variant="outline"
-                      className="w-full h-14 px-4 bg-white/20 border border-white/40 rounded-xl text-white outline-none flex items-center gap-2 font-normal hover:border-blue-400 hover:bg-white/30 transition text-lg"
+                      className={`w-full h-14 px-4 border border-white/40 rounded-xl text-white outline-none flex items-center gap-2 font-normal transition text-lg ${selectedDate && selectedHour !== null && selectedMinute !== null && selectedPeriod ? 'bg-gradient-to-r from-blue-500 to-blue-700' : 'bg-transparent'}`}
                     >
                       <CalendarIcon className="w-6 h-6 mr-2 text-blue-300" />
-                      {selectedDate && selectedHour !== null && selectedMinute !== null && selectedPeriod
-                        ? `${format(selectedDate, "PPP")} ${selectedHour.toString().padStart(2, "0")}:${selectedMinute.toString().padStart(2, "0")} ${selectedPeriod}`
-                        : "Select Date & Time"}
+                      {selectedDate ? `${format(selectedDate, "PPP")}${selectedHour !== null ? ` ${selectedHour.toString().padStart(2, "0")}` : ""}${selectedMinute !== null ? `:${selectedMinute.toString().padStart(2, "0")}` : ""}${selectedPeriod ? ` ${selectedPeriod}` : ""}` : "Select Date & Time"}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="p-0 bg-white/90 border border-blue-200 rounded-2xl shadow-xl w-full max-w-xs sm:max-w-md md:max-w-[520px] min-h-[420px] overflow-y-auto overflow-x-auto">
